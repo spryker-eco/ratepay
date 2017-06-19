@@ -74,7 +74,15 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
         $quotePaymentInitMapper->map();
 
         $ratepayResponseTransfer = $this->getFacade()->requestPayment($ratepayPaymentRequestTransfer);
-        $this->getFacade()->updatePaymentMethodByPaymentResponse($ratepayResponseTransfer, $ratepayPaymentRequestTransfer->getOrderId());
+
+        if ($paymentData) {
+            $paymentData->setDescriptor($ratepayResponseTransfer->getDescriptor());
+        }
+
+        $this->getFacade()->updatePaymentMethodByPaymentResponse(
+            $ratepayResponseTransfer,
+            $ratepayPaymentRequestTransfer->getOrderId()
+        );
         $this->checkForErrors($ratepayResponseTransfer, $checkoutResponseTransfer);
 
         return $checkoutResponseTransfer;
