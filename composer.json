@@ -37,7 +37,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Spryker": "src/"
+      "SprykerEco": "src/"
     }
   },
   "autoload-dev": {
