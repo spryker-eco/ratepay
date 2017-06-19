@@ -34,9 +34,6 @@ abstract class AbstractMapper implements PaymentMethodMapperInterface
             ->setTransactionShortId($paymentTransfer->getTransactionShortId())
             ->setResultCode($paymentTransfer->getResultCode())
             ->setDeviceFingerprint($paymentTransfer->getDeviceFingerprint())
-
-            ->setDescriptor($paymentTransfer->getDescriptor())
-
             ->setGender($paymentTransfer->requireGender()->getGender())
             ->setPhone($paymentTransfer->requirePhone()->getPhone())
             ->setDateOfBirth($paymentTransfer->requireDateOfBirth()->getDateOfBirth())
