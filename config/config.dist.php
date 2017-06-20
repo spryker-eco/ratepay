@@ -15,6 +15,7 @@ $config[RatepayConstants::SECURITY_CODE] = '';
 $config[RatepayConstants::SNIPPET_ID] = 'ratepay';
 $config[RatepayConstants::SHOP_ID] = '';
 $config[RatepayConstants::SYSTEM_ID] = 'Spryker ' . $config[ApplicationConstants::HOST_YVES];
+$config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
   'Checkout' => [
@@ -32,8 +33,8 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 ];
 
 $config[OmsConstants::PROCESS_LOCATION] = [
-  OmsConfig::DEFAULT_PROCESS_LOCATION,
-  $config[KernelConstants::SPRYKER_ROOT] . '/Ratepay/config/Zed/Oms',
+    OmsConfig::DEFAULT_PROCESS_LOCATION,
+    APPLICATION_VENDOR_DIR . '/spryker-eco/ratepay/config/Zed/Oms',
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
@@ -49,3 +50,4 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
   RatepayConstants::PAYMENT_METHOD_INVOICE => 'RatepayInvoice01',
   RatepayConstants::PAYMENT_METHOD_PREPAYMENT => 'RatepayPrepayment01',
 ];
+
