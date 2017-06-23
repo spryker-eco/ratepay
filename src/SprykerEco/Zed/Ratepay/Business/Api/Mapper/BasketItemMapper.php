@@ -52,8 +52,8 @@ class BasketItemMapper extends BaseMapper
     public function map()
     {
         $itemPrice = $this->itemTransfer
-            ->requireUnitGrossPriceWithProductOptions()
-            ->getUnitGrossPriceWithProductOptions();
+            ->requireUnitGrossPrice()
+            ->getUnitGrossPrice();
         $itemPrice = $this->moneyFacade->convertIntegerToDecimal((int)$itemPrice);
 
         $itemTransfer = (new RatepayRequestShoppingBasketItemTransfer())

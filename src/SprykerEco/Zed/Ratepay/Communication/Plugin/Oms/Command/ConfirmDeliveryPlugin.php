@@ -29,7 +29,7 @@ class ConfirmDeliveryPlugin extends BaseCommandPlugin implements CommandByOrderI
     {
         $orderTransfer = $this->getOrderTransfer($orderEntity);
         $orderTransferItems = $this->getOrderItemsTransfer($orderItems);
-        $partialOrderTransfer = $this->getPartialOrderTransferByOrderItems($orderItems);
+        $partialOrderTransfer = $this->getPartialOrderTransferByOrderItems($orderItems, $orderEntity);
         $this->getFacade()->confirmDelivery($orderTransfer, $partialOrderTransfer, $orderTransferItems);
 
         return [];

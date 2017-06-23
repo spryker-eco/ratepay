@@ -435,6 +435,14 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface
+     */
+    public function getCalculation()
+    {
+        return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_CALCULATION);
+    }
+
+    /**
      * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryInterface
      */
     protected function getGlossaryFacade()

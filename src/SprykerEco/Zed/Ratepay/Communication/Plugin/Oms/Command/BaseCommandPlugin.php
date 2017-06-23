@@ -27,7 +27,7 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
     {
         return $this
             ->getFactory()
-            ->getSalesAggregator()
+            ->getSales()
             ->getOrderTotalsByIdSalesOrder($orderEntity->getIdSalesOrder());
     }
 
@@ -40,25 +40,59 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
     {
         return $this
             ->getFactory()
-            ->getSalesAggregator()
+            ->createPartialOrderCalculator()
             ->getOrderItemTotalsByIdSalesOrderItem($idSalesOrderItem);
     }
 
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    protected function getPartialOrderTransferByOrderItems($orderItems)
+    protected function getPartialOrderTransferByOrderItems($orderItems, SpySalesOrder $orderEntity)
     {
         $partialOrderTransfer = $this->getFactory()->createOrderTransfer();
         $items = $this->getFactory()->createOrderTransferItems($orderItems);
         $partialOrderTransfer->setItems($items);
+        $partialOrderTransfer = $this->getFilledOrderTransfer($partialOrderTransfer, $orderEntity);
 
         return $this
             ->getFactory()
-            ->getSalesAggregator()
+            ->getCalculation()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $partialOrderTransfer
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
+     *
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    protected function getFilledOrderTransfer($partialOrderTransfer, $orderEntity)
+    {
+        $partialOrderTransfer->setPriceMode($orderEntity->getPriceMode());
+        $partialOrderTransfer->setTotals($this->getTotalsTransfer($orderEntity));
+
+        return $partialOrderTransfer;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
+     *
+     * @return \Generated\Shared\Transfer\TotalsTransfer
+     */
+    protected function getTotalsTransfer($orderEntity)
+    {
+        $totalsTransfer = new TotalsTransfer();
+        $lastTotals = $orderEntity->getLastOrderTotals();
+        $totalsTransfer
+            ->setGrandTotal($lastTotals->getGrandTotal())
+            ->setSubtotal($lastTotals->getSubtotal())
+            ->setDiscountTotal($lastTotals->getDiscountTotal())
+            ->setExpenseTotal($lastTotals->getOrderExpenseTotal());
+
+        return $totalsTransfer;
     }
 
     /**
