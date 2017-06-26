@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\Ratepay\Communication;
 
 use ArrayObject;
+use Generated\Shared\Transfer\CalculatedDiscountTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -205,8 +206,34 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
         $itemTransfer->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
         $itemTransfer->setUnitGrossPrice($orderItemEntity->getGrossPrice());
         $itemTransfer->setQuantity($orderItemEntity->getQuantity());
+        $itemTransfer->setCalculatedDiscounts(
+            new ArrayObject($this->getCalculatedDiscounts($orderItemEntity))
+        );
 
         return $itemTransfer;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return array
+     */
+    protected function getCalculatedDiscounts($orderItemEntity)
+    {
+        $result = [];
+        $discounts = $orderItemEntity->getDiscounts();
+        foreach ($discounts as $discount) {
+            $calculatedDiscountTransfer = new CalculatedDiscountTransfer();
+            $calculatedDiscountTransfer
+                ->setDescription($discount->getDescription())
+                ->setDisplayName($discount->getDisplayName())
+                ->setUnitGrossAmount($discount->getAmount())
+                ->setIdDiscount($discount->getIdSalesDiscount())
+                ->setQuantity($orderItemEntity->getQuantity());
+            $result[] = $calculatedDiscountTransfer;
+        }
+
+        return $result;
     }
 
     /**
