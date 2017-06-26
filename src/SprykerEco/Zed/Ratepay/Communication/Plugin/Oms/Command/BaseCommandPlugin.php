@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Oms\Command;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
+use Generated\Shared\Transfer\TotalsTransfer;
 
 /**
  * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
