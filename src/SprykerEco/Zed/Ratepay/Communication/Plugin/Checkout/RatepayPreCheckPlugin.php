@@ -122,7 +122,7 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
 
         return $this
             ->getFactory()
-            ->getCalculation()
+            ->getCalculationFacade()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
     }
 

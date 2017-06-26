@@ -28,7 +28,7 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
     {
         return $this
             ->getFactory()
-            ->getSales()
+            ->getSalesFacade()
             ->getOrderTotalsByIdSalesOrder($orderEntity->getIdSalesOrder());
     }
 
@@ -60,7 +60,7 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
 
         return $this
             ->getFactory()
-            ->getCalculation()
+            ->getCalculationFacade()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
     }
 

@@ -40,7 +40,7 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesInterface
      */
-    public function getSales()
+    public function getSalesFacade()
     {
         return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_SALES);
     }
@@ -48,7 +48,7 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface
      */
-    public function getCalculation()
+    public function getCalculationFacade()
     {
         return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_CALCULATION);
     }
