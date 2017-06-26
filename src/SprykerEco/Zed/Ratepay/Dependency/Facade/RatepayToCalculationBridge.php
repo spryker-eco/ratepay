@@ -11,12 +11,12 @@ class RatepayToCalculationBridge implements RatepayToCalculationInterface
 {
 
     /**
-     * @var \Spryker\Zed\Sales\Business\SalesFacade
+     * @var \Spryker\Zed\Calculation\Business\CalculationFacade
      */
     protected $calculationFacade;
 
     /**
-     * @param \Spryker\Zed\Sales\Business\SalesFacade $salesFacade
+     * @param \Spryker\Zed\Calculation\Business\CalculationFacade $calculationFacade
      */
     public function __construct($calculationFacade)
     {
