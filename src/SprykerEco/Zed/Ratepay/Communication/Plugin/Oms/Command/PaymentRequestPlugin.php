@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -38,7 +38,7 @@ class PaymentRequestPlugin extends BaseCommandPlugin implements CommandByOrderIn
 
         $this->getFacade()->initPayment($ratepayPaymentInitTransfer);
 
-        $partialOrderTransfer = $this->getPartialOrderTransferByOrderItems($orderItems);
+        $partialOrderTransfer = $this->getPartialOrderTransferByOrderItems($orderItems, $orderEntity);
 
         $ratepayPaymentRequestTransfer = new RatepayPaymentRequestTransfer();
         $quotePaymentRequestMapper = $this->getFactory()->createPaymentRequestMapperByOrder(
@@ -54,23 +54,6 @@ class PaymentRequestPlugin extends BaseCommandPlugin implements CommandByOrderIn
         $this->getFacade()->updatePaymentMethodByPaymentResponse($ratepayResponseTransfer, $ratepayPaymentRequestTransfer->getOrderId());
 
         return [];
-    }
-
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
-    protected function getPartialOrderTransferByOrderItems($orderItems)
-    {
-        $partialOrderTransfer = $this->getFactory()->createOrderTransfer();
-        $items = $this->getFactory()->createOrderTransferItems($orderItems);
-        $partialOrderTransfer->setItems($items);
-
-        return $this
-            ->getFactory()
-            ->getSalesAggregator()
-            ->getOrderTotalByOrderTransfer($partialOrderTransfer);
     }
 
 }
