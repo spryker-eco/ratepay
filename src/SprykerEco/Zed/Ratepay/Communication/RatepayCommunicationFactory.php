@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\Ratepay\Communication;
 
 use ArrayObject;
+use Generated\Shared\Transfer\CalculatedDiscountTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -20,6 +21,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentInitMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentInitMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
+use SprykerEco\Zed\Ratepay\Business\Order\PartialOrderCalculator;
 use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor;
 use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
 
@@ -36,11 +38,31 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     protected $paymentMethodExtractor;
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesAggregatorInterface
+     * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesInterface
      */
-    public function getSalesAggregator()
+    public function getSalesFacade()
     {
-        return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_SALES_AGGREGATOR);
+        return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_SALES);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface
+     */
+    public function getCalculationFacade()
+    {
+        return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_CALCULATION);
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Persistence\SalesQueryContainer
+     */
+    public function getSalesQueryContainer()
+    {
+        $salesQueryContainerHolder = $this->getProvidedDependency(
+            RatepayDependencyProvider::SALES_QUERY_CONTAINER
+        );
+
+        return $salesQueryContainerHolder->getSalesQueryContainer();
     }
 
     /**
@@ -184,8 +206,34 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
         $itemTransfer->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
         $itemTransfer->setUnitGrossPrice($orderItemEntity->getGrossPrice());
         $itemTransfer->setQuantity($orderItemEntity->getQuantity());
+        $itemTransfer->setCalculatedDiscounts(
+            new ArrayObject($this->getCalculatedDiscounts($orderItemEntity))
+        );
 
         return $itemTransfer;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return array
+     */
+    protected function getCalculatedDiscounts($orderItemEntity)
+    {
+        $result = [];
+        $discounts = $orderItemEntity->getDiscounts();
+        foreach ($discounts as $discount) {
+            $calculatedDiscountTransfer = new CalculatedDiscountTransfer();
+            $calculatedDiscountTransfer
+                ->setDescription($discount->getDescription())
+                ->setDisplayName($discount->getDisplayName())
+                ->setUnitGrossAmount($discount->getAmount())
+                ->setIdDiscount($discount->getIdSalesDiscount())
+                ->setQuantity($orderItemEntity->getQuantity());
+            $result[] = $calculatedDiscountTransfer;
+        }
+
+        return $result;
     }
 
     /**
@@ -224,6 +272,17 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     public function createOrderTransfer()
     {
         return new OrderTransfer();
+    }
+
+    /**
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\PartialOrderCalculatorInterface
+     */
+    public function createPartialOrderCalculator()
+    {
+        return new PartialOrderCalculator(
+            $this->getProvidedDependency(RatepayDependencyProvider::FACADE_CALCULATION),
+            $this->getSalesQueryContainer()
+        );
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -432,6 +432,14 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
         return new PostSaveHook(
             $this->getQueryContainer()
         );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface
+     */
+    public function getCalculation()
+    {
+        return $this->getProvidedDependency(RatepayDependencyProvider::FACADE_CALCULATION);
     }
 
     /**

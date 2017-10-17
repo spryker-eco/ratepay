@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -12,15 +12,19 @@ use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductBridge;
-use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesAggregatorBridge;
+use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesBridge;
+use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationBridge;
+use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesQueryContainerBridge;
 
 class RatepayDependencyProvider extends AbstractBundleDependencyProvider
 {
 
-    const FACADE_SALES_AGGREGATOR = 'FACADE_SALES_AGGREGATED';
+    const FACADE_SALES = 'FACADE_SALES';
+    const FACADE_CALCULATION = 'FACADE_CALCULATION';
     const FACADE_GLOSSARY = 'GLOSSARY_FACADE';
     const FACADE_PRODUCT = 'FACADE_PRODUCT';
     const FACADE_MONEY = 'FACADE_MONEY';
+    const SALES_QUERY_CONTAINER = 'SALES_QUERY_CONTAINER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -29,7 +33,9 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideCommunicationLayerDependencies(Container $container)
     {
-        $container = $this->addSalesAggregatorFacade($container);
+        $container = $this->addSalesFacade($container);
+        $container = $this->addCalculationFacade($container);
+        $container = $this->addSalesQueryContainer($container);
 
         return $container;
     }
@@ -44,6 +50,7 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addProductFacade($container);
         $container = $this->addGlossaryFacade($container);
         $container = $this->addMoneyFacade($container);
+        $container = $this->addSalesQueryContainer($container);
 
         return $container;
     }
@@ -53,10 +60,24 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addSalesAggregatorFacade(Container $container)
+    protected function addSalesFacade(Container $container)
     {
-        $container[static::FACADE_SALES_AGGREGATOR] = function (Container $container) {
-            return new RatepayToSalesAggregatorBridge($container->getLocator()->salesAggregator()->facade());
+        $container[static::FACADE_SALES] = function (Container $container) {
+            return new RatepayToSalesBridge($container->getLocator()->sales()->facade());
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCalculationFacade(Container $container)
+    {
+        $container[static::FACADE_CALCULATION] = function (Container $container) {
+            return new RatepayToCalculationBridge($container->getLocator()->calculation()->facade());
         };
 
         return $container;
@@ -99,6 +120,20 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container[self::FACADE_MONEY] = function (Container $container) {
             return new RatepayToMoneyBridge($container->getLocator()->money()->facade());
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return Container
+     */
+    protected function addSalesQueryContainer(Container $container)
+    {
+        $container[self::SALES_QUERY_CONTAINER] = function (Container $container) {
+            return new RatepayToSalesQueryContainerBridge($container->getLocator()->sales()->queryContainer());
         };
 
         return $container;
