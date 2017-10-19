@@ -17,21 +17,6 @@ $config[RatepayConstants::SHOP_ID] = '';
 $config[RatepayConstants::SYSTEM_ID] = 'Spryker ' . $config[ApplicationConstants::HOST_YVES];
 $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
-$config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
-  'Checkout' => [
-      'Ratepay',
-  ],
-];
-
-$config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
-  'Payment' => [
-      'Ratepay',
-  ],
-  'Oms' => [
-      'Ratepay',
-  ],
-];
-
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
     APPLICATION_VENDOR_DIR . '/spryker-eco/ratepay/config/Zed/Oms',
