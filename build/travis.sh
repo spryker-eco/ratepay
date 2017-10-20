@@ -7,10 +7,6 @@ buildMessage=""
 result=0
 
 function runTests {
-    grep APPLICATION_ROOT_DIR "$TRAVIS_BUILD_DIR/$SHOP_DIR/vendor/composer/autoload_real.php"
-    if [ "$?" = 1 ]; then
-        echo "define('APPLICATION_ROOT_DIR', '$TRAVIS_BUILD_DIR/$SHOP_DIR');" >> "$TRAVIS_BUILD_DIR/$SHOP_DIR/vendor/composer/autoload_real.php"
-    fi
     "$TRAVIS_BUILD_DIR/$SHOP_DIR/vendor/bin/console" transfer:generate
     if [ "$?" = 0 ]; then
         buildMessage="${buildMessage}\n${GREEN}Transfer objects generation was successful"
@@ -27,6 +23,7 @@ function runTests {
         result=$((result+1))
     fi
 
+    echo "Setup for tests..."
     ./setup_test -f
 
     echo "Running tests..."
@@ -53,6 +50,42 @@ function checkArchRules {
     else
         echo -e "$errors"
         buildMessage="$buildMessage\n${RED}Architecture sniffer reports $errorsCount error(s)"
+    fi
+}
+
+function checkCodeSniffRules {
+    licenseFile="$TRAVIS_BUILD_DIR/.license"
+    if [ -f "$licenseFile" ]; then
+        echo "Preparing correct license for code sniffer..."
+        cp "$licenseFile" "$TRAVIS_BUILD_DIR/$SHOP_DIR/.license"
+    fi
+
+    echo "Running code sniffer..."
+    errors=`vendor/bin/console code:sniff "vendor/spryker-eco/$MODULE_NAME/src"`
+    errorsCount=$?
+
+    if [[ "$errorsCount" = "0" ]]; then
+        buildMessage="$buildMessage\n${GREEN}Code sniffer reports no errors"
+    else
+        echo -e "$errors"
+        buildMessage="$buildMessage\n${RED}Code sniffer reports some error(s)"
+    fi
+}
+
+function checkPHPStan {
+    echo "Installing PHPStan..."
+    composer require --dev phpstan/phpstan
+    echo "Updating code-completition..."
+    vendor/bin/console dev:ide:generate-auto-completion
+    echo "Running PHPStan..."
+    errors=`php -d memory_limit=2048M vendor/bin/phpstan analyze -c phpstan.neon "vendor/spryker-eco/$MODULE_NAME/src" -l 2`
+
+    errorsCount=`echo "$errors" | wc -l`
+    if [[ "$errorsCount" = "0" ]]; then
+        buildMessage="$buildMessage\n${GREEN}PHPStan reports no errors"
+    else
+        echo -e "$errors"
+        buildMessage="$buildMessage\n${RED}PHPStan reports some error(s)"
     fi
 }
 
@@ -92,10 +125,19 @@ function checkModuleWithLatestVersionOfDemoShop {
     fi
 }
 
+updatedFile="$TRAVIS_BUILD_DIR/$SHOP_DIR/vendor/codeception/codeception/src/Codeception/Application.php"
+grep APPLICATION_ROOT_DIR "$updatedFile"
+if [ $? = 1 ]; then
+    echo "define('APPLICATION_ROOT_DIR', '$TRAVIS_BUILD_DIR/$SHOP_DIR');" >> "$updatedFile"
+fi
+
 cd $SHOP_DIR
 checkWithLatestDemoShop
 if [ -d "vendor/spryker-eco/$MODULE_NAME/src" ]; then
     checkArchRules
+    checkCodeSniffRules
+    checkPHPStan
 fi
+
 echo -e "$buildMessage"
 exit $buildResult
