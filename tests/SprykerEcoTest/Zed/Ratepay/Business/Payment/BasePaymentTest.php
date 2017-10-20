@@ -216,7 +216,7 @@ class BasePaymentTest extends Test
             ->setAbstractSku('133333333333')
             ->setQuantity(3)
             ->setTaxRate(19)
-            ->setUnitGrossPriceWithProductOptions(1000)
+            ->setUnitGrossPrice(1000)
             ->setGroupKey('133333333333');
         return $item;
     }

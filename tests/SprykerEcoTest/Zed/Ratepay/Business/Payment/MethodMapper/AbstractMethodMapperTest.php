@@ -340,8 +340,8 @@ abstract class AbstractMethodMapperTest extends BasePaymentTest
             ->setUnitGrossPrice(1000)
             ->setTaxRate('19')
             ->setUnitTotalDiscountAmountWithProductOption(100)
-            ->setSumGrossPriceWithProductOptionAndDiscountAmounts(900)
-            ->setUnitGrossPriceWithProductOptions(1000);
+            ->setUnitGrossPriceWithProductOptionAndDiscountAmounts(900)
+            ->setUnitGrossPrice(1000);
 
         return $itemTransfer;
     }

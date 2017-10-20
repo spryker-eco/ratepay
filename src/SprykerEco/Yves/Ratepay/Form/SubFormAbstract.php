@@ -9,12 +9,14 @@ namespace SprykerEco\Yves\Ratepay\Form;
 
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInterface
+abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInterface, SubFormProviderNameInterface
 {
 
     const FIELD_DATE_OF_BIRTH = 'date_of_birth';
@@ -34,6 +36,14 @@ abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInt
         $this
             ->addDateOfBirth($builder)
             ->addPhone($builder);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProviderName()
+    {
+        return RatepayConstants::PROVIDER_NAME;
     }
 
     /**

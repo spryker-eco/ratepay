@@ -237,7 +237,7 @@ abstract class AbstractBusinessTest extends Test
             ->setUnitGrossPrice((int)$itemPrefix . '1')
             ->setTaxRate((int)$itemPrefix . '9')
             ->setUnitTotalDiscountAmountWithProductOption((int)$itemPrefix . '9')
-            ->setUnitGrossPriceWithProductOptions((int)$itemPrefix . '55555');
+            ->setUnitGrossPrice((int)$itemPrefix . '55555');
 
         return $itemTransfer;
     }
