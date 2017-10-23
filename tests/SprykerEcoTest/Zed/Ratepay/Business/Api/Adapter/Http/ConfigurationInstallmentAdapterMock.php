@@ -9,7 +9,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http;
 
 class ConfigurationInstallmentAdapterMock extends AbstractAdapterMock
 {
-
     /**
      * @return string
      */
@@ -75,5 +74,4 @@ class ConfigurationInstallmentAdapterMock extends AbstractAdapterMock
             </head>
         </response>';
     }
-
 }

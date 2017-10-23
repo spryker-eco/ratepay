@@ -8,12 +8,11 @@
 namespace SprykerEco\Zed\Ratepay\Business\Order\MethodMapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 class Invoice extends AbstractMapper
 {
-
     /**
      * @return string
      */
@@ -58,5 +57,4 @@ class Invoice extends AbstractMapper
             ->setIpAddress($paymentTransfer->requireIpAddress()->getIpAddress())
             ->setCurrencyIso3($paymentTransfer->requireCurrencyIso3()->getCurrencyIso3());
     }
-
 }

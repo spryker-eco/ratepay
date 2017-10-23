@@ -6,7 +6,6 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request;
 
-use SprykerEcoTest\Zed\Ratepay\Business\AbstractBusinessTest;
 use Orm\Zed\Country\Persistence\SpyCountryQuery;
 use Orm\Zed\Customer\Persistence\Map\SpyCustomerTableMap;
 use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
@@ -18,6 +17,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Adapter\AdapterInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\BaseResponse;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
+use SprykerEcoTest\Zed\Ratepay\Business\AbstractBusinessTest;
 
 /**
  * @group Functional
@@ -30,7 +30,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
  */
 abstract class AbstractFacadeTest extends AbstractBusinessTest
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
      */
@@ -227,5 +226,4 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
      * @return \SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\AbstractAdapterMock
      */
     abstract protected function getPaymentFailureResponseAdapterMock();
-
 }

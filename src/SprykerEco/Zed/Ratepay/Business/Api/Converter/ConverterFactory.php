@@ -16,7 +16,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class ConverterFactory
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface
      */
@@ -94,5 +93,4 @@ class ConverterFactory
             $this->getTransferObjectConverter($response)
         );
     }
-
 }

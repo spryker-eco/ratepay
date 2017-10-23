@@ -7,9 +7,9 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\RequestPayment;
 
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\RequestPaymentInvoiceAdapterMock;
 use SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\InvoiceAbstractTest;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 /**
  * @group Functional
@@ -24,7 +24,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 class InvoiceTest extends InvoiceAbstractTest
 {
-
     /**
      * @return void
      */
@@ -71,5 +70,4 @@ class InvoiceTest extends InvoiceAbstractTest
         $this->assertEquals(RatepayConstants::INVOICE, $this->responseTransfer->getPaymentMethod());
         $this->assertEquals($this->expectedResponseTransfer->getPaymentMethod(), $this->responseTransfer->getPaymentMethod());
     }
-
 }

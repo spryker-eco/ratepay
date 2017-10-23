@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\SimpleXMLElement;
 
 abstract class AbstractRequest implements RequestInterface
 {
-
     /**
      * @return array
      */
@@ -96,5 +95,4 @@ abstract class AbstractRequest implements RequestInterface
     {
         return $this->toXml();
     }
-
 }

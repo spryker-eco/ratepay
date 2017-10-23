@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
 class PostSaveHook implements PostSaveHookInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface
      */
@@ -89,5 +88,4 @@ class PostSaveHook implements PostSaveHookInterface
 
         return $checkoutResponse;
     }
-
 }

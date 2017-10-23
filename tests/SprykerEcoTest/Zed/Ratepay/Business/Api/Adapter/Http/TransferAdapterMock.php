@@ -9,7 +9,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http;
 
 class TransferAdapterMock extends AbstractAdapterMock
 {
-
     /**
      * @return array
      */
@@ -25,5 +24,4 @@ class TransferAdapterMock extends AbstractAdapterMock
     {
         return $this->requestData;
     }
-
 }

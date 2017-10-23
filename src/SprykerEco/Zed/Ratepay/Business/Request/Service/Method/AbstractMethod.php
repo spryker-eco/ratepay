@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
 abstract class AbstractMethod implements RequestMethodInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Adapter\AdapterInterface
      */
@@ -60,5 +59,4 @@ abstract class AbstractMethod implements RequestMethodInterface
             ->getHeadMapper()
             ->map();
     }
-
 }

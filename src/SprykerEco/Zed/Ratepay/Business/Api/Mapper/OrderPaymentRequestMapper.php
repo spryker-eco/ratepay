@@ -17,7 +17,6 @@ use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
 class OrderPaymentRequestMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\RatepayPaymentRequestTransfer
      */
@@ -34,7 +33,7 @@ class OrderPaymentRequestMapper extends BaseMapper
     protected $partialOrderTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
+     * @var \Orm\Zed\Sales\Persistence\SpySalesOrder
      */
     protected $orderEntity;
 
@@ -216,5 +215,4 @@ class OrderPaymentRequestMapper extends BaseMapper
             $this->ratepayPaymentRequestTransfer->addItem($basketItem);
         }
     }
-
 }

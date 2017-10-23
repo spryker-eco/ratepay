@@ -8,15 +8,14 @@
 namespace SprykerEco\Yves\Ratepay\Form;
 
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ElvSubForm extends SubFormAbstract
 {
-
     const PAYMENT_METHOD = 'elv';
 
     const FIELD_BUNK_ACCOUNT_HOLDER = 'bank_account_holder';
@@ -151,5 +150,4 @@ class ElvSubForm extends SubFormAbstract
 
         return $this;
     }
-
 }

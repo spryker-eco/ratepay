@@ -9,12 +9,10 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 
 interface RatepayToCalculationInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTrasfer
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
     public function getOrderTotalByOrderTransfer($orderTrasfer);
-
 }

@@ -6,12 +6,12 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\ConfigurationCalculation;
 
-use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\CalculationByTimeInstallmentAdapterMock;
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Calculation;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\CalculationResponse;
+use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\CalculationByTimeInstallmentAdapterMock;
 
 /**
  * @group Functional
@@ -26,7 +26,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\CalculationResponse;
  */
 class InstallmentCalculationByTimeTest extends InstallmentAbstractTest
 {
-
     /**
      * @return \SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\CalculationByTimeInstallmentAdapterMock
      */
@@ -96,5 +95,4 @@ class InstallmentCalculationByTimeTest extends InstallmentAbstractTest
             ->getInstallmentCalculationResponseConverter($expectedResponse, $this->getCalculationRequest())
             ->convert();
     }
-
 }

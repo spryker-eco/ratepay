@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
 interface BuilderInterface
 {
-
     /**
      * @return array
      */
@@ -19,5 +18,4 @@ interface BuilderInterface
      * @return string
      */
     public function getRootTag();
-
 }

@@ -24,7 +24,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Service\Profile as ProfileRequest;
 
 class ApiFactory extends AbstractBusinessFactory
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderFactory
      */
@@ -153,5 +152,4 @@ class ApiFactory extends AbstractBusinessFactory
             $this->builderFactory->createHead()
         );
     }
-
 }

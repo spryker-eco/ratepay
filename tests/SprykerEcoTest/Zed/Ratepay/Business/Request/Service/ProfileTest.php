@@ -7,12 +7,12 @@
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Service;
 
 use Codeception\TestCase\Test;
-use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\ProfileAdapterMock;
-use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 use Spryker\Zed\Money\Business\MoneyFacade;
 use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ProfileResponse;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
+use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\ProfileAdapterMock;
+use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
 /**
  * @group Functional
@@ -26,7 +26,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
  */
 class ProfileTest extends AbstractFacadeTest
 {
-
     /**
      * @return void
      */
@@ -185,5 +184,4 @@ class ProfileTest extends AbstractFacadeTest
     protected function getPaymentTransferFromQuote()
     {
     }
-
 }

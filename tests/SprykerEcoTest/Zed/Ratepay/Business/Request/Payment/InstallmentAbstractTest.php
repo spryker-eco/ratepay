@@ -6,9 +6,9 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment;
 
-use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
 /**
  * @group Functional
@@ -22,7 +22,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 abstract class InstallmentAbstractTest extends AbstractFacadeTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -78,5 +77,4 @@ abstract class InstallmentAbstractTest extends AbstractFacadeTest
             ->setTransactionShortId('5QTZ.2VWD.OMWW.9D3E')
             ->setDeviceFingerprint('122356');
     }
-
 }

@@ -21,7 +21,6 @@ use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPreCheckPluginInterfa
  */
 class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPluginInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponse
@@ -97,7 +96,6 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
     protected function checkForErrors(RatepayResponseTransfer $ratepayResponseTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
     {
         if (!$ratepayResponseTransfer->getSuccessful()) {
-
             $errorMessage = $ratepayResponseTransfer->getCustomerMessage() != '' ? $ratepayResponseTransfer->getCustomerMessage() :
                 $ratepayResponseTransfer->getResultText();
 
@@ -125,5 +123,4 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
             ->getCalculationFacade()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
     }
-
 }

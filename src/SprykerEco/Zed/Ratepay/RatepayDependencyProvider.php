@@ -9,16 +9,14 @@ namespace SprykerEco\Zed\Ratepay;
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesBridge;
-use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationBridge;
-use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesQueryContainerBridge;
 
 class RatepayDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const FACADE_SALES = 'FACADE_SALES';
     const FACADE_CALCULATION = 'FACADE_CALCULATION';
     const FACADE_GLOSSARY = 'GLOSSARY_FACADE';
@@ -128,15 +126,14 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addSalesQueryContainer(Container $container)
     {
         $container[self::SALES_QUERY_CONTAINER] = function (Container $container) {
-            return new RatepayToSalesQueryContainerBridge($container->getLocator()->sales()->queryContainer());
+            return $container->getLocator()->sales()->queryContainer();
         };
 
         return $container;
     }
-
 }

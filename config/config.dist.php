@@ -6,9 +6,9 @@
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Oms\OmsConstants;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Zed\Oms\OmsConfig;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 $config[RatepayConstants::PROFILE_ID] = '';
 $config[RatepayConstants::SECURITY_CODE] = '';
@@ -50,4 +50,3 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
   RatepayConstants::PAYMENT_METHOD_INVOICE => 'RatepayInvoice01',
   RatepayConstants::PAYMENT_METHOD_PREPAYMENT => 'RatepayPrepayment01',
 ];
-

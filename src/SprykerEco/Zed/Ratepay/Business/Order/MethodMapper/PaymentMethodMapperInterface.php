@@ -12,7 +12,6 @@ use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
 
 interface PaymentMethodMapperInterface
 {
-
     /**
      * @return string
      */
@@ -25,5 +24,4 @@ interface PaymentMethodMapperInterface
      * @return void
      */
     public function mapMethodDataToPayment(QuoteTransfer $quoteTransfer, SpyPaymentRatepay $payment);
-
 }

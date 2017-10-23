@@ -7,18 +7,16 @@
 
 namespace SprykerEco\Zed\Ratepay\Dependency\Injector;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Kernel\Dependency\Injector\AbstractDependencyInjector;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPluginCollection;
 use Spryker\Zed\Payment\PaymentDependencyProvider;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Zed\Ratepay\Communication\Plugin\Checkout\RatepayPostCheckPlugin;
-use SprykerEco\Zed\Ratepay\Communication\Plugin\Checkout\RatepayPreCheckPlugin;
 use SprykerEco\Zed\Ratepay\Communication\Plugin\Checkout\RatepaySaveOrderPlugin;
 
 class PaymentDependencyInjector extends AbstractDependencyInjector
 {
-
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -47,5 +45,4 @@ class PaymentDependencyInjector extends AbstractDependencyInjector
 
         return $container;
     }
-
 }

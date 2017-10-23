@@ -24,7 +24,6 @@ use PHPUnit_Framework_TestCase;
  */
 class BaseMethodMapperTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -103,5 +102,4 @@ class BaseMethodMapperTest extends PHPUnit_Framework_TestCase
 
         return $paymentTransfer;
     }
-
 }

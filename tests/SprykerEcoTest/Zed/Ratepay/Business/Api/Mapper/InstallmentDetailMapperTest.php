@@ -19,7 +19,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Mapper;
  */
 class InstallmentDetailMapperTest extends AbstractMapperTest
 {
-
     /**
      * @return void
      */
@@ -37,5 +36,4 @@ class InstallmentDetailMapperTest extends AbstractMapperTest
         $this->assertEquals(0.14, $this->requestTransfer->getInstallmentDetails()->getInterestRate());
         $this->assertEquals(28, $this->requestTransfer->getInstallmentDetails()->getPaymentFirstday());
     }
-
 }

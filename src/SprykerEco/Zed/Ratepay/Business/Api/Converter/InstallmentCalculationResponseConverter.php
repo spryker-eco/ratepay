@@ -15,32 +15,31 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class InstallmentCalculationResponseConverter extends BaseConverter
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Calculation
      */
     protected $request;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface
      */
-    protected $responseTransfer;
+    protected $responseTransferConverter;
 
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\CalculationResponse $response
      * @param \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface $moneyFacade
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter $responseTransfer
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface $responseTransferConverter
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Calculation $request
      */
     public function __construct(
         CalculationResponse $response,
         RatepayToMoneyInterface $moneyFacade,
-        TransferObjectConverter $responseTransfer,
+        ConverterInterface $responseTransferConverter,
         Calculation $request
     ) {
         parent::__construct($response, $moneyFacade);
 
-        $this->responseTransfer = $responseTransfer;
+        $this->responseTransferConverter = $responseTransferConverter;
         $this->request = $request;
     }
 
@@ -49,7 +48,7 @@ class InstallmentCalculationResponseConverter extends BaseConverter
      */
     public function convert()
     {
-        $baseResponse = $this->responseTransfer->convert();
+        $baseResponse = $this->responseTransferConverter->convert();
 
         $responseTransfer = new RatepayInstallmentCalculationResponseTransfer();
         $responseTransfer
@@ -73,5 +72,4 @@ class InstallmentCalculationResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

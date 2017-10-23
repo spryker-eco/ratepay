@@ -9,12 +9,10 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Adapter;
 
 interface AdapterInterface
 {
-
     /**
      * @param string $data
      *
      * @return string
      */
     public function sendRequest($data);
-
 }

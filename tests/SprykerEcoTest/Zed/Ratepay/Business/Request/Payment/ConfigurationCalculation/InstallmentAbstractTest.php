@@ -6,9 +6,9 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\ConfigurationCalculation;
 
-use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
 /**
  * @group Functional
@@ -23,7 +23,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 abstract class InstallmentAbstractTest extends AbstractFacadeTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -135,5 +134,4 @@ abstract class InstallmentAbstractTest extends AbstractFacadeTest
         $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getSuccessful(), $this->responseTransfer->getBaseResponse()->getSuccessful());
         $this->assertFalse($this->expectedResponseTransfer->getBaseResponse()->getSuccessful());
     }
-
 }

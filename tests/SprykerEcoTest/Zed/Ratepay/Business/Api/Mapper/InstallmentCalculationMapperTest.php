@@ -18,7 +18,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Mapper;
  */
 class InstallmentCalculationMapperTest extends AbstractMapperTest
 {
-
     /**
      * @return void
      */
@@ -45,5 +44,4 @@ class InstallmentCalculationMapperTest extends AbstractMapperTest
         $this->assertEquals(28, $this->requestTransfer->getInstallmentCalculation()->getPaymentFirstday());
         $this->assertEquals('2016-05-15', $this->requestTransfer->getInstallmentCalculation()->getCalculationStart());
     }
-
 }

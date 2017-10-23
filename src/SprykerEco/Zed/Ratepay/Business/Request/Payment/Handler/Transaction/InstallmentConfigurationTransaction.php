@@ -13,7 +13,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ConfigurationResponse;
 
 class InstallmentConfigurationTransaction extends BaseTransaction implements QuoteTransactionInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_CONFIGURATION_REQUEST;
 
     /**
@@ -49,5 +48,4 @@ class InstallmentConfigurationTransaction extends BaseTransaction implements Quo
     {
         return new ConfigurationResponse($this->executionAdapter->sendRequest($request));
     }
-
 }

@@ -6,9 +6,9 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment;
 
-use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
 /**
  * @group Functional
@@ -22,7 +22,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 abstract class ElvAbstractTest extends AbstractFacadeTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -82,5 +81,4 @@ abstract class ElvAbstractTest extends AbstractFacadeTest
             ->setBankAccountIban('XXXX XXXX XXXX XXXX XXXX XX')
             ->setBankAccountHolder('TestHolder');
     }
-
 }

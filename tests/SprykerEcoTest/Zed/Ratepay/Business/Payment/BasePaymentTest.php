@@ -24,8 +24,8 @@ use Generated\Shared\Transfer\RatepayRequestTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepayQuery;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Zed\Money\Business\MoneyFacade;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http\Guzzle;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation;
@@ -55,7 +55,6 @@ use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
  */
 class BasePaymentTest extends Test
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory
      */
@@ -609,5 +608,4 @@ class BasePaymentTest extends Test
 
         return $paymentMethod;
     }
-
 }

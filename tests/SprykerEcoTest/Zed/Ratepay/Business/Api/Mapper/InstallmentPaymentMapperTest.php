@@ -19,7 +19,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Mapper;
  */
 class InstallmentPaymentMapperTest extends AbstractMapperTest
 {
-
     /**
      * @return void
      */
@@ -47,5 +46,4 @@ class InstallmentPaymentMapperTest extends AbstractMapperTest
         $this->assertEquals('invoice', $this->requestTransfer->getInstallmentPayment()->getDebitPayType());
         $this->assertEquals('125.7', $this->requestTransfer->getInstallmentPayment()->getAmount());
     }
-
 }

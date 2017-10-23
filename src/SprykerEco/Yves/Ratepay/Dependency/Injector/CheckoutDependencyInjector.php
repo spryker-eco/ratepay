@@ -9,19 +9,18 @@ namespace SprykerEco\Yves\Ratepay\Dependency\Injector;
 
 use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Shared\Kernel\Dependency\Injector\DependencyInjectorInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
+use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
+use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayElvSubFormPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayHandlerPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayInstallmentSubFormPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayInvoiceSubFormPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayPrepaymentSubFormPlugin;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
-
     /**
      * @param \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container $container
      *
@@ -74,5 +73,4 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
 
         return $container;
     }
-
 }

@@ -21,7 +21,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Invoice;
  */
 class InvoiceTest extends BaseMethodMapperTest
 {
-
     /**
      * @return void
      */
@@ -61,5 +60,4 @@ class InvoiceTest extends BaseMethodMapperTest
 
         return $quoteTransfer;
     }
-
 }

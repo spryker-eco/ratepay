@@ -19,7 +19,6 @@ use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
 
 class RatepayFacadeMockBuilder
 {
-
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Adapter\AdapterInterface $adapter
      * @param \PHPUnit_Framework_TestCase $testCase
@@ -86,5 +85,4 @@ class RatepayFacadeMockBuilder
     {
         return new RatepayRequestTransfer();
     }
-
 }

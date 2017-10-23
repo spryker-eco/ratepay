@@ -7,10 +7,10 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Oms\Command;
 
+use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
-use Generated\Shared\Transfer\TotalsTransfer;
 
 /**
  * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
@@ -18,7 +18,6 @@ use Generated\Shared\Transfer\TotalsTransfer;
  */
 abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrderInterface
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      *
@@ -107,10 +106,8 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
         foreach ($orderItems as $orderItem) {
             $orderTransferItems[$orderItem->getIdSalesOrderItem()] = $this
                 ->getOrderItemTotalsByIdSalesOrderItem($orderItem->getIdSalesOrderItem());
-
         }
 
         return $orderTransferItems;
     }
-
 }

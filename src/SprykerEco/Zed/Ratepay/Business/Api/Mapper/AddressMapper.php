@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 class AddressMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\AddressTransfer
      */
@@ -74,5 +73,4 @@ class AddressMapper extends BaseMapper
 
         return $requestAddressTransfer;
     }
-
 }

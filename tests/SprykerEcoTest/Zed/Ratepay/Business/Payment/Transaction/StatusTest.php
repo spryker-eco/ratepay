@@ -27,7 +27,6 @@ use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
  */
 class StatusTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return bool
      */
@@ -157,5 +156,4 @@ class StatusTest extends PHPUnit_Framework_TestCase
 
         return $queryContainer;
     }
-
 }

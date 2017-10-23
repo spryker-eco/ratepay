@@ -22,7 +22,6 @@ use SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\PrepaymentAbstractTest;
  */
 class PrepaymentTest extends PrepaymentAbstractTest
 {
-
     /**
      * @return void
      */
@@ -61,5 +60,4 @@ class PrepaymentTest extends PrepaymentAbstractTest
     {
         return $facade->confirmDelivery($this->orderTransfer, $this->orderPartialTransfer, $this->orderTransfer->getItems()->getArrayCopy());
     }
-
 }

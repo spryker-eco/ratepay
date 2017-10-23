@@ -22,7 +22,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Installment;
  */
 class InstallmentTest extends BaseMethodMapperTest
 {
-
     /**
      * @return void
      */
@@ -108,5 +107,4 @@ class InstallmentTest extends BaseMethodMapperTest
 
         return $paymentTransfer;
     }
-
 }

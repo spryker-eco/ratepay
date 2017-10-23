@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterf
 
 class Saver implements SaverInterface
 {
-
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      */
@@ -58,5 +57,4 @@ class Saver implements SaverInterface
         $this->paymentMapper->mapMethodDataToPayment($this->quoteTransfer, $paymentEntity);
         $paymentEntity->save();
     }
-
 }

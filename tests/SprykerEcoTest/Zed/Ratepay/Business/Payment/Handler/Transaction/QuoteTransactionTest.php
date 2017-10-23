@@ -30,7 +30,6 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
  */
 class QuoteTransactionTest extends BaseTransactionTest
 {
-
     const SUCCESS_MESSAGE = 'Die Prüfung war erfolgreich. Vielen Dank, dass Sie die Zahlart Rechnung gewählt haben.';
 
     /**
@@ -127,5 +126,4 @@ class QuoteTransactionTest extends BaseTransactionTest
             $ratepayResponseTransfer->getBaseResponse()->getCustomerMessage()
         );
     }
-
 }

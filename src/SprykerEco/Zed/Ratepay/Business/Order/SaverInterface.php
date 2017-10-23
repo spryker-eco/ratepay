@@ -9,10 +9,8 @@ namespace SprykerEco\Zed\Ratepay\Business\Order;
 
 interface SaverInterface
 {
-
     /**
      * @return void
      */
     public function saveOrderPayment();
-
 }

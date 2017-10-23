@@ -9,10 +9,8 @@ namespace SprykerEco\Zed\Ratepay\Business\Request;
 
 interface RequestMethodInterface
 {
-
     /**
      * @return string
      */
     public function getMethodName();
-
 }

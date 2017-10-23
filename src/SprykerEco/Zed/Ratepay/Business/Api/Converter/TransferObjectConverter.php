@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\RatepayResponseTransfer;
 
 class TransferObjectConverter extends BaseConverter
 {
-
     /**
      * @return \Generated\Shared\Transfer\RatepayResponseTransfer
      */
@@ -34,5 +33,4 @@ class TransferObjectConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

@@ -17,7 +17,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class RatepayPlugin extends AbstractPlugin implements ItemExpanderPluginInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
      *
@@ -27,5 +26,4 @@ class RatepayPlugin extends AbstractPlugin implements ItemExpanderPluginInterfac
     {
         return $this->getFacade()->expandItems($cartChangeTransfer);
     }
-
 }

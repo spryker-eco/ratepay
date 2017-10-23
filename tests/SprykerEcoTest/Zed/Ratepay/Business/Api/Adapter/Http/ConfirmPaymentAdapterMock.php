@@ -9,7 +9,6 @@ namespace SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http;
 
 class ConfirmPaymentAdapterMock extends AbstractAdapterMock
 {
-
     /**
      * @return array
      */
@@ -58,5 +57,4 @@ class ConfirmPaymentAdapterMock extends AbstractAdapterMock
             </head>
         </response>';
     }
-
 }

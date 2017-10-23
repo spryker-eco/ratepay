@@ -13,7 +13,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 class Installment extends AbstractMapper
 {
-
     /**
      * @return string
      */
@@ -62,5 +61,4 @@ class Installment extends AbstractMapper
             ->setInstallmentAnnualPercentageRate($paymentTransfer->getInstallmentAnnualPercentageRate())
             ->setInstallmentMonthAllowed($paymentTransfer->getInstallmentMonthAllowed());
     }
-
 }

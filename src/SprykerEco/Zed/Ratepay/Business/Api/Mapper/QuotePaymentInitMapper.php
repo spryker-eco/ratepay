@@ -9,11 +9,10 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Mapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
-use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor;
+use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractorInterface;
 
 class QuotePaymentInitMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -25,19 +24,19 @@ class QuotePaymentInitMapper extends BaseMapper
     protected $ratepayPaymentInitTransfer;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor
+     * @var \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractorInterface
      */
     protected $paymentMethodExtractor;
 
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor $paymentMethodExtractor
+     * @param \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractorInterface $paymentMethodExtractor
      */
     public function __construct(
         RatepayPaymentInitTransfer $ratepayPaymentInitTransfer,
         QuoteTransfer $quoteTransfer,
-        PaymentMethodExtractor $paymentMethodExtractor
+        PaymentMethodExtractorInterface $paymentMethodExtractor
     ) {
         $this->ratepayPaymentInitTransfer = $ratepayPaymentInitTransfer;
         $this->quoteTransfer = $quoteTransfer;
@@ -69,5 +68,4 @@ class QuotePaymentInitMapper extends BaseMapper
         $this->ratepayPaymentInitTransfer
             ->setCustomerId($this->quoteTransfer->getCustomer()->getIdCustomer());
     }
-
 }
