@@ -38,7 +38,7 @@ class ConfirmPaymentTransaction extends BaseTransaction implements OrderTransact
             $paymentMethod->setResultCode($response->getResultCode())->save();
         }
         return $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
     }
 }

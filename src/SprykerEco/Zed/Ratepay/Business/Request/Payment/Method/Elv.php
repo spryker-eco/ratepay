@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Method;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 /**
  * Ratepay Elv payment method.
@@ -18,16 +18,11 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
 class Elv extends AbstractMethod
 {
     /**
-     * @const Payment method code.
-     */
-    const METHOD = RatepayConstants::METHOD_ELV;
-
-    /**
      * @return string
      */
     public function getMethodName()
     {
-        return static::METHOD;
+        return RatepayConfig::ELV;
     }
 
     /**

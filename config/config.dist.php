@@ -15,7 +15,7 @@ $config[RatepayConstants::SECURITY_CODE] = '';
 $config[RatepayConstants::SNIPPET_ID] = 'ratepay';
 $config[RatepayConstants::SHOP_ID] = '';
 $config[RatepayConstants::SYSTEM_ID] = 'Spryker ' . $config[ApplicationConstants::HOST_YVES];
-$config[RatepayConstants::API_URL] = '';
+$config[RatepayConstants::RATEPAY_API_URL] = '';
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
   'Checkout' => [

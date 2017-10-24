@@ -49,8 +49,7 @@ class RatepayFacade extends AbstractFacade implements RatepayFacadeInterface
      */
     public function initPayment(RatepayPaymentInitTransfer $ratepayPaymentInitTransfer)
     {
-        return $this
-            ->getFactory()
+        return $this->getFactory()
             ->createInitPaymentTransactionHandler()
             ->request($ratepayPaymentInitTransfer);
     }
@@ -81,8 +80,7 @@ class RatepayFacade extends AbstractFacade implements RatepayFacadeInterface
      */
     public function requestPayment(RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer)
     {
-        return $this
-            ->getFactory()
+        return $this->getFactory()
             ->createRequestPaymentTransactionHandler()
             ->request($ratepayPaymentRequestTransfer);
     }
@@ -99,8 +97,7 @@ class RatepayFacade extends AbstractFacade implements RatepayFacadeInterface
      */
     public function updatePaymentMethodByPaymentResponse(RatepayResponseTransfer $ratepayPaymentResponseTransfer, $orderId)
     {
-        $this
-            ->getFactory()
+        $this->getFactory()
             ->createPaymentMethodSaver()
             ->updatePaymentMethodByPaymentResponse($ratepayPaymentResponseTransfer, $orderId);
     }
@@ -318,7 +315,9 @@ class RatepayFacade extends AbstractFacade implements RatepayFacadeInterface
      */
     public function expandItems(CartChangeTransfer $change)
     {
-        return $this->getFactory()->createProductExpander()->expandItems($change);
+        return $this->getFactory()
+            ->createProductExpander()
+            ->expandItems($change);
     }
 
     /**
@@ -330,7 +329,9 @@ class RatepayFacade extends AbstractFacade implements RatepayFacadeInterface
      */
     public function install()
     {
-        $this->getFactory()->createInstaller()->install();
+        $this->getFactory()
+            ->createInstaller()
+            ->install();
     }
 
     /**

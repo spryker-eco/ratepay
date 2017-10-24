@@ -17,9 +17,9 @@ use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use PHPUnit_Framework_TestCase;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
+use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
 
 /**
  * @group Unit
@@ -31,7 +31,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
  * @group Mapper
  * @group AbstractMapperTest
  */
-abstract class AbstractMapperTest extends PHPUnit_Framework_TestCase
+abstract class AbstractMapperTest extends AbstractWithConfigTest
 {
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory

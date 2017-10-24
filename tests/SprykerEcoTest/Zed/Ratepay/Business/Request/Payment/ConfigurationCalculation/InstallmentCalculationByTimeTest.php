@@ -92,7 +92,7 @@ class InstallmentCalculationByTimeTest extends InstallmentAbstractTest
     protected function convertResponseToTransfer($expectedResponse)
     {
         $this->expectedResponseTransfer = $this->converterFactory
-            ->getInstallmentCalculationResponseConverter($expectedResponse, $this->getCalculationRequest())
+            ->createInstallmentCalculationResponseConverter($expectedResponse, $this->getCalculationRequest())
             ->convert();
     }
 }

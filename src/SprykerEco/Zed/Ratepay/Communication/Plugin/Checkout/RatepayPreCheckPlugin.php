@@ -7,9 +7,13 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Checkout;
 
+use ArrayObject;
 use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Generated\Shared\Transfer\RatepayResponseTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -42,7 +46,7 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
         QuoteTransfer $quoteTransfer,
         CheckoutResponseTransfer $checkoutResponseTransfer
     ) {
-        $ratepayPaymentInitTransfer = $this->getFactory()->createPaymentInitTransfer();
+        $ratepayPaymentInitTransfer = $this->createPaymentInitTransfer();
         $quotePaymentInitMapper = $this->getFactory()->createPaymentInitMapperByQuote(
             $ratepayPaymentInitTransfer,
             $quoteTransfer
@@ -88,6 +92,14 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
     }
 
     /**
+     * @return \Generated\Shared\Transfer\RatepayPaymentInitTransfer
+     */
+    public function createPaymentInitTransfer()
+    {
+        return new RatepayPaymentInitTransfer();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RatepayResponseTransfer $ratepayResponseTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
      *
@@ -114,13 +126,51 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
      */
     protected function getPartialOrderTransferByBasketItems($basketItems)
     {
-        $partialOrderTransfer = $this->getFactory()->createOrderTransfer();
-        $items = $this->getFactory()->createOrderTransferItemsByBasketItems($basketItems);
+        $partialOrderTransfer = $this->createOrderTransfer();
+        $items = $this->createOrderTransferItemsByBasketItems($basketItems);
         $partialOrderTransfer->setItems($items);
 
         return $this
             ->getFactory()
             ->getCalculationFacade()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function createOrderTransfer()
+    {
+        return new OrderTransfer();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $basketItems
+     *
+     * @return \ArrayObject
+     */
+    public function createOrderTransferItemsByBasketItems($basketItems)
+    {
+        $items = new ArrayObject();
+        foreach ($basketItems as $basketItem) {
+            $items[] = $this->createItemTransferByBasketItem($basketItem);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $basketItem
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferByBasketItem($basketItem)
+    {
+        $itemTransfer = new ItemTransfer();
+        $itemTransfer->setIdSalesOrderItem($basketItem->getIdSalesOrderItem());
+        $itemTransfer->setUnitGrossPrice($basketItem->getUnitGrossPrice());
+        $itemTransfer->setQuantity($basketItem->getQuantity());
+
+        return $itemTransfer;
     }
 }

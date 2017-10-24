@@ -31,7 +31,7 @@ class InitPaymentTransaction extends BaseTransaction implements PaymentInitTrans
         $this->logInfo($request, $response, $paymentMethodName);
 
         $initResponseTransfer = $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
         if ($initResponseTransfer->getSuccessful()) {
             $ratepayPaymentInitTransfer

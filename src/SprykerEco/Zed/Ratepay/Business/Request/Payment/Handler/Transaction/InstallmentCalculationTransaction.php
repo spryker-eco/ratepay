@@ -36,7 +36,7 @@ class InstallmentCalculationTransaction extends BaseTransaction implements Quote
         $this->logInfo($request, $response, $paymentMethodName);
 
         $responseTransfer = $this->converterFactory
-            ->getInstallmentCalculationResponseConverter($response, $request)
+            ->createInstallmentCalculationResponseConverter($response, $request)
             ->convert();
 
         return $responseTransfer;

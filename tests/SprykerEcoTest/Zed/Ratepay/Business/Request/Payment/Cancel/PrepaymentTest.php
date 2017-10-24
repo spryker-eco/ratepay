@@ -26,7 +26,7 @@ class PrepaymentTest extends PrepaymentAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

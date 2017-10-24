@@ -35,7 +35,7 @@ class InstallmentConfigurationTransaction extends BaseTransaction implements Quo
         $this->logInfo($request, $response, $paymentMethodName);
 
         return $this->converterFactory
-            ->getInstallmentConfigurationResponseConverter($response, $request)
+            ->createInstallmentConfigurationResponseConverter($response, $request)
             ->convert();
     }
 

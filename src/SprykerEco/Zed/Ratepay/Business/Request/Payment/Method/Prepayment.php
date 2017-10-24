@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Method;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 /**
  * Ratepay Prepayment payment method.
@@ -17,16 +17,11 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
 class Prepayment extends AbstractMethod
 {
     /**
-     * @const Payment method code.
-     */
-    const METHOD = RatepayConstants::PREPAYMENT;
-
-    /**
      * @return string
      */
     public function getMethodName()
     {
-        return static::METHOD;
+        return RatepayConfig::PREPAYMENT;
     }
 
     /**

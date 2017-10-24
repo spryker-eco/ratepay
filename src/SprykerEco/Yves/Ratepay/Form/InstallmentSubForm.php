@@ -10,7 +10,7 @@ namespace SprykerEco\Yves\Ratepay\Form;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -47,8 +47,8 @@ class InstallmentSubForm extends SubFormAbstract
                 }
                 $data = $form->getData();
 
-                if (RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT == $data->getDebitPayType()) {
-                    return [$this->getPropertyPath(), RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT];
+                if (RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT == $data->getDebitPayType()) {
+                    return [$this->getPropertyPath(), RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT];
                 }
 
                 return [$this->getPropertyPath()];
@@ -73,7 +73,7 @@ class InstallmentSubForm extends SubFormAbstract
      */
     public function getPropertyPath()
     {
-        return RatepayConstants::PAYMENT_METHOD_INSTALLMENT;
+        return RatepayConfig::PAYMENT_METHOD_INSTALLMENT;
     }
 
     /**
@@ -81,7 +81,7 @@ class InstallmentSubForm extends SubFormAbstract
      */
     public function getName()
     {
-        return RatepayConstants::PAYMENT_METHOD_INSTALLMENT;
+        return RatepayConfig::PAYMENT_METHOD_INSTALLMENT;
     }
 
     /**
@@ -89,7 +89,7 @@ class InstallmentSubForm extends SubFormAbstract
      */
     public function getTemplatePath()
     {
-        return RatepayConstants::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
+        return RatepayConfig::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
     }
 
     /**
@@ -249,7 +249,7 @@ class InstallmentSubForm extends SubFormAbstract
                 'label' => false,
                 'required' => false,
                 'constraints' => [
-                    $this->createNotBlankConstraint(RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT),
+                    $this->createNotBlankConstraint(RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT),
                 ],
             ]
         );
@@ -271,7 +271,7 @@ class InstallmentSubForm extends SubFormAbstract
                 'label' => false,
                 'required' => false,
                 'constraints' => [
-                    $this->createNotBlankConstraint(RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT),
+                    $this->createNotBlankConstraint(RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT),
                 ],
             ]
         );
@@ -293,7 +293,7 @@ class InstallmentSubForm extends SubFormAbstract
                 'label' => false,
                 'required' => false,
                 'constraints' => [
-                    $this->createNotBlankConstraint(RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT),
+                    $this->createNotBlankConstraint(RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT),
                 ],
             ]
         );

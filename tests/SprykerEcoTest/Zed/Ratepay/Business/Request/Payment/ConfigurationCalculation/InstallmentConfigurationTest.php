@@ -88,7 +88,7 @@ class InstallmentConfigurationTest extends InstallmentAbstractTest
     protected function convertResponseToTransfer($expectedResponse)
     {
         $this->expectedResponseTransfer = $this->converterFactory
-            ->getInstallmentConfigurationResponseConverter($expectedResponse, $this->getConfigurationRequest())
+            ->createInstallmentConfigurationResponseConverter($expectedResponse, $this->getConfigurationRequest())
             ->convert();
     }
 }

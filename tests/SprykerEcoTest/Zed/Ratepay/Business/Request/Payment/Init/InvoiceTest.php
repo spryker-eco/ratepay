@@ -25,7 +25,7 @@ class InvoiceTest extends InvoiceAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

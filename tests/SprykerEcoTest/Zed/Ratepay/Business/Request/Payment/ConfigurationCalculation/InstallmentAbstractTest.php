@@ -7,7 +7,7 @@
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\ConfigurationCalculation;
 
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
 /**
@@ -26,7 +26,7 @@ abstract class InstallmentAbstractTest extends AbstractFacadeTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConstants::INSTALLMENT;
+    const PAYMENT_METHOD = RatepayConfig::INSTALLMENT;
 
     /**
      * @param \Generated\Shared\Transfer\PaymentTransfer $payment

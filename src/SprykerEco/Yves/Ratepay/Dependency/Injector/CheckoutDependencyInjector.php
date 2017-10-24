@@ -12,7 +12,7 @@ use Spryker\Shared\Kernel\Dependency\Injector\DependencyInjectorInterface;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayElvSubFormPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayHandlerPlugin;
 use SprykerEco\Yves\Ratepay\Plugin\RatepayInstallmentSubFormPlugin;
@@ -63,10 +63,10 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
         $container->extend(CheckoutDependencyProvider::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
             $ratepayHandlerPlugin = new RatepayHandlerPlugin();
 
-            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConstants::PAYMENT_METHOD_ELV);
-            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConstants::PAYMENT_METHOD_INSTALLMENT);
-            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConstants::PAYMENT_METHOD_INVOICE);
-            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConstants::PAYMENT_METHOD_PREPAYMENT);
+            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConfig::PAYMENT_METHOD_ELV);
+            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConfig::PAYMENT_METHOD_INSTALLMENT);
+            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConfig::PAYMENT_METHOD_INVOICE);
+            $paymentMethodHandler->add($ratepayHandlerPlugin, RatepayConfig::PAYMENT_METHOD_PREPAYMENT);
 
             return $paymentMethodHandler;
         });

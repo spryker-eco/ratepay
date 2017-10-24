@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Payment;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer;
-use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
@@ -34,13 +34,13 @@ class Request extends Base
     protected $payment;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head $head
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer $customer
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket $basket
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment $payment
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface $head
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $customer
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $basket
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $payment
      */
     public function __construct(
-        Head $head,
+        HeadInterface $head,
         Customer $customer,
         ShoppingBasket $basket,
         Payment $payment
@@ -58,7 +58,7 @@ class Request extends Base
     protected function buildData()
     {
         $result = parent::buildData();
-        $result['content'] = [
+        $result[self::CONTENT] = [
             $this->getCustomer()->getRootTag() => $this->getCustomer(),
             $this->getShoppingBasket()->getRootTag() => $this->getShoppingBasket(),
             $this->getPayment()->getRootTag() => $this->getPayment(),

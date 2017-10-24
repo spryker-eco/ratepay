@@ -26,7 +26,7 @@ class InstallmentTest extends InstallmentAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

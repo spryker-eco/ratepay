@@ -53,7 +53,7 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -206,7 +206,7 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
     protected function convertResponseToTransfer($expectedResponse)
     {
         $this->expectedResponseTransfer = $this->converterFactory
-            ->getTransferObjectConverter($expectedResponse)
+            ->createTransferObjectConverter($expectedResponse)
             ->convert();
     }
 

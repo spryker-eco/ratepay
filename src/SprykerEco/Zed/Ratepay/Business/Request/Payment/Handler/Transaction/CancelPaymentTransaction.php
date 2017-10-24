@@ -39,7 +39,7 @@ class CancelPaymentTransaction extends BaseTransaction implements OrderTransacti
         }
 
         return $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
     }
 }

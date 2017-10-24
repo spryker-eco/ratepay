@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Payment;
 
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -25,7 +24,7 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepayQuery;
 use Spryker\Zed\Money\Business\MoneyFacade;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http\Guzzle;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation;
@@ -42,6 +41,7 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
+use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
 use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
 
 /**
@@ -53,7 +53,7 @@ use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
  * @group Payment
  * @group BasePaymentTest
  */
-class BasePaymentTest extends Test
+class BasePaymentTest extends AbstractWithConfigTest
 {
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory
@@ -109,7 +109,7 @@ class BasePaymentTest extends Test
             ->getMock();
 
         $executionAdapter->method('sendRequest')
-            ->willReturn((new Response())->getTestPaymentConfirmResponseData());
+            ->willReturn(Response::getTestPaymentConfirmResponseData());
 
         foreach ($additionalMockMethods as $method => $return) {
             $executionAdapter->method($method)
@@ -149,7 +149,7 @@ class BasePaymentTest extends Test
             ->getMock();
 
         $spyPaymentRatepay->method('getPaymentType')
-            ->willReturn(RatepayConstants::INVOICE);
+            ->willReturn(RatepayConfig::INVOICE);
 
         $spyPaymentRatepay->method('setResultCode')
             ->willReturn($spyPaymentRatepay);
@@ -284,7 +284,7 @@ class BasePaymentTest extends Test
             ->getMock();
 
         $invoiceMethod->method('getMethodName')
-            ->willReturn(RatepayConstants::INVOICE);
+            ->willReturn(RatepayConfig::INVOICE);
 
         $invoiceMethod->method('paymentInit')
             ->willReturn($paymentInit);
@@ -344,7 +344,7 @@ class BasePaymentTest extends Test
             ->getMock();
 
         $installmentMethod->method('getMethodName')
-            ->willReturn(RatepayConstants::INSTALLMENT);
+            ->willReturn(RatepayConfig::INSTALLMENT);
 
         $installmentMethod->method('paymentInit')
             ->willReturn($payment);
@@ -442,7 +442,7 @@ class BasePaymentTest extends Test
     protected function mockModelPartHead()
     {
         $this->mapperFactory
-            ->getQuoteHeadMapper(
+            ->createQuoteHeadMapper(
                 $this->mockQuoteTransfer(),
                 $this->mockPaymentElvTransfer()
             )->map();
@@ -461,7 +461,7 @@ class BasePaymentTest extends Test
     protected function mockModelPartPayment()
     {
         $this->mapperFactory
-            ->getPaymentMapper(
+            ->createPaymentMapper(
                 $this->mockRatepayPaymentRequestTransfer()
             )->map();
 
@@ -478,7 +478,7 @@ class BasePaymentTest extends Test
     protected function mockModelPartInstallmentCalculation($subType = 'calculation_by_rate')
     {
         $this->mapperFactory
-            ->getInstallmentCalculationMapper(
+            ->createInstallmentCalculationMapper(
                 $this->mockQuoteTransfer(),
                 $this->mockRatepayPaymentInstallmentTransfer()
             )->map();

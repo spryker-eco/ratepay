@@ -26,7 +26,7 @@ class ElvTest extends ElvAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

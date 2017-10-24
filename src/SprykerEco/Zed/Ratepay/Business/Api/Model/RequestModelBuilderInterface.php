@@ -7,15 +7,15 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model;
 
-interface RequestModelFactoryInterface
+interface RequestModelBuilderInterface
 {
     /**
      * @param string $modelType
-     * @param callable $builder
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestInterface $builder
      *
      * @return $this
      */
-    public function registerBuilder($modelType, $builder);
+    public function registerBuilder($modelType, RequestInterface $builder);
 
     /**
      * @param string $modelType

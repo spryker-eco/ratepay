@@ -123,7 +123,7 @@ class ConverterTest extends PHPUnit_Framework_TestCase
         $responseObject = new BaseResponse($responseXml);
 
         return $this->converterFactory
-            ->getTransferObjectConverter($responseObject)
+            ->createTransferObjectConverter($responseObject)
             ->convert();
     }
 
@@ -137,7 +137,7 @@ class ConverterTest extends PHPUnit_Framework_TestCase
         $responseObject = new ConfigurationResponse($responseXml);
 
         return $this->converterFactory
-            ->getInstallmentConfigurationResponseConverter($responseObject, $this->getConfigurationRequest())
+            ->createInstallmentConfigurationResponseConverter($responseObject, $this->getConfigurationRequest())
             ->convert();
     }
 
@@ -151,7 +151,7 @@ class ConverterTest extends PHPUnit_Framework_TestCase
         $responseObject = new CalculationResponse($responseXml);
 
         return $this->converterFactory
-            ->getInstallmentCalculationResponseConverter($responseObject, $this->getCalculationRequest())
+            ->createInstallmentCalculationResponseConverter($responseObject, $this->getCalculationRequest())
             ->convert();
     }
 

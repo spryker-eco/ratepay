@@ -60,13 +60,13 @@ abstract class AbstractMethodMapperTest extends BasePaymentTest
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface
      */
     protected function createApiRequestFactory()
     {
         $factory = new ApiFactory($this->createBuilderFactory());
 
-        return $factory->createRequestModelFactory();
+        return $factory->createRequestModelBuilder();
     }
 
     /**

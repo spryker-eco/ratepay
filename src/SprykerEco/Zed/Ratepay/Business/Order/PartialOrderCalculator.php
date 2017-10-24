@@ -81,7 +81,7 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
                 $salesOrderItemEntity->getFkSalesOrder()
             );
 
-        if ($salesOrderEntity !== null) {
+        if ($salesOrderEntity === null) {
             throw new OrderTotalHydrationException(
                 sprintf('Order with id "%d" not found!', $salesOrderItemEntity->getFkSalesOrder())
             );

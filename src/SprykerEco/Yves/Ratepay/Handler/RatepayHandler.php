@@ -12,10 +12,11 @@ use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use SprykerEco\Client\Ratepay\RatepayClientInterface;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\HttpFoundation\Request;
 
-class RatepayHandler
+class RatepayHandler implements RatepayHandlerInterface
 {
     const INSTALLMENT_CALCULATOR_ERROR_HASH = 0;
     const CHECKOUT_PARTIAL_SUMMARY_PATH = 'Ratepay/partial/summary';
@@ -34,18 +35,18 @@ class RatepayHandler
      * @var array
      */
     protected static $paymentMethodMapper = [
-        RatepayConstants::PAYMENT_METHOD_INVOICE => RatepayConstants::INVOICE,
-        RatepayConstants::PAYMENT_METHOD_ELV => RatepayConstants::ELV,
-        RatepayConstants::PAYMENT_METHOD_PREPAYMENT => RatepayConstants::PREPAYMENT,
-        RatepayConstants::PAYMENT_METHOD_INSTALLMENT => RatepayConstants::INSTALLMENT,
+        RatepayConfig::PAYMENT_METHOD_INVOICE => RatepayConfig::INVOICE,
+        RatepayConfig::PAYMENT_METHOD_ELV => RatepayConfig::ELV,
+        RatepayConfig::PAYMENT_METHOD_PREPAYMENT => RatepayConfig::PREPAYMENT,
+        RatepayConfig::PAYMENT_METHOD_INSTALLMENT => RatepayConfig::INSTALLMENT,
     ];
 
     /**
      * @var array
      */
     protected static $genderMapper = [
-        'Mr' => RatepayConstants::GENDER_MALE,
-        'Mrs' => RatepayConstants::GENDER_FEMALE,
+        'Mr' => RatepayConfig::GENDER_MALE,
+        'Mrs' => RatepayConfig::GENDER_FEMALE,
     ];
 
     /**
@@ -85,7 +86,7 @@ class RatepayHandler
     protected function setPaymentProviderAndMethod(QuoteTransfer $quoteTransfer, $paymentSelection)
     {
         $quoteTransfer->getPayment()
-            ->setPaymentProvider(RatepayConstants::PROVIDER_NAME)
+            ->setPaymentProvider(RatepayConfig::PROVIDER_NAME)
             ->setPaymentMethod(static::$paymentMethodMapper[$paymentSelection]);
     }
 
@@ -134,9 +135,7 @@ class RatepayHandler
     protected function getPaymentTransfer(QuoteTransfer $quoteTransfer, $paymentSelection)
     {
         $method = 'get' . ucfirst($paymentSelection);
-        $paymentTransfer = $quoteTransfer->getPayment()->$method();
-
-        return $paymentTransfer;
+        return $quoteTransfer->getPayment()->$method();
     }
 
     /**
@@ -146,7 +145,7 @@ class RatepayHandler
      */
     protected function calculateInstallmentPlan(QuoteTransfer $quoteTransfer)
     {
-        if ($quoteTransfer->getPayment()->getPaymentSelection() === RatepayConstants::PAYMENT_METHOD_INSTALLMENT) {
+        if ($quoteTransfer->getPayment()->getPaymentSelection() === RatepayConfig::PAYMENT_METHOD_INSTALLMENT) {
             $calculationResponse = $this->ratepayClient->installmentCalculation($quoteTransfer);
             if ($calculationResponse->getBaseResponse()->getSuccessful()) {
                 $this->setInstallmentPlanDetailToQuote($quoteTransfer, $calculationResponse);

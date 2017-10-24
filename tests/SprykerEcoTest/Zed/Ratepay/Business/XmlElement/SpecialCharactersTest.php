@@ -34,7 +34,7 @@ class SpecialCharactersTest extends PHPUnit_Framework_TestCase
         "™" => "TM",
         "¼" => "1/4",
         "½" => "1/2",
-        "¾" => "3/4", ,
+        "¾" => "3/4",
     ];
 
     /**

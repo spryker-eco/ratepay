@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\Ratepay\Business\Request\Service\Method;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory;
-use SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface;
+use SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface;
 use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
@@ -20,7 +20,7 @@ abstract class AbstractMethod implements RequestMethodInterface
     protected $adapter;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface
      */
     protected $modelFactory;
 
@@ -35,12 +35,12 @@ abstract class AbstractMethod implements RequestMethodInterface
     protected $queryContainer;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface $modelFactory
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface $modelFactory
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory $mapperFactory
      * @param \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface $queryContainer
      */
     public function __construct(
-        RequestModelFactoryInterface $modelFactory,
+        RequestModelBuilderInterface $modelFactory,
         MapperFactory $mapperFactory,
         RatepayQueryContainerInterface $queryContainer
     ) {
@@ -56,7 +56,7 @@ abstract class AbstractMethod implements RequestMethodInterface
     protected function mapHeadData()
     {
         $this->mapperFactory
-            ->getHeadMapper()
+            ->createHeadMapper()
             ->map();
     }
 }

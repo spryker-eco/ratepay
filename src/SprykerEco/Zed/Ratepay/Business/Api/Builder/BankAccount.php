@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
-class BankAccount extends AbstractBuilder implements BuilderInterface
+class BankAccount extends AbstractBuilder implements BankAccountInterface
 {
     const ROOT_TAG = 'bank-account';
 

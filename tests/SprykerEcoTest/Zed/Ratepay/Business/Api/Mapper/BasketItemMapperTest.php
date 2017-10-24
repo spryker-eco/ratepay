@@ -28,7 +28,7 @@ class BasketItemMapperTest extends AbstractMapperTest
     public function testMapper()
     {
         $this->mapperFactory
-            ->getBasketMapper(
+            ->createBasketMapper(
                 $this->mockRatepayPaymentRequestTransfer()
             )
             ->map();
@@ -44,7 +44,7 @@ class BasketItemMapperTest extends AbstractMapperTest
             ->setProductOptions(new ArrayObject());
 
         $this->mapperFactory
-            ->getBasketItemMapper(
+            ->createBasketItemMapper(
                 $itemTransfer
             )
             ->map();

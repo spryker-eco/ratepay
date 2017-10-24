@@ -35,7 +35,7 @@ class AddressMapperTest extends AbstractMapperTest
             ->setFirstName('fn')
             ->setLastName('ln');
         $this->mapperFactory
-            ->getAddressMapper(
+            ->createAddressMapper(
                 $addressTransfer,
                 'BILLING'
             )
@@ -49,7 +49,7 @@ class AddressMapperTest extends AbstractMapperTest
         $this->assertNull($this->requestTransfer->getBillingAddress()->getFirstName());
         $this->assertNull($this->requestTransfer->getBillingAddress()->getLastName());
         $this->mapperFactory
-            ->getAddressMapper(
+            ->createAddressMapper(
                 $addressTransfer,
                 'DELIVERY'
             )

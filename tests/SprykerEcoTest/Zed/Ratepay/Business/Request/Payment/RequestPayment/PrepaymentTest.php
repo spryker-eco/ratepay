@@ -6,7 +6,7 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\RequestPayment;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\RequestPaymentPrepaymentAdapterMock;
 use SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\PrepaymentAbstractTest;
 
@@ -26,7 +26,7 @@ class PrepaymentTest extends PrepaymentAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -66,7 +66,7 @@ class PrepaymentTest extends PrepaymentAbstractTest
     {
         parent::testPaymentWithSuccessResponse();
 
-        $this->assertEquals(RatepayConstants::PREPAYMENT, $this->responseTransfer->getPaymentMethod());
+        $this->assertEquals(RatepayConfig::PREPAYMENT, $this->responseTransfer->getPaymentMethod());
         $this->assertEquals($this->expectedResponseTransfer->getPaymentMethod(), $this->responseTransfer->getPaymentMethod());
     }
 }

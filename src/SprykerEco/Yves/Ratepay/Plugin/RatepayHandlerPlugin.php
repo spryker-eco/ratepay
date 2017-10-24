@@ -43,6 +43,6 @@ class RatepayHandlerPlugin extends AbstractPlugin implements StepHandlerPluginWi
      */
     public function addToDataClass(Request $request, AbstractTransfer $quoteTransfer)
     {
-        $this->getFactory()->createRatepayHandler()->addPaymentToQuote($request, $quoteTransfer, $this->flashMessenger);
+        return $this->getFactory()->createRatepayHandler()->addPaymentToQuote($request, $quoteTransfer, $this->flashMessenger);
     }
 }

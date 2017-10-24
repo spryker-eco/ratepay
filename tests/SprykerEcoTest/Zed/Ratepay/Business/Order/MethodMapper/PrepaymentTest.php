@@ -25,7 +25,7 @@ class PrepaymentTest extends BaseMethodMapperTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         $this->paymentMethod = 'PREPAYMENT';
 

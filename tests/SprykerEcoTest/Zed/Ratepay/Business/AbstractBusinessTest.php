@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business;
 
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -41,7 +40,7 @@ use SprykerEco\Zed\Ratepay\Business\RatepayBusinessFactory;
  * @group Business
  * @group AbstractBusinessTest
  */
-abstract class AbstractBusinessTest extends Test
+abstract class AbstractBusinessTest extends AbstractWithConfigTest
 {
     const PAYMENT_METHOD = '';
 
@@ -73,7 +72,7 @@ abstract class AbstractBusinessTest extends Test
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -328,7 +327,7 @@ abstract class AbstractBusinessTest extends Test
     protected function getPaymentMapper()
     {
         return $this->getRatepayBusinessBusinessFactory()
-            ->getMethodMapperFactory()
+            ->createMethodMapperFactory()
             ->createPaymentTransactionHandler()
             ->prepareMethodMapper($this->quoteTransfer);
     }
@@ -338,9 +337,7 @@ abstract class AbstractBusinessTest extends Test
      */
     protected function getRatepayBusinessBusinessFactory()
     {
-        $businessFactory = new RatepayBusinessFactory();
-
-        return $businessFactory;
+        return new RatepayBusinessFactory();
     }
 
     /**

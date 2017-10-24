@@ -8,7 +8,7 @@
 namespace SprykerEcoTest\Zed\Ratepay\Business\Order;
 
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 /**
  * @group Functional
@@ -24,7 +24,7 @@ class ElvSaverTest extends AbstractSaverTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConstants::ELV;
+    const PAYMENT_METHOD = RatepayConfig::ELV;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayPaymentElvTransfer

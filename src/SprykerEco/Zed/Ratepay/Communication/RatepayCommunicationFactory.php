@@ -7,16 +7,13 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication;
 
-use ArrayObject;
-use Generated\Shared\Transfer\CalculatedDiscountTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentInitMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentInitMapper;
@@ -77,7 +74,7 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
      */
     protected function createPaymentMethodExtractor()
     {
-        return new PaymentMethodExtractor(RatepayConstants::PAYMENT_METHODS_MAP);
+        return new PaymentMethodExtractor(RatepayConfig::PAYMENT_METHODS_MAP);
     }
 
     /**
@@ -95,14 +92,6 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
             $quoteTransfer,
             $this->getPaymentMethodExtractor()
         );
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\RatepayPaymentInitTransfer
-     */
-    public function createPaymentInitTransfer()
-    {
-        return new RatepayPaymentInitTransfer();
     }
 
     /**
@@ -173,100 +162,6 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
             $orderEntity,
             $this->getQueryContainer()
         );
-    }
-
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
-     *
-     * @return \ArrayObject
-     */
-    public function createOrderTransferItems($orderItems)
-    {
-        $items = new ArrayObject();
-        foreach ($orderItems as $orderItemEntity) {
-            $items[] = $this->createItemTransferByItemEntity($orderItemEntity);
-        }
-
-        return $items;
-    }
-
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
-    protected function createItemTransferByItemEntity($orderItemEntity)
-    {
-        $itemTransfer = new ItemTransfer();
-        $itemTransfer->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
-        $itemTransfer->setUnitGrossPrice($orderItemEntity->getGrossPrice());
-        $itemTransfer->setQuantity($orderItemEntity->getQuantity());
-        $itemTransfer->setCalculatedDiscounts(
-            new ArrayObject($this->getCalculatedDiscounts($orderItemEntity))
-        );
-
-        return $itemTransfer;
-    }
-
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
-     *
-     * @return array
-     */
-    protected function getCalculatedDiscounts($orderItemEntity)
-    {
-        $result = [];
-        $discounts = $orderItemEntity->getDiscounts();
-        foreach ($discounts as $discount) {
-            $calculatedDiscountTransfer = new CalculatedDiscountTransfer();
-            $calculatedDiscountTransfer
-                ->setDescription($discount->getDescription())
-                ->setDisplayName($discount->getDisplayName())
-                ->setUnitGrossAmount($discount->getAmount())
-                ->setIdDiscount($discount->getIdSalesDiscount())
-                ->setQuantity($orderItemEntity->getQuantity());
-            $result[] = $calculatedDiscountTransfer;
-        }
-
-        return $result;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $basketItems
-     *
-     * @return \ArrayObject
-     */
-    public function createOrderTransferItemsByBasketItems($basketItems)
-    {
-        $items = new ArrayObject();
-        foreach ($basketItems as $basketItem) {
-            $items[] = $this->createItemTransferByBasketItem($basketItem);
-        }
-
-        return $items;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $basketItem
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
-    protected function createItemTransferByBasketItem($basketItem)
-    {
-        $itemTransfer = new ItemTransfer();
-        $itemTransfer->setIdSalesOrderItem($basketItem->getIdSalesOrderItem());
-        $itemTransfer->setUnitGrossPrice($basketItem->getUnitGrossPrice());
-        $itemTransfer->setQuantity($basketItem->getQuantity());
-
-        return $itemTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
-    public function createOrderTransfer()
-    {
-        return new OrderTransfer();
     }
 
     /**

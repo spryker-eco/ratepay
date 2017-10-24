@@ -32,13 +32,13 @@ class InstallmentPaymentMapperTest extends AbstractMapperTest
         $ratepayPaymentRequestTransfer = $this->mockRatepayPaymentRequestTransfer($installment, $quote);
 
         $this->mapperFactory
-            ->getBasketMapper(
+            ->createBasketMapper(
                 $ratepayPaymentRequestTransfer
             )
             ->map();
 
         $this->mapperFactory
-            ->getInstallmentPaymentMapper(
+            ->createInstallmentPaymentMapper(
                 $ratepayPaymentRequestTransfer
             )
             ->map();

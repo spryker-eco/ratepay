@@ -16,7 +16,7 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginInterface;
 class RatepayElvSubFormPlugin extends AbstractPlugin implements SubFormPluginInterface
 {
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\ElvSubForm
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createSubForm()
     {
@@ -24,7 +24,7 @@ class RatepayElvSubFormPlugin extends AbstractPlugin implements SubFormPluginInt
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\DataProvider\ElvDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createSubFormDataProvider()
     {

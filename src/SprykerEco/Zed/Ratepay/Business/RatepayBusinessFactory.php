@@ -28,6 +28,7 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\ConfirmP
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InitPaymentTransaction;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InstallmentCalculationTransaction;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InstallmentConfigurationTransaction;
+use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\MethodMapperInterface;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\RefundPaymentTransaction;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\RequestPaymentTransaction;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Elv;
@@ -35,7 +36,7 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Prepayment;
 use SprykerEco\Zed\Ratepay\Business\Request\Service\Handler\Transaction\ProfileTransaction;
-use SprykerEco\Zed\Ratepay\Business\Request\Service\Method\Service;
+use SprykerEco\Zed\Ratepay\Business\Request\Service\Method\ServiceMethod;
 use SprykerEco\Zed\Ratepay\Business\Status\TransactionStatus;
 use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
 
@@ -56,7 +57,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Service\Handler\Transaction\ProfileTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Service\Handler\Transaction\ProfileTransactionInterface
      */
     public function createRequestProfileTransactionHandler()
     {
@@ -66,13 +67,13 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
             $this->getQueryContainer()
         );
 
-        $transactionHandler->registerMethodMapper($this->createProfile($this->createRequestTransfer()));
+        $transactionHandler->registerMethodMapper($this->createServiceMethod($this->createRequestTransfer()));
 
         return $transactionHandler;
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InitPaymentTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\PaymentInitTransactionInterface
      */
     public function createInitPaymentTransactionHandler()
     {
@@ -88,7 +89,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\RequestPaymentTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\RequestPaymentTransactionInterface
      */
     public function createRequestPaymentTransactionHandler()
     {
@@ -116,7 +117,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\ConfirmPaymentTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\OrderTransactionInterface
      */
     public function createConfirmPaymentTransactionHandler()
     {
@@ -132,7 +133,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\ConfirmDeliveryTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\OrderTransactionInterface
      */
     public function createConfirmDeliveryTransactionHandler()
     {
@@ -148,7 +149,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\CancelPaymentTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\OrderTransactionInterface
      */
     public function createCancelPaymentTransactionHandler()
     {
@@ -164,7 +165,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\RefundPaymentTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\OrderTransactionInterface
      */
     public function createRefundPaymentTransactionHandler()
     {
@@ -180,7 +181,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InstallmentConfigurationTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\QuoteTransactionInterface
      */
     public function createInstallmentConfigurationTransactionHandler()
     {
@@ -196,7 +197,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\InstallmentCalculationTransaction
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\QuoteTransactionInterface
      */
     public function createInstallmentCalculationTransactionHandler()
     {
@@ -212,11 +213,11 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\QuoteTransactionInterface|\SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\OrderTransactionInterface|\SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\PaymentInitTransactionInterface $transactionHandler
+     * @param \SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction\MethodMapperInterface $transactionHandler
      *
      * @return void
      */
-    protected function registerAllMethodMappers($transactionHandler)
+    protected function registerAllMethodMappers(MethodMapperInterface $transactionHandler)
     {
         $requestTransfer = $this->createRequestTransfer();
 
@@ -227,7 +228,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Status\TransactionStatus
+     * @return \SprykerEco\Zed\Ratepay\Business\Status\TransactionStatusInterface
      */
     public function createStatusTransaction()
     {
@@ -239,7 +240,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface
      */
     public function createApiRequestFactory($requestTransfer)
     {
@@ -247,13 +248,13 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
             $this->createBuilderFactory($requestTransfer)
         );
 
-        return $factory->createRequestModelFactory();
+        return $factory->createRequestModelBuilder();
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapperFactory
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapperFactoryInterface
      */
-    public function getMethodMapperFactory()
+    public function createMethodMapperFactory()
     {
         return new MethodMapperFactory();
     }
@@ -269,7 +270,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
         CheckoutResponseTransfer $checkoutResponseTransfer
     ) {
         $paymentMapper = $this
-            ->getMethodMapperFactory()
+            ->createMethodMapperFactory()
             ->createPaymentTransactionHandler()
             ->prepareMethodMapper($quoteTransfer);
 
@@ -281,7 +282,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactoryInterface
      */
     protected function createConverterFactory()
     {
@@ -301,7 +302,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactoryInterface
      */
     protected function createMapperFactory(RatepayRequestTransfer $requestTransfer)
     {
@@ -313,7 +314,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderFactory
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderFactoryInterface
      */
     protected function createBuilderFactory(RatepayRequestTransfer $requestTransfer)
     {
@@ -325,7 +326,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface
      */
     public function createInvoice(RatepayRequestTransfer $requestTransfer)
     {
@@ -339,7 +340,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Elv
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface
      */
     public function createElv(RatepayRequestTransfer $requestTransfer)
     {
@@ -353,7 +354,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Prepayment
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface
      */
     public function createPrepayment(RatepayRequestTransfer $requestTransfer)
     {
@@ -367,7 +368,7 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface
      */
     public function createInstallment(RatepayRequestTransfer $requestTransfer)
     {
@@ -381,11 +382,11 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayRequestTransfer $requestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Request\Service\Method\Service
+     * @return \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface
      */
-    public function createProfile(RatepayRequestTransfer $requestTransfer)
+    public function createServiceMethod(RatepayRequestTransfer $requestTransfer)
     {
-        return new Service(
+        return new ServiceMethod(
             $this->createApiRequestFactory($requestTransfer),
             $this->createMapperFactory($requestTransfer),
             $this->getQueryContainer()
@@ -411,16 +412,14 @@ class RatepayBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Internal\Install
+     * @return \SprykerEco\Zed\Ratepay\Business\Internal\InstallInterface
      */
     public function createInstaller()
     {
-        $installer = new Install(
+        return new Install(
             $this->getGlossaryFacade(),
             $this->getConfig()
         );
-
-        return $installer;
     }
 
     /**

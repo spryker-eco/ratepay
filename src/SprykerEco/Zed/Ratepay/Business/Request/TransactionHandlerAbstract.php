@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\Ratepay\Business\Request;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Adapter\AdapterInterface;
-use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
+use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactoryInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\BaseResponse;
 use SprykerEco\Zed\Ratepay\Business\Exception\NoMethodMapperException;
 use SprykerEco\Zed\Ratepay\Business\Log\LoggerTrait;
@@ -26,7 +26,7 @@ abstract class TransactionHandlerAbstract implements TransactionHandlerInterface
     protected $executionAdapter;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactoryInterface
      */
     protected $converterFactory;
 
@@ -42,12 +42,12 @@ abstract class TransactionHandlerAbstract implements TransactionHandlerInterface
 
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Adapter\AdapterInterface $executionAdapter
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory $converterFactory
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactoryInterface $converterFactory
      * @param \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface $queryContainer
      */
     public function __construct(
         AdapterInterface $executionAdapter,
-        ConverterFactory $converterFactory,
+        ConverterFactoryInterface $converterFactory,
         RatepayQueryContainerInterface $queryContainer
     ) {
         $this->executionAdapter = $executionAdapter;

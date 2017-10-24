@@ -7,25 +7,20 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Request\Service\Method;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 /**
  * Service.
  */
-class Service extends AbstractMethod implements MethodInterface
+class ServiceMethod extends AbstractMethod implements MethodInterface
 {
-    /**
-     * @const Payment method code.
-     */
-    const METHOD = RatepayConstants::METHOD_SERVICE;
-
     /**
      * @return string
      */
     public function getMethodName()
     {
-        return static::METHOD;
+        return RatepayConfig::METHOD_SERVICE;
     }
 
     /**

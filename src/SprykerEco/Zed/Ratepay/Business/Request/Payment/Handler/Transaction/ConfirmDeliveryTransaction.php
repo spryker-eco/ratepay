@@ -39,7 +39,7 @@ class ConfirmDeliveryTransaction extends BaseTransaction implements OrderTransac
         }
 
         return $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
     }
 }

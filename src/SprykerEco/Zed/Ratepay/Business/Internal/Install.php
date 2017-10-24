@@ -14,7 +14,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class Install implements InstallInterface
 {
-
     const CREATED = 'created';
     const TRANSLATIONS = 'translations';
     const TRANSLATION = 'translation';

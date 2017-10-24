@@ -25,7 +25,7 @@ class PartialBasketMapperTest extends AbstractMapperTest
     public function testMapper()
     {
         $this->mapperFactory
-            ->getPartialBasketMapper(
+            ->createPartialBasketMapper(
                 $this->mockOrderTransfer(),
                 $this->mockPartialOrderTransfer(),
                 $this->mockPaymentElvTransfer()

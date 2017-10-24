@@ -8,9 +8,8 @@
 namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction;
 
 use Generated\Shared\Transfer\OrderTransfer;
-use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 
-interface OrderTransactionInterface
+interface OrderTransactionInterface extends MethodMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
@@ -24,11 +23,4 @@ interface OrderTransactionInterface
         OrderTransfer $partialOrderTransfer = null,
         array $orderItems = []
     );
-
-    /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface $mapper
-     *
-     * @return void
-     */
-    public function registerMethodMapper(RequestMethodInterface $mapper);
 }

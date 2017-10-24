@@ -24,7 +24,7 @@ use SprykerEco\Yves\Ratepay\Handler\RatepayHandler;
 class RatepayFactory extends AbstractFactory
 {
     /**
-     * @return \SprykerEco\Yves\Ratepay\Handler\RatepayHandler
+     * @return \SprykerEco\Yves\Ratepay\Handler\RatepayHandlerInterface
      */
     public function createRatepayHandler()
     {
@@ -34,7 +34,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\InvoiceSubForm
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createInvoiceForm()
     {
@@ -42,7 +42,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\DataProvider\InvoiceDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createInvoiceFormDataProvider()
     {
@@ -50,7 +50,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\ElvSubForm
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createElvForm()
     {
@@ -58,7 +58,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\DataProvider\ElvDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createElvFormDataProvider()
     {
@@ -66,7 +66,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\PrepaymentSubForm
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createPrepaymentForm()
     {
@@ -74,7 +74,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\DataProvider\PrepaymentDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createPrepaymentFormDataProvider()
     {
@@ -82,7 +82,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\InstallmentSubForm
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createInstallmentForm()
     {
@@ -90,7 +90,7 @@ class RatepayFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerEco\Yves\Ratepay\Form\DataProvider\InstallmentDataProvider
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
     public function createInstallmentFormDataProvider()
     {

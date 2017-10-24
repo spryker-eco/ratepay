@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory;
-use SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface;
+use SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface;
 use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
@@ -25,7 +25,7 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected $adapter;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface
      */
     protected $modelFactory;
 
@@ -40,12 +40,12 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected $ratepayQueryContainer;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelFactoryInterface $modelFactory
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\RequestModelBuilderInterface $modelFactory
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory $mapperFactory
      * @param \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface $ratepayQueryContainer
      */
     public function __construct(
-        RequestModelFactoryInterface $modelFactory,
+        RequestModelBuilderInterface $modelFactory,
         MapperFactory $mapperFactory,
         RatepayQueryContainerInterface $ratepayQueryContainer
     ) {
@@ -251,7 +251,7 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected function mapPaymentInitHeadData(RatepayPaymentInitTransfer $ratepayPaymentInitTransfer)
     {
         $this->mapperFactory
-            ->getPaymentInitHeadMapper($ratepayPaymentInitTransfer)
+            ->createPaymentInitHeadMapper($ratepayPaymentInitTransfer)
             ->map();
     }
 
@@ -264,7 +264,7 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected function mapOrderHeadData($orderTransfer, $payment)
     {
         $this->mapperFactory
-            ->getOrderHeadMapper($orderTransfer, $payment)
+            ->createOrderHeadMapper($orderTransfer, $payment)
             ->map();
     }
 
@@ -276,13 +276,13 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected function mapShoppingBasketAndItems(RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer)
     {
         $this->mapperFactory
-            ->getBasketMapper($ratepayPaymentRequestTransfer)
+            ->createBasketMapper($ratepayPaymentRequestTransfer)
             ->map();
 
         $basketItems = $ratepayPaymentRequestTransfer->getItems();
         foreach ($basketItems as $basketItem) {
             $this->mapperFactory
-                ->getBasketItemMapper($basketItem)
+                ->createBasketItemMapper($basketItem)
                 ->map();
         }
     }
@@ -321,12 +321,12 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
 
         foreach ($grouppedItems as $basketItem) {
             $this->mapperFactory
-                ->getBasketItemMapper($basketItem)
+                ->createBasketItemMapper($basketItem)
                 ->map();
         }
 
         $this->mapperFactory
-            ->getPartialBasketMapper(
+            ->createPartialBasketMapper(
                 $orderTransfer,
                 $partialOrderTransfer,
                 $paymentData,
@@ -344,11 +344,11 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected function mapPaymentData(RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer)
     {
         $this->mapperFactory
-            ->getPaymentMapper($ratepayPaymentRequestTransfer)
+            ->createPaymentMapper($ratepayPaymentRequestTransfer)
             ->map();
 
         $this->mapperFactory
-            ->getCustomerMapper($ratepayPaymentRequestTransfer)
+            ->createCustomerMapper($ratepayPaymentRequestTransfer)
             ->map();
 
         $this->mapShoppingBasketAndItems($ratepayPaymentRequestTransfer);
@@ -362,7 +362,7 @@ abstract class AbstractMethod implements MethodInterface, RequestMethodInterface
     protected function mapBankAccountData(RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer)
     {
         $this->mapperFactory
-            ->getBankAccountMapper($ratepayPaymentRequestTransfer)
+            ->createBankAccountMapper($ratepayPaymentRequestTransfer)
             ->map();
     }
 

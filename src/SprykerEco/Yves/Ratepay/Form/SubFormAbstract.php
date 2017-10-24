@@ -10,7 +10,7 @@ namespace SprykerEco\Yves\Ratepay\Form;
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -42,7 +42,7 @@ abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInt
      */
     public function getProviderName()
     {
-        return RatepayConstants::PROVIDER_NAME;
+        return RatepayConfig::PROVIDER_NAME;
     }
 
     /**

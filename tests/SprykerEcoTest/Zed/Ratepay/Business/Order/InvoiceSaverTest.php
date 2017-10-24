@@ -8,7 +8,7 @@
 namespace SprykerEcoTest\Zed\Ratepay\Business\Order;
 
 use Generated\Shared\Transfer\RatepayPaymentInvoiceTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 /**
  * @group Functional
@@ -24,7 +24,7 @@ class InvoiceSaverTest extends AbstractSaverTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConstants::INVOICE;
+    const PAYMENT_METHOD = RatepayConfig::INVOICE;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayPaymentInvoiceTransfer

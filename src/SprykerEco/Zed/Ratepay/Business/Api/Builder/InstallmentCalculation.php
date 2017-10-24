@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
-class InstallmentCalculation extends AbstractBuilder implements BuilderInterface
+class InstallmentCalculation extends AbstractBuilder implements InstallmentCalculationInterface
 {
     const ROOT_TAG = 'installment-calculation';
 

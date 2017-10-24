@@ -25,7 +25,7 @@ class PaymentMapperTest extends AbstractMapperTest
     public function testMapper()
     {
         $this->mapperFactory
-            ->getPaymentMapper(
+            ->createPaymentMapper(
                 $this->mockRatepayPaymentRequestTransfer()
             )
             ->map();

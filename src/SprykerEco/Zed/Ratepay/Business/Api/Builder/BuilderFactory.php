@@ -13,7 +13,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 /**
  * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  */
-class BuilderFactory
+class BuilderFactory implements BuilderFactoryInterface
 {
     /**
      * @var \Generated\Shared\Transfer\RatepayRequestTransfer
@@ -29,7 +29,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface
      */
     public function createCustomer()
     {
@@ -39,7 +39,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\Address
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\AddressInterface
      */
     public function createCustomerAddress()
     {
@@ -50,7 +50,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\BankAccount
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\BankAccountInterface
      */
     public function createBankAccount()
     {
@@ -60,7 +60,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface
      */
     public function createHead()
     {
@@ -70,7 +70,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface
      */
     public function createPayment()
     {
@@ -80,7 +80,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface
      */
     public function createShoppingBasket()
     {
@@ -90,18 +90,7 @@ class BuilderFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketItem
-     */
-    public function createShoppingBasketItem()
-    {
-        return new ShoppingBasketItem(
-            $this->requestTransfer,
-            0
-        );
-    }
-
-    /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface
      */
     public function createInstallmentCalculation()
     {

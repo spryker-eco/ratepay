@@ -7,6 +7,10 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Oms\Command;
 
+use ArrayObject;
+use Generated\Shared\Transfer\CalculatedDiscountTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -52,8 +56,8 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
      */
     protected function getPartialOrderTransferByOrderItems($orderItems, SpySalesOrder $orderEntity)
     {
-        $partialOrderTransfer = $this->getFactory()->createOrderTransfer();
-        $items = $this->getFactory()->createOrderTransferItems($orderItems);
+        $partialOrderTransfer = $this->createOrderTransfer();
+        $items = $this->createOrderTransferItems($orderItems);
         $partialOrderTransfer->setItems($items);
         $partialOrderTransfer = $this->getFilledOrderTransfer($partialOrderTransfer, $orderEntity);
 
@@ -61,6 +65,70 @@ abstract class BaseCommandPlugin extends AbstractPlugin implements CommandByOrde
             ->getFactory()
             ->getCalculationFacade()
             ->getOrderTotalByOrderTransfer($partialOrderTransfer);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function createOrderTransfer()
+    {
+        return new OrderTransfer();
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     *
+     * @return \ArrayObject
+     */
+    protected function createOrderTransferItems(array $orderItems)
+    {
+        $items = new ArrayObject();
+        foreach ($orderItems as $orderItemEntity) {
+            $items[] = $this->createItemTransferByItemEntity($orderItemEntity);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferByItemEntity($orderItemEntity)
+    {
+        $itemTransfer = new ItemTransfer();
+        $itemTransfer->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
+        $itemTransfer->setUnitGrossPrice($orderItemEntity->getGrossPrice());
+        $itemTransfer->setQuantity($orderItemEntity->getQuantity());
+        $itemTransfer->setCalculatedDiscounts(
+            new ArrayObject($this->getCalculatedDiscounts($orderItemEntity))
+        );
+
+        return $itemTransfer;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return array
+     */
+    protected function getCalculatedDiscounts($orderItemEntity)
+    {
+        $result = [];
+        $discounts = $orderItemEntity->getDiscounts();
+        foreach ($discounts as $discount) {
+            $calculatedDiscountTransfer = new CalculatedDiscountTransfer();
+            $calculatedDiscountTransfer
+                ->setDescription($discount->getDescription())
+                ->setDisplayName($discount->getDisplayName())
+                ->setUnitAmount($discount->getAmount())
+                ->setIdDiscount($discount->getIdSalesDiscount())
+                ->setQuantity($orderItemEntity->getQuantity());
+            $result[] = $calculatedDiscountTransfer;
+        }
+
+        return $result;
     }
 
     /**

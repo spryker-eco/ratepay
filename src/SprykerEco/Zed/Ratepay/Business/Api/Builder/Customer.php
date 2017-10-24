@@ -13,7 +13,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants;
  * Class Customer
  * @package SprykerEco\Zed\Ratepay\Business\Api\Builder
  */
-class Customer extends AbstractBuilder implements BuilderInterface
+class Customer extends AbstractBuilder implements CustomerInterface
 {
     const ROOT_TAG = 'customer';
 

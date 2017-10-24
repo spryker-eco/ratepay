@@ -6,7 +6,7 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\RequestPayment;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\RequestPaymentElvAdapterMock;
 use SprykerEcoTest\Zed\Ratepay\Business\Request\Payment\ElvAbstractTest;
 
@@ -26,7 +26,7 @@ class ElvTest extends ElvAbstractTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -66,7 +66,7 @@ class ElvTest extends ElvAbstractTest
     {
         parent::testPaymentWithSuccessResponse();
 
-        $this->assertEquals(RatepayConstants::ELV, $this->responseTransfer->getPaymentMethod());
+        $this->assertEquals(RatepayConfig::ELV, $this->responseTransfer->getPaymentMethod());
         $this->assertEquals($this->expectedResponseTransfer->getPaymentMethod(), $this->responseTransfer->getPaymentMethod());
     }
 }

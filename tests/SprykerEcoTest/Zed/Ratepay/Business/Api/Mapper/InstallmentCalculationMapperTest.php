@@ -24,14 +24,14 @@ class InstallmentCalculationMapperTest extends AbstractMapperTest
     public function testMapper()
     {
         $this->mapperFactory
-            ->getQuoteHeadMapper(
+            ->createQuoteHeadMapper(
                 $this->mockQuoteTransfer(),
                 $this->mockRatepayPaymentInstallmentTransfer()
             )
             ->map();
 
         $this->mapperFactory
-            ->getInstallmentCalculationMapper(
+            ->createInstallmentCalculationMapper(
                 $this->mockQuoteTransfer(),
                 $this->mockRatepayPaymentInstallmentTransfer()
             )

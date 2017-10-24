@@ -8,7 +8,7 @@
 namespace SprykerEcoTest\Zed\Ratepay\Business\Order;
 
 use Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 /**
  * @group Functional
@@ -24,7 +24,7 @@ class PrepaymentSaverTest extends AbstractSaverTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConstants::PREPAYMENT;
+    const PAYMENT_METHOD = RatepayConfig::PREPAYMENT;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer

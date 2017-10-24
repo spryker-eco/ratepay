@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Order\MethodMapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 class Installment extends AbstractMapper
 {
@@ -18,7 +18,7 @@ class Installment extends AbstractMapper
      */
     public function getMethodName()
     {
-        return RatepayConstants::INSTALLMENT;
+        return RatepayConfig::INSTALLMENT;
     }
 
     /**

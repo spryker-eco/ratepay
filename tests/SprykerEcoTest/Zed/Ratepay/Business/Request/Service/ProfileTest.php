@@ -6,11 +6,11 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Service;
 
-use Codeception\TestCase\Test;
 use Spryker\Zed\Money\Business\MoneyFacade;
 use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ProfileResponse;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
+use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
 use SprykerEcoTest\Zed\Ratepay\Business\Api\Adapter\Http\ProfileAdapterMock;
 use SprykerEcoTest\Zed\Ratepay\Business\Request\AbstractFacadeTest;
 
@@ -29,9 +29,9 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
-        Test::setUp();
+        AbstractWithConfigTest::setUp();
 
         $ratepayToMoneyBridge = new RatepayToMoneyBridge(new MoneyFacade());
         $this->converterFactory = new ConverterFactory($ratepayToMoneyBridge);
@@ -103,7 +103,7 @@ class ProfileTest extends AbstractFacadeTest
     protected function convertResponseToTransfer($expectedResponse)
     {
         $this->expectedResponseTransfer = $this->converterFactory
-            ->getProfileResponseConverter($expectedResponse)
+            ->createProfileResponseConverter($expectedResponse)
             ->convert();
     }
 
