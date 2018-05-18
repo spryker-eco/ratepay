@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
+use Spryker\Shared\Shipment\ShipmentConstants;
 
 class QuotePaymentRequestMapper extends BaseMapper
 {
@@ -116,7 +117,23 @@ class QuotePaymentRequestMapper extends BaseMapper
         $totalsTransfer = $this->quoteTransfer->requireTotals()->getTotals();
         $this->ratepayPaymentRequestTransfer
             ->setGrandTotal($totalsTransfer->requireGrandTotal()->getGrandTotal())
+            ->setShippingExpenseTotal($this->getShippingExpenseTotal())
             ->setExpenseTotal($totalsTransfer->requireExpenseTotal()->getExpenseTotal());
+    }
+
+    /**
+     * @return int
+     */
+    protected function getShippingExpenseTotal()
+    {
+        $shippingExpenses = 0;
+        foreach ($this->quoteTransfer->getExpenses() as $expenseTransfer) {
+            if($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
+                $shippingExpenses += $expenseTransfer->getUnitGrossPrice();
+            }
+        }
+
+        return $shippingExpenses;
     }
 
     /**

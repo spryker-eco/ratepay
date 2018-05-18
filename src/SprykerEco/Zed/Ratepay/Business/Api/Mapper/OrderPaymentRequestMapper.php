@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Orm\Zed\Sales\Persistence\SpySalesOrderAddress;
+use Spryker\Shared\Shipment\ShipmentConstants;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
 class OrderPaymentRequestMapper extends BaseMapper
@@ -185,7 +186,23 @@ class OrderPaymentRequestMapper extends BaseMapper
 
         $this->ratepayPaymentRequestTransfer
             ->setGrandTotal($totalsTransfer->requireGrandTotal()->getGrandTotal())
+            ->setShippingExpenseTotal($this->getShippingExpenseTotal())
             ->setExpenseTotal($totalsTransfer->requireExpenseTotal()->getExpenseTotal());
+    }
+
+    /**
+     * @return int
+     */
+    protected function getShippingExpenseTotal()
+    {
+        $shippingExpenses = 0;
+        foreach ($this->orderTransfer->getExpenses() as $expenseTransfer) {
+            if($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
+                $shippingExpenses += $expenseTransfer->getUnitGrossPrice();
+            }
+        }
+
+        return $shippingExpenses;
     }
 
     /**
