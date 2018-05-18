@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class PaymentMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\RatepayPaymentRequestTransfer
      */
@@ -58,5 +57,4 @@ class PaymentMapper extends BaseMapper
             ->setMethod($this->ratepayPaymentRequestTransfer->getPaymentType())
             ->setAmount($grandTotal);
     }
-
 }

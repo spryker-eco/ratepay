@@ -12,10 +12,8 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Profile extends Base
 {
-
     /**
      * Profile operation.
      */
     const OPERATION = Constants::REQUEST_MODEL_PROFILE;
-
 }

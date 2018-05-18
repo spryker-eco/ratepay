@@ -30,7 +30,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
  */
 abstract class AbstractFacadeTest extends AbstractBusinessTest
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
      */
@@ -227,5 +226,4 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
      * @return \Functional\SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http\AbstractAdapterMock
      */
     abstract protected function getPaymentFailureResponseAdapterMock();
-
 }

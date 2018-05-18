@@ -13,12 +13,11 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
 
 /**
- * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
  */
 abstract class AbstractCheckPlugin extends AbstractPlugin implements ConditionInterface
 {
-
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
@@ -42,5 +41,4 @@ abstract class AbstractCheckPlugin extends AbstractPlugin implements ConditionIn
      * @return bool
      */
     abstract protected function callFacade(OrderTransfer $orderTransfer);
-
 }

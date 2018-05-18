@@ -13,7 +13,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 class Elv extends AbstractMapper
 {
-
     /**
      * @return string
      */
@@ -47,5 +46,4 @@ class Elv extends AbstractMapper
             ->setBankAccountBic($paymentTransfer->requireBankAccountBic()->getBankAccountBic())
             ->setBankAccountIban($paymentTransfer->requireBankAccountIban()->getBankAccountIban());
     }
-
 }

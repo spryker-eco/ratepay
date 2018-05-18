@@ -7,11 +7,11 @@
 
 namespace Unit\SprykerEco\Zed\Ratepay\Business\XmlElement;
 
+use PHPUnit_Framework_TestCase;
 use SprykerEco\Zed\Ratepay\Business\Api\SimpleXMLElement;
 
-class SpecialCharactersTest extends \PHPUnit_Framework_TestCase
+class SpecialCharactersTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var array
      */
@@ -34,7 +34,7 @@ class SpecialCharactersTest extends \PHPUnit_Framework_TestCase
         "™" => "TM",
         "¼" => "1/4",
         "½" => "1/2",
-        "¾" => "3/4"
+        "¾" => "3/4",
     ];
 
     /**
@@ -47,5 +47,4 @@ class SpecialCharactersTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($expected, (string)$simpleXmlElement->addCDataChild('test', $character));
         }
     }
-
 }

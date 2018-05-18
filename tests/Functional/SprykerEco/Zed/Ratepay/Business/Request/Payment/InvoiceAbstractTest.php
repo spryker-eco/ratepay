@@ -22,7 +22,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 abstract class InvoiceAbstractTest extends AbstractFacadeTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -75,5 +74,4 @@ abstract class InvoiceAbstractTest extends AbstractFacadeTest
             ->setTransactionShortId('5QTZ.2VWD.OMWW.9D3E')
             ->setDeviceFingerprint('122356');
     }
-
 }

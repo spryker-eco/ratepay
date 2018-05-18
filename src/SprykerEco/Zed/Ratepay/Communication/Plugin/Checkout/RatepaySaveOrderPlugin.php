@@ -13,12 +13,11 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutSaveOrderPluginInterface;
 
 /**
- * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
  */
 class RatepaySaveOrderPlugin extends AbstractPlugin implements CheckoutSaveOrderPluginInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
@@ -29,5 +28,4 @@ class RatepaySaveOrderPlugin extends AbstractPlugin implements CheckoutSaveOrder
     {
         $this->getFacade()->saveOrderPayment($quoteTransfer, $checkoutResponseTransfer);
     }
-
 }

@@ -9,8 +9,8 @@ namespace Unit\SprykerEco\Yves\Ratepay\Form\DataProvider;
 
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
-use SprykerEco\Client\Ratepay\RatepayClientInterface;
 use Spryker\Client\Session\SessionClientInterface;
+use SprykerEco\Client\Ratepay\RatepayClientInterface;
 use SprykerEco\Yves\Ratepay\Form\DataProvider\InstallmentDataProvider;
 
 /**
@@ -24,7 +24,6 @@ use SprykerEco\Yves\Ratepay\Form\DataProvider\InstallmentDataProvider;
  */
 class InstallmentDataProviderTest extends AbstractDataProviderTest
 {
-
     /**
      * @return void
      */
@@ -84,5 +83,4 @@ class InstallmentDataProviderTest extends AbstractDataProviderTest
     {
         return $this->getMockBuilder(SessionClientInterface::class)->getMock();
     }
-
 }

@@ -10,11 +10,10 @@ namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Oms\Condition;
 use Generated\Shared\Transfer\OrderTransfer;
 
 /**
- * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  */
 class IsCancellationConfirmedPlugin extends AbstractCheckPlugin
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
@@ -24,5 +23,4 @@ class IsCancellationConfirmedPlugin extends AbstractCheckPlugin
     {
         return $this->getFacade()->isCancellationConfirmed($orderTransfer);
     }
-
 }

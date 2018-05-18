@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
 
 abstract class Base extends AbstractRequest
 {
-
     const ROOT_TAG = 'request';
 
     const OPERATION = '';
@@ -69,5 +68,4 @@ abstract class Base extends AbstractRequest
     {
         return $this->head;
     }
-
 }

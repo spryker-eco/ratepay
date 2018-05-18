@@ -13,7 +13,6 @@ use SprykerEco\Zed\Ratepay\Business\Request\TransactionHandlerAbstract;
 
 abstract class BaseTransaction extends TransactionHandlerAbstract
 {
-
     /**
      * @param int $orderId
      *
@@ -91,5 +90,4 @@ abstract class BaseTransaction extends TransactionHandlerAbstract
 
         $this->getLogger()->info(static::TRANSACTION_TYPE, $context);
     }
-
 }

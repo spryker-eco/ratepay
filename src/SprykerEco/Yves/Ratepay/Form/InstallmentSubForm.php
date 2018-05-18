@@ -9,8 +9,8 @@ namespace SprykerEco\Yves\Ratepay\Form;
 
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +18,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class InstallmentSubForm extends SubFormAbstract
 {
-
     const PAYMENT_METHOD = 'installment';
 
     const OPTION_DEBIT_PAY_TYPE = 'debit_pay_type';
@@ -301,5 +300,4 @@ class InstallmentSubForm extends SubFormAbstract
 
         return $this;
     }
-
 }

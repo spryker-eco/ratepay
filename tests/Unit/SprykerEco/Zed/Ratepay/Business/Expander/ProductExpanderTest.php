@@ -25,7 +25,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductBridge;
  */
 class ProductExpanderTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -67,5 +66,4 @@ class ProductExpanderTest extends PHPUnit_Framework_TestCase
 
         return $ratepayToProductBridge;
     }
-
 }

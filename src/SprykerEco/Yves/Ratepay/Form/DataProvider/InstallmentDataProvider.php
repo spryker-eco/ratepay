@@ -10,15 +10,14 @@ namespace SprykerEco\Yves\Ratepay\Form\DataProvider;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
-use SprykerEco\Client\Ratepay\RatepayClientInterface;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
+use SprykerEco\Client\Ratepay\RatepayClientInterface;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Yves\Ratepay\Form\InstallmentSubForm;
 
 class InstallmentDataProvider extends DataProviderAbstract
 {
-
     const INSTALLMENT_CONFIGURATION = 'installment_configuration';
 
     /**
@@ -107,5 +106,4 @@ class InstallmentDataProvider extends DataProviderAbstract
         $installmentTransfer = $quoteTransfer->getPayment()->getRatepayInstallment();
         $installmentTransfer->setInterestRateDefault($configurationResponseTransfer->getInterestrateDefault());
     }
-
 }

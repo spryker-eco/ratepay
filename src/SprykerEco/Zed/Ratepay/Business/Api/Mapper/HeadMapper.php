@@ -13,7 +13,6 @@ use SprykerEco\Zed\Ratepay\RatepayConfig;
 
 class HeadMapper extends BaseMapper
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\RatepayConfig
      */
@@ -46,5 +45,4 @@ class HeadMapper extends BaseMapper
             ->setProfileId($this->config->getProfileId())
             ->setSecurityCode($this->config->getSecurityCode());
     }
-
 }

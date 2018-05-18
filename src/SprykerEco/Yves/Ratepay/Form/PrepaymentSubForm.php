@@ -8,15 +8,14 @@
 namespace SprykerEco\Yves\Ratepay\Form;
 
 use Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PrepaymentSubForm extends SubFormAbstract
 {
-
     const PAYMENT_METHOD = 'prepayment';
 
     /**
@@ -100,5 +99,4 @@ class PrepaymentSubForm extends SubFormAbstract
 
         return $this;
     }
-
 }

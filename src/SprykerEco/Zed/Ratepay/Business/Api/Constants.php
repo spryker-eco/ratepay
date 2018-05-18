@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Business\Api;
 
 class Constants
 {
-
     /**
      * Request model types.
      */
@@ -49,5 +48,4 @@ class Constants
      */
     const CLIENT_VERSION = '1.0';
     const CLIENT_NAME = 'Spryker_RP_DE';
-
 }

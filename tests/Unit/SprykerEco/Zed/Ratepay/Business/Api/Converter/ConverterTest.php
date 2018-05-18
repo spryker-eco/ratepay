@@ -35,7 +35,6 @@ use Unit\SprykerEco\Zed\Ratepay\Business\Api\Response\Response;
  */
 class ConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory
      */
@@ -176,5 +175,4 @@ class ConverterTest extends PHPUnit_Framework_TestCase
             new InstallmentCalculation($this->requestTransfer)
         );
     }
-
 }

@@ -22,7 +22,6 @@ use PHPUnit_Framework_TestCase;
  */
 class AbstractDataProviderTest extends PHPUnit_Framework_TestCase
 {
-
     const PHONE_NUMBER = 1234567890;
 
     /**
@@ -37,5 +36,4 @@ class AbstractDataProviderTest extends PHPUnit_Framework_TestCase
 
         return $quoteTransfer;
     }
-
 }

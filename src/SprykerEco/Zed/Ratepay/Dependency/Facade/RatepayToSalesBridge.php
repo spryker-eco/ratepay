@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 
 class RatepayToSalesBridge implements RatepayToSalesInterface
 {
-
     /**
      * @var \Spryker\Zed\Sales\Business\SalesFacade
      */
@@ -32,5 +31,4 @@ class RatepayToSalesBridge implements RatepayToSalesInterface
     {
         return $this->salesFacade->getOrderByIdSalesOrder($idSalesOrder);
     }
-
 }

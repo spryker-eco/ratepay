@@ -21,7 +21,6 @@ use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
  */
 abstract class AbstractSaverTest extends AbstractBusinessTest
 {
-
     /**
      * @return void
      */
@@ -47,5 +46,4 @@ abstract class AbstractSaverTest extends AbstractBusinessTest
         $this->assertEquals($paymentMethodTransfer->getPaymentType(), $this->paymentEntity->getPaymentType());
         $this->assertEquals($paymentMethodTransfer->getIpAddress(), $this->paymentEntity->getIpAddress());
     }
-
 }

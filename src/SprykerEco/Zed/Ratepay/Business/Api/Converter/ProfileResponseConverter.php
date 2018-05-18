@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class ProfileResponseConverter extends BaseConverter
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter
      */
@@ -55,5 +54,4 @@ class ProfileResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

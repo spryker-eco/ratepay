@@ -15,8 +15,8 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentInitMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentInitMapper;
@@ -31,7 +31,6 @@ use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
  */
 class RatepayCommunicationFactory extends AbstractCommunicationFactory
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor
      */
@@ -284,5 +283,4 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
             $this->getSalesQueryContainer()
         );
     }
-
 }

@@ -22,7 +22,6 @@ use Functional\SprykerEco\Zed\Ratepay\Business\Request\Payment\InvoiceAbstractTe
  */
 class InvoiceTest extends InvoiceAbstractTest
 {
-
     /**
      * @return void
      */
@@ -61,5 +60,4 @@ class InvoiceTest extends InvoiceAbstractTest
     {
         return $facade->confirmDelivery($this->orderTransfer, $this->orderPartialTransfer, $this->orderTransfer->getItems()->getArrayCopy());
     }
-
 }

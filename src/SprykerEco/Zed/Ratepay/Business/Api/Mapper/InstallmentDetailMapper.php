@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class InstallmentDetailMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\RatepayPaymentRequestTransfer
      */
@@ -57,5 +56,4 @@ class InstallmentDetailMapper extends BaseMapper
             ->setInterestRate($this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->getInstallmentInterestRate()))
             ->setPaymentFirstday($this->ratepayPaymentRequestTransfer->getInstallmentPaymentFirstDay());
     }
-
 }

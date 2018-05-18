@@ -13,7 +13,6 @@ use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor;
 
 class QuotePaymentInitMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -69,5 +68,4 @@ class QuotePaymentInitMapper extends BaseMapper
         $this->ratepayPaymentInitTransfer
             ->setCustomerId($this->quoteTransfer->getCustomer()->getIdCustomer());
     }
-
 }

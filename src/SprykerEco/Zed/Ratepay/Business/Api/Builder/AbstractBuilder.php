@@ -14,7 +14,6 @@ use Generated\Shared\Transfer\RatepayRequestTransfer;
  */
 abstract class AbstractBuilder
 {
-
     /**
      * @var \Generated\Shared\Transfer\RatepayRequestTransfer
      */
@@ -27,5 +26,4 @@ abstract class AbstractBuilder
     {
         $this->requestTransfer = $requestTransfer;
     }
-
 }

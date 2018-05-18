@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
 class ShoppingBasket extends AbstractBuilder implements BuilderInterface
 {
-
     const ROOT_TAG = 'shopping-basket';
 
     /**
@@ -54,5 +53,4 @@ class ShoppingBasket extends AbstractBuilder implements BuilderInterface
     {
         return static::ROOT_TAG;
     }
-
 }

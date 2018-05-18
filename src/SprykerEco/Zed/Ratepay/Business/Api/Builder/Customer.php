@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants;
  */
 class Customer extends AbstractBuilder implements BuilderInterface
 {
-
     const ROOT_TAG = 'customer';
 
     /**
@@ -60,5 +59,4 @@ class Customer extends AbstractBuilder implements BuilderInterface
     {
         return static::ROOT_TAG;
     }
-
 }

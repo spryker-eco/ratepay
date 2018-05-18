@@ -22,7 +22,6 @@ use Functional\SprykerEco\Zed\Ratepay\Business\Request\Payment\InstallmentAbstra
  */
 class InstallmentTest extends InstallmentAbstractTest
 {
-
     /**
      * @return void
      */
@@ -61,5 +60,4 @@ class InstallmentTest extends InstallmentAbstractTest
     {
         return $facade->confirmDelivery($this->orderTransfer, $this->orderPartialTransfer, $this->orderTransfer->getItems()->getArrayCopy());
     }
-
 }

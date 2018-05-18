@@ -9,7 +9,6 @@ namespace Functional\SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http;
 
 class ConfirmDeliveryAdapterMock extends AbstractAdapterMock
 {
-
     /**
      * @return array
      */
@@ -58,5 +57,4 @@ class ConfirmDeliveryAdapterMock extends AbstractAdapterMock
             <content />
         </response>';
     }
-
 }

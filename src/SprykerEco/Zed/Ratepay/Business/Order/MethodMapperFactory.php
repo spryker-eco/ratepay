@@ -16,7 +16,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Transaction\Transaction;
 
 class MethodMapperFactory extends AbstractBusinessFactory
 {
-
     /**
      * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Transaction\TransactionInterface
      */
@@ -62,5 +61,4 @@ class MethodMapperFactory extends AbstractBusinessFactory
     {
         return new InstallmentMapper();
     }
-
 }

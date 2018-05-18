@@ -7,12 +7,11 @@
 
 namespace SprykerEco\Zed\Ratepay;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 class RatepayConfig extends AbstractBundleConfig
 {
-
     /**
      * @return string
      */
@@ -68,5 +67,4 @@ class RatepayConfig extends AbstractBundleConfig
     {
         return __DIR__ . DIRECTORY_SEPARATOR . RatepayConstants::GLOSSARY_FILE_PATH;
     }
-
 }

@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\SimpleXMLElement;
 
 class BaseResponse implements ResponseInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\SimpleXMLElement
      */
@@ -137,5 +136,4 @@ class BaseResponse implements ResponseInterface
             $this->xmlObject->content->payment->descriptor :
             null;
     }
-
 }
