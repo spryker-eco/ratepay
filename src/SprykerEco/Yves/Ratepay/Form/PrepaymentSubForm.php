@@ -10,9 +10,9 @@ namespace SprykerEco\Yves\Ratepay\Form;
 use Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PrepaymentSubForm extends SubFormAbstract
 {
@@ -34,11 +34,11 @@ class PrepaymentSubForm extends SubFormAbstract
     /**
      * @deprecated Use `configureOptions()` instead.
      *
-     * @param \Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
      *
      * @return void
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $this->configureOptions($resolver);
     }
@@ -87,7 +87,7 @@ class PrepaymentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_ALLOW_CREDIT_INQUIRY,
-            'checkbox',
+            CheckboxType::class,
             [
                 'label' => false,
                 'required' => true,
