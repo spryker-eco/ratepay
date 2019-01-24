@@ -10,6 +10,7 @@ namespace SprykerEco\Yves\Ratepay\Form;
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -94,7 +95,7 @@ class ElvSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BUNK_ACCOUNT_HOLDER,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => true,
@@ -116,7 +117,7 @@ class ElvSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BUNK_ACCOUNT_BIC,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => true,
@@ -138,7 +139,7 @@ class ElvSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BUNK_ACCOUNT_IBAN,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => true,

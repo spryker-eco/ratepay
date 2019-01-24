@@ -11,6 +11,8 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -122,9 +124,9 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::OPTION_DEBIT_PAY_TYPE,
-            'choice',
+            ChoiceType::class,
             [
-                'choices' => $options['select_options'][self::OPTION_DEBIT_PAY_TYPE],
+                'choices' => array_flip($options['select_options'][self::OPTION_DEBIT_PAY_TYPE]),
                 'label' => false,
                 'required' => true,
                 'expanded' => false,
@@ -149,9 +151,9 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::OPTION_CALCULATION_TYPE,
-            'choice',
+            ChoiceType::class,
             [
-                'choices' => $options['select_options'][self::OPTION_CALCULATION_TYPE],
+                'choices' => array_flip($options['select_options'][self::OPTION_CALCULATION_TYPE]),
                 'label' => false,
                 'required' => true,
                 'expanded' => false,
@@ -176,9 +178,9 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::OPTION_MONTH_ALLOWED,
-            'choice',
+            ChoiceType::class,
             [
-                'choices' => $options['select_options'][self::OPTION_MONTH_ALLOWED],
+                'choices' => array_flip($options['select_options'][self::OPTION_MONTH_ALLOWED]),
                 'label' => false,
                 'required' => true,
                 'expanded' => false,
@@ -202,7 +204,7 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_INTEREST_RATE,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'constraints' => [],
@@ -222,7 +224,7 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_INTEREST_RATE_DEFAULT,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'constraints' => [],
@@ -244,7 +246,7 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BANK_ACCOUNT_HOLDER,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => false,
@@ -266,7 +268,7 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BANK_ACCOUNT_BIC,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => false,
@@ -288,7 +290,7 @@ class InstallmentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_BANK_ACCOUNT_IBAN,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => false,

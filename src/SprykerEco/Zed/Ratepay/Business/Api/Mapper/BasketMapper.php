@@ -58,7 +58,7 @@ class BasketMapper extends BaseMapper
      */
     public function map()
     {
-        $shippingUnitPrice = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireExpenseTotal()->getExpenseTotal());
+        $shippingUnitPrice = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireShippingExpenseTotal()->getShippingExpenseTotal());
         $grandTotal = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireGrandTotal()->getGrandTotal());
         $discountTotal = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->getDiscountTotal());
 
