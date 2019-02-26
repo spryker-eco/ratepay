@@ -20,7 +20,14 @@ interface OrderTransactionInterface extends MethodMapperInterface
      */
     public function request(
         OrderTransfer $orderTransfer,
-        OrderTransfer $partialOrderTransfer = null,
+        ?OrderTransfer $partialOrderTransfer = null,
         array $orderItems = []
     );
+
+    /**
+     * @param \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface $mapper
+     *
+     * @return void
+     */
+    public function registerMethodMapper(RequestMethodInterface $mapper);
 }

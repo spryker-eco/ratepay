@@ -165,6 +165,100 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     }
 
     /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItems
+     *
+     * @return \ArrayObject
+     */
+    public function createOrderTransferItems($orderItems)
+    {
+        $items = new ArrayObject();
+        foreach ($orderItems as $orderItemEntity) {
+            $items[] = $this->createItemTransferByItemEntity($orderItemEntity);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferByItemEntity($orderItemEntity)
+    {
+        $itemTransfer = new ItemTransfer();
+        $itemTransfer->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
+        $itemTransfer->setUnitGrossPrice($orderItemEntity->getGrossPrice());
+        $itemTransfer->setQuantity($orderItemEntity->getQuantity());
+        $itemTransfer->setCalculatedDiscounts(
+            new ArrayObject($this->getCalculatedDiscounts($orderItemEntity))
+        );
+
+        return $itemTransfer;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItemEntity
+     *
+     * @return array
+     */
+    protected function getCalculatedDiscounts($orderItemEntity)
+    {
+        $result = [];
+        $discounts = $orderItemEntity->getDiscounts();
+        foreach ($discounts as $discount) {
+            $calculatedDiscountTransfer = new CalculatedDiscountTransfer();
+            $calculatedDiscountTransfer
+                ->setDescription($discount->getDescription())
+                ->setDisplayName($discount->getDisplayName())
+                ->setUnitGrossAmount($discount->getAmount())
+                ->setIdDiscount($discount->getIdSalesDiscount())
+                ->setQuantity($orderItemEntity->getQuantity());
+            $result[] = $calculatedDiscountTransfer;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $basketItems
+     *
+     * @return \ArrayObject
+     */
+    public function createOrderTransferItemsByBasketItems($basketItems)
+    {
+        $items = new ArrayObject();
+        foreach ($basketItems as $basketItem) {
+            $items[] = $this->createItemTransferByBasketItem($basketItem);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $basketItem
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function createItemTransferByBasketItem($basketItem)
+    {
+        $itemTransfer = new ItemTransfer();
+        $itemTransfer->setIdSalesOrderItem($basketItem->getIdSalesOrderItem());
+        $itemTransfer->setUnitGrossPrice($basketItem->getUnitGrossPrice());
+        $itemTransfer->setQuantity($basketItem->getQuantity());
+
+        return $itemTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function createOrderTransfer()
+    {
+        return new OrderTransfer();
+    }
+
+    /**
      * @return \SprykerEco\Zed\Ratepay\Business\Order\PartialOrderCalculatorInterface
      */
     public function createPartialOrderCalculator()

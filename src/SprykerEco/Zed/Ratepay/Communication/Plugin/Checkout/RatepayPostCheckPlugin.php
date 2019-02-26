@@ -13,7 +13,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPostCheckPluginInterface;
 
 /**
- * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
  */
 class RatepayPostCheckPlugin extends AbstractPlugin implements CheckoutPostCheckPluginInterface

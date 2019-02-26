@@ -11,6 +11,10 @@ use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
 use SprykerEco\Shared\Ratepay\RatepayConfig;
+use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -54,7 +58,7 @@ abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInt
     {
         $builder->add(
             self::FIELD_DATE_OF_BIRTH,
-            'birthday',
+            BirthdayType::class,
             [
                 'label' => false,
                 'required' => true,
@@ -80,7 +84,7 @@ abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInt
     {
         $builder->add(
             self::FIELD_PHONE,
-            'text',
+            TextType::class,
             [
                 'label' => false,
                 'required' => true,
@@ -110,13 +114,11 @@ abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInt
     protected function createBirthdayConstraint()
     {
         return new Callback([
-            'methods' => [
-                function ($date, ExecutionContextInterface $context) {
-                    if (strtotime($date) > strtotime(self::MIN_BIRTHDAY_DATE_STRING)) {
-                        $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
-                    }
-                },
-            ],
+            'callback' => function ($date, ExecutionContextInterface $context) {
+                if (strtotime($date) > strtotime(self::MIN_BIRTHDAY_DATE_STRING)) {
+                    $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
+                }
+            },
             'groups' => $this->getPropertyPath(),
         ]);
     }

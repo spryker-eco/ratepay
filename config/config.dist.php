@@ -7,6 +7,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Sales\SalesConstants;
+use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Zed\Oms\OmsConfig;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
 
@@ -16,6 +17,8 @@ $config[RatepayConstants::SNIPPET_ID] = 'ratepay';
 $config[RatepayConstants::SHOP_ID] = '';
 $config[RatepayConstants::SYSTEM_ID] = 'Spryker ' . $config[ApplicationConstants::HOST_YVES];
 $config[RatepayConstants::RATEPAY_API_URL] = '';
+$config[RatepayConstants::API_URL] = '';
+$config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
   'Checkout' => [

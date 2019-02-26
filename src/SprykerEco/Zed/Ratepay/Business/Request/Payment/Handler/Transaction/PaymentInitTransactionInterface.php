@@ -17,4 +17,11 @@ interface PaymentInitTransactionInterface extends MethodMapperInterface
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
     public function request(RatepayPaymentInitTransfer $ratepayPaymentInitTransfer);
+
+    /**
+     * @param \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface $mapper
+     *
+     * @return void
+     */
+    public function registerMethodMapper(RequestMethodInterface $mapper);
 }

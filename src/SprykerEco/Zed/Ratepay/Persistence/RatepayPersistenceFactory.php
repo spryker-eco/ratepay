@@ -13,7 +13,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
  * @method \SprykerEco\Zed\Ratepay\RatepayConfig getConfig()
- * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainer getQueryContainer()
+ * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  */
 class RatepayPersistenceFactory extends AbstractPersistenceFactory
 {

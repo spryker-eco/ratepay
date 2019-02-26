@@ -14,6 +14,7 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductBridge;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesBridge;
+use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesQueryContainerBridge;
 
 class RatepayDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -131,7 +132,7 @@ class RatepayDependencyProvider extends AbstractBundleDependencyProvider
     protected function addSalesQueryContainer(Container $container)
     {
         $container[self::SALES_QUERY_CONTAINER] = function (Container $container) {
-            return $container->getLocator()->sales()->queryContainer();
+            return new RatepayToSalesQueryContainerBridge($container->getLocator()->sales()->queryContainer());
         };
 
         return $container;

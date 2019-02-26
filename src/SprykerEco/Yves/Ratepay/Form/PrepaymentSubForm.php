@@ -87,7 +87,7 @@ class PrepaymentSubForm extends SubFormAbstract
     {
         $builder->add(
             self::FIELD_ALLOW_CREDIT_INQUIRY,
-            'checkbox',
+            CheckboxType::class,
             [
                 'label' => false,
                 'required' => true,

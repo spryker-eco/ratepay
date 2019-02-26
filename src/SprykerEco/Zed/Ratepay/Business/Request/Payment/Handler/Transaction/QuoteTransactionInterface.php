@@ -17,4 +17,11 @@ interface QuoteTransactionInterface extends MethodMapperInterface
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
     public function request(QuoteTransfer $quoteTransfer);
+
+    /**
+     * @param \SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface $mapper
+     *
+     * @return void
+     */
+    public function registerMethodMapper(RequestMethodInterface $mapper);
 }

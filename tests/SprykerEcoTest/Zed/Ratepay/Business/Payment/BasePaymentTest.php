@@ -7,6 +7,7 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Payment;
 
+use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -24,6 +25,7 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepayQuery;
 use Spryker\Zed\Money\Business\MoneyFacade;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http\Guzzle;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
