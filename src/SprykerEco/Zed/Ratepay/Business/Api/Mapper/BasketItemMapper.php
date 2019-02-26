@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class BasketItemMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\ItemTransfer
      */
@@ -51,9 +50,7 @@ class BasketItemMapper extends BaseMapper
      */
     public function map()
     {
-        $itemPrice = $this->itemTransfer
-            ->requireUnitGrossPrice()
-            ->getUnitGrossPrice();
+        $itemPrice = $this->itemTransfer->requireUnitGrossPrice()->getUnitPriceToPayAggregation();
         $itemPrice = $this->moneyFacade->convertIntegerToDecimal((int)$itemPrice);
 
         $itemTransfer = (new RatepayRequestShoppingBasketItemTransfer())
@@ -97,5 +94,4 @@ class BasketItemMapper extends BaseMapper
             $this->requestTransfer->setShoppingBasket(new RatepayRequestShoppingBasketTransfer());
         }
     }
-
 }

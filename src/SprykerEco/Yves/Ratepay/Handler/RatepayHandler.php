@@ -8,16 +8,15 @@
 namespace SprykerEco\Yves\Ratepay\Handler;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerEco\Client\Ratepay\RatepayClientInterface;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\Store;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
+use SprykerEco\Client\Ratepay\RatepayClientInterface;
+use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\HttpFoundation\Request;
 
 class RatepayHandler
 {
-
     const INSTALLMENT_CALCULATOR_ERROR_HASH = 0;
     const CHECKOUT_PARTIAL_SUMMARY_PATH = 'Ratepay/partial/summary';
 
@@ -206,5 +205,4 @@ class RatepayHandler
                 ->getReasonText()
         );
     }
-
 }

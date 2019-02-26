@@ -12,7 +12,6 @@ use Psr\Log\LoggerInterface;
 
 class PaymentLogger implements LoggerInterface
 {
-
     /**
      * @param string $message
      * @param array $context
@@ -146,5 +145,4 @@ class PaymentLogger implements LoggerInterface
 
         $paymentLogEntity->save();
     }
-
 }

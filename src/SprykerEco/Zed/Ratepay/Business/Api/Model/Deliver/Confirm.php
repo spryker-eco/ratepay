@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Confirm extends Base
 {
-
     /**
      * Deliver confirmation operation.
      */
@@ -67,5 +66,4 @@ class Confirm extends Base
     {
         return $this->basket;
     }
-
 }

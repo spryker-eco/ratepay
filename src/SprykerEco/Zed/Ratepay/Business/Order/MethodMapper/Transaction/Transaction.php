@@ -13,7 +13,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterf
 
 class Transaction implements TransactionInterface
 {
-
     /**
      * @var array
      */
@@ -60,5 +59,4 @@ class Transaction implements TransactionInterface
 
         return $this->methodMappers[$paymentMethod];
     }
-
 }

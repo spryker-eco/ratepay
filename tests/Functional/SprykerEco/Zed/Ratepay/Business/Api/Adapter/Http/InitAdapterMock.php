@@ -9,7 +9,6 @@ namespace Functional\SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http;
 
 class InitAdapterMock extends AbstractAdapterMock
 {
-
     /**
      * @return array
      */
@@ -55,5 +54,4 @@ class InitAdapterMock extends AbstractAdapterMock
             </head>
         </response>';
     }
-
 }

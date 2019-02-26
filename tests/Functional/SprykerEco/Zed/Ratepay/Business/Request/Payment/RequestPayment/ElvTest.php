@@ -23,7 +23,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 class ElvTest extends ElvAbstractTest
 {
-
     /**
      * @return void
      */
@@ -70,5 +69,4 @@ class ElvTest extends ElvAbstractTest
         $this->assertEquals(RatepayConstants::ELV, $this->responseTransfer->getPaymentMethod());
         $this->assertEquals($this->expectedResponseTransfer->getPaymentMethod(), $this->responseTransfer->getPaymentMethod());
     }
-
 }

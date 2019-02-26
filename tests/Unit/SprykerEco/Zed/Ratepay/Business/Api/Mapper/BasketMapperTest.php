@@ -19,7 +19,6 @@ namespace Unit\SprykerEco\Zed\Ratepay\Business\Api\Mapper;
  */
 class BasketMapperTest extends AbstractMapperTest
 {
-
     /**
      * @return void
      */
@@ -35,5 +34,4 @@ class BasketMapperTest extends AbstractMapperTest
         $this->assertEquals('iso3', $this->requestTransfer->getShoppingBasket()->getCurrency());
         $this->assertEquals(0, $this->requestTransfer->getShoppingBasket()->getShippingUnitPrice());
     }
-
 }

@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 class RatepayToGlossaryBridge implements RatepayToGlossaryInterface
 {
-
     /**
      * @var \Spryker\Zed\Glossary\Business\GlossaryFacadeInterface
      */
@@ -103,7 +102,7 @@ class RatepayToGlossaryBridge implements RatepayToGlossaryInterface
      *
      * @return bool
      */
-    public function hasTranslation($keyName, LocaleTransfer $locale = null)
+    public function hasTranslation($keyName, ?LocaleTransfer $locale = null)
     {
         return $this->glossaryFacade->hasTranslation($keyName, $locale);
     }
@@ -162,5 +161,4 @@ class RatepayToGlossaryBridge implements RatepayToGlossaryInterface
     {
         return $this->glossaryFacade->updateAndTouchTranslation($keyName, $locale, $value, $isActive);
     }
-
 }

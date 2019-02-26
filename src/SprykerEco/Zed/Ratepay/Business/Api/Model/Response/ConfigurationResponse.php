@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Response;
 
 class ConfigurationResponse extends BaseResponse
 {
-
     /**
      * @return float
      */
@@ -148,5 +147,4 @@ class ConfigurationResponse extends BaseResponse
     {
         return (int)$this->xmlObject->content->{'installment-configuration-result'}->{'min-difference-dueday'};
     }
-
 }

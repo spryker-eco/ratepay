@@ -33,7 +33,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
  */
 abstract class AbstractMapperTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory
      */
@@ -225,5 +224,4 @@ abstract class AbstractMapperTest extends PHPUnit_Framework_TestCase
 
         return $ratepayPaymentInstallmentTransfer;
     }
-
 }

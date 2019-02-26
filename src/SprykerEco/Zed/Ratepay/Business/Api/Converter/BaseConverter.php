@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 abstract class BaseConverter implements ConverterInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ResponseInterface
      */
@@ -42,5 +41,4 @@ abstract class BaseConverter implements ConverterInterface
     {
         return $this->moneyFacade->convertDecimalToInteger($amount);
     }
-
 }

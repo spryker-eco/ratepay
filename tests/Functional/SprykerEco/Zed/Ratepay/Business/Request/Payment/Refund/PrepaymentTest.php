@@ -23,7 +23,6 @@ use Functional\SprykerEco\Zed\Ratepay\Business\Request\Payment\PrepaymentAbstrac
  */
 class PrepaymentTest extends PrepaymentAbstractTest
 {
-
     /**
      * @return void
      */
@@ -62,5 +61,4 @@ class PrepaymentTest extends PrepaymentAbstractTest
     {
         return $facade->refundPayment($this->orderTransfer, $this->orderPartialTransfer, $this->orderTransfer->getItems()->getArrayCopy());
     }
-
 }

@@ -22,7 +22,6 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Elv;
  */
 class ElvTest extends BaseMethodMapperTest
 {
-
     /**
      * @return void
      */
@@ -81,5 +80,4 @@ class ElvTest extends BaseMethodMapperTest
 
         return $paymentTransfer;
     }
-
 }

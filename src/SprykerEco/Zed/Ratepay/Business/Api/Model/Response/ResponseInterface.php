@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Response;
 
 interface ResponseInterface
 {
-
     /**
      * @return string
      */
@@ -69,5 +68,4 @@ interface ResponseInterface
      * @return string
      */
     public function getPaymentMethod();
-
 }

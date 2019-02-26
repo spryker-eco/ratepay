@@ -21,7 +21,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 class ElvSaverTest extends AbstractSaverTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -68,5 +67,4 @@ class ElvSaverTest extends AbstractSaverTest
         $this->assertEquals($paymentMethodTransfer->getBankAccountBic(), $this->paymentEntity->getBankAccountBic());
         $this->assertEquals($paymentMethodTransfer->getBankAccountIban(), $this->paymentEntity->getBankAccountIban());
     }
-
 }

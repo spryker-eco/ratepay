@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class InstallmentCalculationResponseConverter extends BaseConverter
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Calculation
      */
@@ -73,5 +72,4 @@ class InstallmentCalculationResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

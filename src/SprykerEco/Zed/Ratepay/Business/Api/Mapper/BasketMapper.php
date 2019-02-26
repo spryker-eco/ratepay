@@ -14,7 +14,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
 class BasketMapper extends BaseMapper
 {
-
     const DEFAULT_DISCOUNT_NODE_VALUE = 'Discount';
     const DEFAULT_DISCOUNT_TAX_RATE = 0;
     const DEFAULT_DISCOUNT_UNIT_PRICE = 0;
@@ -59,7 +58,7 @@ class BasketMapper extends BaseMapper
      */
     public function map()
     {
-        $shippingUnitPrice = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireExpenseTotal()->getExpenseTotal());
+        $shippingUnitPrice = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireShippingExpenseTotal()->getShippingExpenseTotal());
         $grandTotal = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->requireGrandTotal()->getGrandTotal());
         $discountTotal = $this->moneyFacade->convertIntegerToDecimal((int)$this->ratepayPaymentRequestTransfer->getDiscountTotal());
 
@@ -76,5 +75,4 @@ class BasketMapper extends BaseMapper
             ->setDiscountUnitPrice($discountTotal * self::BASKET_DISCOUNT_COEFFICIENT)
             ->setDiscountTaxRate($this->ratepayPaymentRequestTransfer->getDiscountTaxRate());
     }
-
 }

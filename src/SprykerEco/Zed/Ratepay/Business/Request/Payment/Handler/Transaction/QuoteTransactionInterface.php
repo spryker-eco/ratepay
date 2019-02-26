@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 
 interface QuoteTransactionInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
@@ -26,5 +25,4 @@ interface QuoteTransactionInterface
      * @return void
      */
     public function registerMethodMapper(RequestMethodInterface $mapper);
-
 }

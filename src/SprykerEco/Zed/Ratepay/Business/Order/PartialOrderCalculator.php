@@ -10,13 +10,12 @@ namespace SprykerEco\Zed\Ratepay\Business\Order;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
+use Spryker\Zed\Sales\Persistence\SalesQueryContainer;
 use SprykerEco\Zed\Ratepay\Business\Exception\OrderTotalHydrationException;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface;
-use Spryker\Zed\Sales\Persistence\SalesQueryContainer;
 
 class PartialOrderCalculator implements PartialOrderCalculatorInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface
      */
@@ -33,7 +32,8 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
      */
     public function __construct(
         RatepayToCalculationInterface $ratepayToCalculationBridge,
-        SalesQueryContainer $salesQueryContainer) {
+        SalesQueryContainer $salesQueryContainer
+    ) {
 
         $this->ratepayToCalculationBridge = $ratepayToCalculationBridge;
         $this->salesQueryContainer = $salesQueryContainer;
@@ -42,9 +42,9 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
     /**
      * @param int $idSalesOrderItem
      *
-     * @return \Generated\Shared\Transfer\ItemTransfer|null
-     *
      * @throws \SprykerEco\Zed\Ratepay\Business\Exception\OrderTotalHydrationException
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer|null
      */
     public function getOrderItemTotalsByIdSalesOrderItem($idSalesOrderItem)
     {
@@ -69,9 +69,9 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
     /**
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
      *
-     * @return \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
      * @throws \SprykerEco\Zed\Ratepay\Business\Exception\OrderTotalHydrationException
+     *
+     * @return \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      */
     protected function createOrderTransfer($salesOrderItemEntity)
     {
@@ -98,9 +98,9 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
     }
 
     /**
-     * @param  \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
      *
-     * @return  \Generated\Shared\Transfer\ItemTransfer
+     * @return \Generated\Shared\Transfer\ItemTransfer
      */
     protected function getHydratedSaleOrderItemTransfer($salesOrderItemEntity)
     {

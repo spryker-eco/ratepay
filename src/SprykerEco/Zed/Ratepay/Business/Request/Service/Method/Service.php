@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
  */
 class Service extends AbstractMethod implements MethodInterface
 {
-
     /**
      * @const Payment method code.
      */
@@ -39,5 +38,4 @@ class Service extends AbstractMethod implements MethodInterface
 
         return $request;
     }
-
 }

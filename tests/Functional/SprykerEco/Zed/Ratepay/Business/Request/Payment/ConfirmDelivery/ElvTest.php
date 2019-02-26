@@ -23,7 +23,6 @@ use Functional\SprykerEco\Zed\Ratepay\Business\Request\Payment\ElvAbstractTest;
  */
 class ElvTest extends ElvAbstractTest
 {
-
     /**
      * @return void
      */
@@ -62,5 +61,4 @@ class ElvTest extends ElvAbstractTest
     {
         return $facade->confirmDelivery($this->orderTransfer, $this->orderPartialTransfer, $this->orderTransfer->getItems()->getArrayCopy());
     }
-
 }

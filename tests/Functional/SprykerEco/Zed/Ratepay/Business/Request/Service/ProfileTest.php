@@ -26,7 +26,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
  */
 class ProfileTest extends AbstractFacadeTest
 {
-
     /**
      * @return void
      */
@@ -185,5 +184,4 @@ class ProfileTest extends AbstractFacadeTest
     protected function getPaymentTransferFromQuote()
     {
     }
-
 }

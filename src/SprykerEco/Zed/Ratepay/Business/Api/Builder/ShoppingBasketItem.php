@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\RatepayRequestTransfer;
 
 class ShoppingBasketItem extends AbstractBuilder implements BuilderInterface
 {
-
     const ROOT_TAG = 'item';
 
     const ITEM_DISCOUNT_COEFFICIENT = -1;
@@ -66,5 +65,4 @@ class ShoppingBasketItem extends AbstractBuilder implements BuilderInterface
     {
         return static::ROOT_TAG;
     }
-
 }

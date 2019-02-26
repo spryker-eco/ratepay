@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 
 class RatepayToCalculationBridge implements RatepayToCalculationInterface
 {
-
     /**
      * @var \Spryker\Zed\Calculation\Business\CalculationFacade
      */
@@ -32,5 +31,4 @@ class RatepayToCalculationBridge implements RatepayToCalculationInterface
     {
         return $this->calculationFacade->recalculateOrder($orderTransfer);
     }
-
 }

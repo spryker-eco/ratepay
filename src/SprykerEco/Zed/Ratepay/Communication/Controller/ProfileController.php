@@ -10,12 +10,11 @@ namespace SprykerEco\Zed\Ratepay\Communication\Controller;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 
 /**
- * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacade getFacade()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
  */
 class ProfileController extends AbstractController
 {
-
     /**
      * @return array
      */
@@ -28,5 +27,4 @@ class ProfileController extends AbstractController
             'installmentConfigurationResult' => $profileResponse->getInstallmentConfigurationResult(),
         ]);
     }
-
 }

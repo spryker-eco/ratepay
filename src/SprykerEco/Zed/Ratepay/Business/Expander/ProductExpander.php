@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductInterface;
 
 class ProductExpander implements ProductExpanderInterface
 {
-
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToProductBridge
      */
@@ -45,10 +44,8 @@ class ProductExpander implements ProductExpanderInterface
                     $cartItem->setDescription($attr['long_description']);
                 }
             }
-
         }
 
         return $change;
     }
-
 }

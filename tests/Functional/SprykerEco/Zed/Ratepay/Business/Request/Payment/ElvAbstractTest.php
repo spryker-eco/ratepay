@@ -22,7 +22,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 abstract class ElvAbstractTest extends AbstractFacadeTest
 {
-
     /**
      * @const Payment method code.
      */
@@ -82,5 +81,4 @@ abstract class ElvAbstractTest extends AbstractFacadeTest
             ->setBankAccountIban('XXXX XXXX XXXX XXXX XXXX XX')
             ->setBankAccountHolder('TestHolder');
     }
-
 }

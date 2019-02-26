@@ -16,7 +16,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Request extends Base
 {
-
     const OPERATION = Constants::REQUEST_MODEL_PAYMENT_REQUEST;
 
     /**
@@ -127,5 +126,4 @@ class Request extends Base
     {
         return $this->payment;
     }
-
 }

@@ -15,7 +15,6 @@ use SprykerEco\Zed\Ratepay\RatepayConfig;
 
 class QuoteHeadMapper extends BaseMapper
 {
-
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
@@ -68,5 +67,4 @@ class QuoteHeadMapper extends BaseMapper
             ->setProfileId($this->config->getProfileId())
             ->setSecurityCode($this->config->getSecurityCode());
     }
-
 }

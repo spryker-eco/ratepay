@@ -12,7 +12,6 @@ use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 
 interface OrderTransactionInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      * @param \Generated\Shared\Transfer\OrderTransfer|null $partialOrderTransfer
@@ -22,7 +21,7 @@ interface OrderTransactionInterface
      */
     public function request(
         OrderTransfer $orderTransfer,
-        OrderTransfer $partialOrderTransfer = null,
+        ?OrderTransfer $partialOrderTransfer = null,
         array $orderItems = []
     );
 
@@ -32,5 +31,4 @@ interface OrderTransactionInterface
      * @return void
      */
     public function registerMethodMapper(RequestMethodInterface $mapper);
-
 }

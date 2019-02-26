@@ -24,7 +24,6 @@ use SprykerEco\Shared\Ratepay\RatepayConstants;
  */
 class InvoiceTest extends InvoiceAbstractTest
 {
-
     /**
      * @return void
      */
@@ -71,5 +70,4 @@ class InvoiceTest extends InvoiceAbstractTest
         $this->assertEquals(RatepayConstants::INVOICE, $this->responseTransfer->getPaymentMethod());
         $this->assertEquals($this->expectedResponseTransfer->getPaymentMethod(), $this->responseTransfer->getPaymentMethod());
     }
-
 }
