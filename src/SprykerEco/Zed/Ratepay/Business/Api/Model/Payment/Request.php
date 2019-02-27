@@ -8,9 +8,12 @@
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Payment;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
@@ -19,34 +22,35 @@ class Request extends Base
     public const OPERATION = Constants::REQUEST_MODEL_PAYMENT_REQUEST;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface
      */
     protected $customer;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface
      */
     protected $basket;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface
      */
     protected $payment;
 
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface $head
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $customer
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $basket
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\BuilderInterface $payment
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface $customer
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface $basket
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface $payment
      */
     public function __construct(
         HeadInterface $head,
-        Customer $customer,
-        ShoppingBasket $basket,
-        Payment $payment
+        CustomerInterface $customer,
+        ShoppingBasketInterface $basket,
+        PaymentInterface $payment
     ) {
 
         parent::__construct($head);
+
         $this->customer = $customer;
         $this->basket = $basket;
         $this->payment = $payment;

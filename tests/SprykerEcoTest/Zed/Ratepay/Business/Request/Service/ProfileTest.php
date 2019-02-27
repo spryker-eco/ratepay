@@ -7,7 +7,7 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Service;
 
-use Generated\Shared\Transfer\RatepayResponseTransfer;
+use Generated\Shared\Transfer\RatepayProfileResponseTransfer;
 use Spryker\Zed\Money\Business\MoneyFacade;
 use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ProfileResponse;
@@ -195,9 +195,9 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\RatepayFacade $facade
      *
-     * @return \Generated\Shared\Transfer\RatepayResponseTransfer
+     * @return \Generated\Shared\Transfer\RatepayProfileResponseTransfer
      */
-    protected function runFacadeMethod($facade): RatepayResponseTransfer
+    protected function runFacadeMethod($facade): RatepayProfileResponseTransfer
     {
         return $facade->requestProfile();
     }

@@ -58,7 +58,9 @@ class QuoteHeadMapper extends BaseMapper
      */
     public function map()
     {
-        $this->requestTransfer->setHead(new RatepayRequestHeadTransfer())->getHead()
+        $this->requestTransfer
+            ->setHead(new RatepayRequestHeadTransfer())
+            ->getHead()
             ->setTransactionId($this->paymentData->getTransactionId())
             ->setTransactionShortId($this->paymentData->getTransactionShortId())
             ->setCustomerId($this->quoteTransfer->getCustomer()->getIdCustomer())
