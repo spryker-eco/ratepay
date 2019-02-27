@@ -16,7 +16,7 @@ class SimpleXMLElement extends SimpleXMLElementSimpleXMLElement
      * @param string $sName
      * @param string $sValue
      *
-     * @return $this
+     * @return \SimpleXMLElement|bool
      */
     public function addCDataChild($sName, $sValue)
     {
@@ -26,6 +26,7 @@ class SimpleXMLElement extends SimpleXMLElementSimpleXMLElement
         $oNodeOld = dom_import_simplexml($this);
         $oNodeTarget = $oNodeOld->ownerDocument->importNode($cDataNode, true);
         $oNodeOld->appendChild($oNodeTarget);
+
         return simplexml_import_dom($oNodeTarget, 'SimpleXMLElement');
     }
 

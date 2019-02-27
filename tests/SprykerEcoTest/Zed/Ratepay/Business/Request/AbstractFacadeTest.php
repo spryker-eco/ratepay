@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
@@ -85,7 +86,7 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
     /**
      * @return void
      */
-    protected function setUpSalesOrderTestData()
+    protected function setUpSalesOrderTestData(): void
     {
         $country = SpyCountryQuery::create()->findOneByIso2Code('DE');
         $billingAddress = new SpySalesOrderAddress();
@@ -119,7 +120,7 @@ abstract class AbstractFacadeTest extends AbstractBusinessTest
     /**
      * @return void
      */
-    protected function setUpPaymentTestData()
+    protected function setUpPaymentTestData(): void
     {
         $this->paymentEntity = (new SpyPaymentRatepay())
             ->setFkSalesOrder($this->orderEntity->getIdSalesOrder());

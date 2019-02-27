@@ -24,7 +24,7 @@ class InstallmentSaverTest extends AbstractSaverTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConfig::INSTALLMENT;
+    public const PAYMENT_METHOD = RatepayConfig::INSTALLMENT;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer

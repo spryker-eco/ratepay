@@ -10,9 +10,6 @@ namespace SprykerEco\Yves\Ratepay\Form;
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
-use SprykerEco\Shared\Ratepay\RatepayConfig;
-use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,11 +19,11 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 abstract class SubFormAbstract extends AbstractSubFormType implements SubFormInterface, SubFormProviderNameInterface
 {
-    const FIELD_DATE_OF_BIRTH = 'date_of_birth';
-    const FIELD_PHONE = 'phone';
-    const FIELD_ALLOW_CREDIT_INQUIRY = 'customer_allow_credit_inquiry';
+    public const FIELD_DATE_OF_BIRTH = 'date_of_birth';
+    public const FIELD_PHONE = 'phone';
+    public const FIELD_ALLOW_CREDIT_INQUIRY = 'customer_allow_credit_inquiry';
 
-    const MIN_BIRTHDAY_DATE_STRING = '-18 years';
+    public const MIN_BIRTHDAY_DATE_STRING = '-18 years';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder

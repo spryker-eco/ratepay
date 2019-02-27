@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
@@ -6,6 +7,7 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Request\Service;
 
+use Generated\Shared\Transfer\RatepayResponseTransfer;
 use Spryker\Zed\Money\Business\MoneyFacade;
 use SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ProfileResponse;
@@ -40,7 +42,7 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @return void
      */
-    public function testPaymentWithSuccessResponse()
+    public function testPaymentWithSuccessResponse(): void
     {
         $adapterMock = $this->getPaymentSuccessResponseAdapterMock();
 
@@ -53,16 +55,38 @@ class ProfileTest extends AbstractFacadeTest
         $this->convertResponseToTransfer($expectedResponse);
 
         $this->assertEquals($this->expectedResponseTransfer, $this->responseTransfer);
-
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getResultCode(), $this->responseTransfer->getBaseResponse()->getResultCode());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getResultText(), $this->responseTransfer->getBaseResponse()->getResultText());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getReasonCode(), $this->responseTransfer->getBaseResponse()->getReasonCode());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getReasonText(), $this->responseTransfer->getBaseResponse()->getReasonText());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getTransactionShortId(), $this->responseTransfer->getBaseResponse()->getTransactionShortId());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getTransactionId(), $this->responseTransfer->getBaseResponse()->getTransactionId());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getCustomerMessage(), $this->responseTransfer->getBaseResponse()->getCustomerMessage());
-
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getSuccessful(), $this->responseTransfer->getBaseResponse()->getSuccessful());
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getResultCode(),
+            $this->responseTransfer->getBaseResponse()->getResultCode()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getResultText(),
+            $this->responseTransfer->getBaseResponse()->getResultText()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getReasonCode(),
+            $this->responseTransfer->getBaseResponse()->getReasonCode()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getReasonText(),
+            $this->responseTransfer->getBaseResponse()->getReasonText()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getTransactionShortId(),
+            $this->responseTransfer->getBaseResponse()->getTransactionShortId()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getTransactionId(),
+            $this->responseTransfer->getBaseResponse()->getTransactionId()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getCustomerMessage(),
+            $this->responseTransfer->getBaseResponse()->getCustomerMessage()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getSuccessful(),
+            $this->responseTransfer->getBaseResponse()->getSuccessful()
+        );
         $this->assertTrue($this->expectedResponseTransfer->getBaseResponse()->getSuccessful());
     }
 
@@ -83,15 +107,38 @@ class ProfileTest extends AbstractFacadeTest
 
         $this->assertEquals($this->expectedResponseTransfer, $this->responseTransfer);
 
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getResultCode(), $this->responseTransfer->getBaseResponse()->getResultCode());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getResultText(), $this->responseTransfer->getBaseResponse()->getResultText());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getReasonCode(), $this->responseTransfer->getBaseResponse()->getReasonCode());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getReasonText(), $this->responseTransfer->getBaseResponse()->getReasonText());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getTransactionShortId(), $this->responseTransfer->getBaseResponse()->getTransactionShortId());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getTransactionId(), $this->responseTransfer->getBaseResponse()->getTransactionId());
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getCustomerMessage(), $this->responseTransfer->getBaseResponse()->getCustomerMessage());
-
-        $this->assertSame($this->expectedResponseTransfer->getBaseResponse()->getSuccessful(), $this->responseTransfer->getBaseResponse()->getSuccessful());
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getResultCode(),
+            $this->responseTransfer->getBaseResponse()->getResultCode()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getResultText(),
+            $this->responseTransfer->getBaseResponse()->getResultText()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getReasonCode(),
+            $this->responseTransfer->getBaseResponse()->getReasonCode()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getReasonText(),
+            $this->responseTransfer->getBaseResponse()->getReasonText()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getTransactionShortId(),
+            $this->responseTransfer->getBaseResponse()->getTransactionShortId()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getTransactionId(),
+            $this->responseTransfer->getBaseResponse()->getTransactionId()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getCustomerMessage(),
+            $this->responseTransfer->getBaseResponse()->getCustomerMessage()
+        );
+        $this->assertSame(
+            $this->expectedResponseTransfer->getBaseResponse()->getSuccessful(),
+            $this->responseTransfer->getBaseResponse()->getSuccessful()
+        );
         $this->assertFalse($this->expectedResponseTransfer->getBaseResponse()->getSuccessful());
     }
 
@@ -121,9 +168,12 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @return void
      */
-    protected function testResponseInstance()
+    protected function testResponseInstance(): void
     {
-        $this->assertInstanceOf('Generated\Shared\Transfer\RatepayProfileResponseTransfer', $this->responseTransfer);
+        $this->assertInstanceOf(
+            'Generated\Shared\Transfer\RatepayProfileResponseTransfer',
+            $this->responseTransfer
+        );
     }
 
     /**
@@ -145,20 +195,11 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\RatepayFacade $facade
      *
-     * @return \Generated\Shared\Transfer\RatepayProfileResponseTransfer
+     * @return \Generated\Shared\Transfer\RatepayResponseTransfer
      */
-    protected function runFacadeMethod($facade)
+    protected function runFacadeMethod($facade): RatepayResponseTransfer
     {
         return $facade->requestProfile();
-    }
-
-    /**
-     * @param \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay $ratepayPaymentEntity
-     *
-     * @return void
-     */
-    protected function setRatepayPaymentEntityData($ratepayPaymentEntity)
-    {
     }
 
     /**
@@ -172,16 +213,25 @@ class ProfileTest extends AbstractFacadeTest
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return void
      */
     protected function getRatepayPaymentMethodTransfer()
     {
     }
 
     /**
-     * @return mixed
+     * @return void
      */
     protected function getPaymentTransferFromQuote()
+    {
+    }
+
+    /**
+     * @param \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay $ratepayPaymentEntity
+     *
+     * @return void
+     */
+    protected function setRatepayPaymentEntityData($ratepayPaymentEntity)
     {
     }
 }

@@ -9,20 +9,19 @@ namespace SprykerEco\Yves\Ratepay\Form;
 
 use Generated\Shared\Transfer\RatepayPaymentElvTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use SprykerEco\Shared\Ratepay\RatepayConfig;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ElvSubForm extends SubFormAbstract
 {
-    const PAYMENT_METHOD = 'elv';
+    public const PAYMENT_METHOD = 'elv';
 
-    const FIELD_BUNK_ACCOUNT_HOLDER = 'bank_account_holder';
-    const FIELD_BUNK_ACCOUNT_BIC = 'bank_account_bic';
-    const FIELD_BUNK_ACCOUNT_IBAN = 'bank_account_iban';
+    public const FIELD_BUNK_ACCOUNT_HOLDER = 'bank_account_holder';
+    public const FIELD_BUNK_ACCOUNT_BIC = 'bank_account_bic';
+    public const FIELD_BUNK_ACCOUNT_IBAN = 'bank_account_iban';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver

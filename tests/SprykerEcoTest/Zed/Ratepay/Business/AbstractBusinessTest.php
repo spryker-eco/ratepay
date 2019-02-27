@@ -31,7 +31,6 @@ use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Order\Saver;
 use SprykerEco\Zed\Ratepay\Business\RatepayBusinessFactory;
-use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 /**
  * @group Functional
@@ -43,7 +42,7 @@ use SprykerTest\Shared\Testify\Helper\ConfigHelper;
  */
 abstract class AbstractBusinessTest extends AbstractWithConfigTest
 {
-    const PAYMENT_METHOD = '';
+    public const PAYMENT_METHOD = '';
 
     /**
      * @var \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay
@@ -92,28 +91,6 @@ abstract class AbstractBusinessTest extends AbstractWithConfigTest
         $this->paymentEntity = SpyPaymentRatepayQuery::create()->findOneByFkSalesOrder(
             $this->checkoutResponseTransfer->getSaveOrder()->getIdSalesOrder()
         );
-    }
-
-    /**
-     * @return void
-     */
-    protected function _before(): void
-    {
-        parent::_before();
-
-        $config = $this->getConfigOptions();
-        foreach ($config as $key => $value) {
-            $this->getModule('\\' . ConfigHelper::class)
-                ->setConfig($key, $value);
-        }
-    }
-
-    /**
-     * @return array
-     */
-    protected function getConfigOptions(): array
-    {
-        return (new RatepayConfigurationBuilder())->getRatepayConfigurationOptions();
     }
 
     /**

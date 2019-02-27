@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\Ratepay\Business\Payment;
 
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -25,7 +24,6 @@ use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepayQuery;
 use Spryker\Zed\Money\Business\MoneyFacade;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Adapter\Http\Guzzle;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
@@ -43,10 +41,8 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
-use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
-use SprykerTest\Shared\Testify\Helper\ConfigHelper;
-use SprykerEcoTest\Zed\Ratepay\Business\RatepayConfigurationBuilder;
 use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
+use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
 
 /**
  * @group Unit
@@ -81,29 +77,6 @@ class BasePaymentTest extends AbstractWithConfigTest
             ->getShoppingBasket()
             ->setShippingTitle('Shipping costs');
         $this->mapperFactory = new MapperFactory($this->requestTransfer);
-    }
-
-    /**
-     * @return void
-     */
-    protected function _before(): void
-    {
-        parent::_before();
-
-        $config = $this->getConfigOptions();
-        foreach ($config as $key => $value) {
-            $this->getModule('\\' . ConfigHelper::class)
-                ->setConfig($key, $value);
-        }
-    }
-
-
-    /**
-     * @return array
-     */
-    protected function getConfigOptions(): array
-    {
-        return (new RatepayConfigurationBuilder())->getRatepayConfigurationOptions();
     }
 
     /**

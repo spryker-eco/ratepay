@@ -7,10 +7,6 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Oms\Command;
 
-use ArrayObject;
-use Generated\Shared\Transfer\CalculatedDiscountTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;

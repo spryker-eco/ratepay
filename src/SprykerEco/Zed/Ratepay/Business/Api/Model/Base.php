@@ -12,10 +12,10 @@ use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
 
 abstract class Base extends AbstractRequest
 {
-    const ROOT_TAG = 'request';
-    const CONTENT = 'content';
+    public const ROOT_TAG = 'request';
+    public const CONTENT = 'content';
 
-    const OPERATION = '';
+    public const OPERATION = '';
 
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface

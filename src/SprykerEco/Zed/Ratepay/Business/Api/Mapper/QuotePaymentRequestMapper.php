@@ -128,7 +128,7 @@ class QuotePaymentRequestMapper extends BaseMapper
     {
         $shippingExpenses = 0;
         foreach ($this->quoteTransfer->getExpenses() as $expenseTransfer) {
-            if($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
+            if ($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
                 $shippingExpenses += $expenseTransfer->getUnitGrossPrice();
             }
         }

@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction;
 
-use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 
 interface RequestPaymentTransactionInterface extends MethodMapperInterface

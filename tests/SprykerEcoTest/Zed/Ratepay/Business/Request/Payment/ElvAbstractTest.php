@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
@@ -25,7 +26,7 @@ abstract class ElvAbstractTest extends AbstractFacadeTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConfig::ELV;
+    public const PAYMENT_METHOD = RatepayConfig::ELV;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayPaymentElvTransfer

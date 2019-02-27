@@ -41,7 +41,7 @@ abstract class AbstractWithConfigTest extends Test
     }
 
     /**
-     * @return \Codeception\Module|\SprykerTest\Shared\Testify\Helper\ConfigHelper
+     * @return \Codeception\Module
      */
     protected function getConfigHelper()
     {

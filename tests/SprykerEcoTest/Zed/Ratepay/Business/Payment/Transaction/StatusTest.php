@@ -13,6 +13,7 @@ use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepayQuery;
 use PHPUnit_Framework_TestCase;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 use SprykerEco\Zed\Ratepay\Business\Status\TransactionStatus;
+use SprykerEco\Zed\Ratepay\Business\Status\TransactionStatusInterface;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 
 /**
@@ -28,9 +29,9 @@ use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
 class StatusTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @return bool
+     * @return void
      */
-    public function testPaymentConfirmed()
+    public function testPaymentConfirmed(): void
     {
         $constantResults = [
             ApiConstants::REQUEST_MODEL_PAYMENT_INIT => false,
@@ -49,9 +50,9 @@ class StatusTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return bool
+     * @return void
      */
-    public function testDeliveryConfirmed()
+    public function testDeliveryConfirmed(): void
     {
         $constantResults = [
             ApiConstants::REQUEST_MODEL_PAYMENT_INIT => false,
@@ -70,9 +71,9 @@ class StatusTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return bool
+     * @return void
      */
-    public function testCancellationConfirmed()
+    public function testCancellationConfirmed(): void
     {
         $constantResults = [
             ApiConstants::REQUEST_MODEL_PAYMENT_INIT => false,
@@ -91,9 +92,9 @@ class StatusTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return bool
+     * @return void
      */
-    public function testRefundApproved()
+    public function testRefundApproved(): void
     {
         $constantResults = [
             ApiConstants::REQUEST_MODEL_PAYMENT_INIT => false,
@@ -114,13 +115,11 @@ class StatusTest extends PHPUnit_Framework_TestCase
     /**
      * @param \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay $queryContainerMock
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Status\TransactionStatus
+     * @return \SprykerEco\Zed\Ratepay\Business\Status\TransactionStatusInterface
      */
-    protected function createStatusTransaction($queryContainerMock)
+    protected function createStatusTransaction($queryContainerMock): TransactionStatusInterface
     {
-        return new TransactionStatus(
-            $queryContainerMock
-        );
+        return new TransactionStatus($queryContainerMock);
     }
 
     /**
@@ -139,15 +138,19 @@ class StatusTest extends PHPUnit_Framework_TestCase
     /**
      * @param int $paymentResultCode
      *
-     * @return \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay
+     * @return \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface
      */
-    protected function getQueryContainerMock($paymentResultCode)
+    protected function getQueryContainerMock($paymentResultCode): RatepayQueryContainerInterface
     {
-        $queryContainer = $this->getMockBuilder(RatepayQueryContainerInterface::class)->getMock();
-        $queryPaymentsMock = $this->getMockBuilder(SpyPaymentRatepayQuery::class)->setMethods(['findByFkSalesOrder', 'getFirst'])->getMock();
+        $queryContainer = $this
+            ->getMockBuilder(RatepayQueryContainerInterface::class)
+            ->getMock();
+
+        $queryPaymentsMock = $this->getMockBuilder(SpyPaymentRatepayQuery::class)
+            ->setMethods(['findByFkSalesOrder', 'getFirst'])
+            ->getMock();
 
         $ratepayPaymentEntity = new SpyPaymentRatepay();
-
         $ratepayPaymentEntity->setResultCode($paymentResultCode);
 
         $queryPaymentsMock->method('findByFkSalesOrder')->willReturnSelf();

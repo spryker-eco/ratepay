@@ -14,11 +14,11 @@ use Symfony\Component\Yaml\Yaml;
 
 class Install implements InstallInterface
 {
-    const CREATED = 'created';
-    const TRANSLATIONS = 'translations';
-    const TRANSLATION = 'translation';
-    const UPDATED = 'updated';
-    const TEXT = 'text';
+    public const CREATED = 'created';
+    public const TRANSLATIONS = 'translations';
+    public const TRANSLATION = 'translation';
+    public const UPDATED = 'updated';
+    public const TEXT = 'text';
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryInterface
      */

@@ -14,7 +14,7 @@ use SprykerEco\Zed\Ratepay\Business\Request\TransactionHandlerAbstract;
 
 class ProfileTransaction extends TransactionHandlerAbstract implements ProfileTransactionInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PROFILE;
+    public const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PROFILE;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayResponseTransfer

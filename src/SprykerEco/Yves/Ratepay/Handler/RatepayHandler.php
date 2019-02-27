@@ -18,8 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RatepayHandler implements RatepayHandlerInterface
 {
-    const INSTALLMENT_CALCULATOR_ERROR_HASH = 0;
-    const CHECKOUT_PARTIAL_SUMMARY_PATH = 'Ratepay/partial/summary';
+    public const INSTALLMENT_CALCULATOR_ERROR_HASH = 0;
+    public const CHECKOUT_PARTIAL_SUMMARY_PATH = 'Ratepay/partial/summary';
 
     /**
      * @var \SprykerEco\Client\Ratepay\RatepayClientInterface

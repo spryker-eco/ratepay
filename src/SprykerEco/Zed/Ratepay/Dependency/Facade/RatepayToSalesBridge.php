@@ -10,12 +10,12 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 class RatepayToSalesBridge implements RatepayToSalesInterface
 {
     /**
-     * @var \Spryker\Zed\Sales\Business\SalesFacade
+     * @var \Spryker\Zed\Sales\Business\SalesFacadeInterface
      */
     protected $salesFacade;
 
     /**
-     * @param \Spryker\Zed\Sales\Business\SalesFacade $salesFacade
+     * @param \Spryker\Zed\Sales\Business\SalesFacadeInterface $salesFacade
      */
     public function __construct($salesFacade)
     {

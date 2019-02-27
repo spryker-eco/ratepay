@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use SprykerEco\Shared\Ratepay\RatepayConfig;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,17 +20,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class InstallmentSubForm extends SubFormAbstract
 {
-    const PAYMENT_METHOD = 'installment';
+    public const PAYMENT_METHOD = 'installment';
 
-    const OPTION_DEBIT_PAY_TYPE = 'debit_pay_type';
-    const OPTION_CALCULATION_TYPE = 'installment_calculation_type';
-    const OPTION_MONTH_ALLOWED = 'interest_month';
+    public const OPTION_DEBIT_PAY_TYPE = 'debit_pay_type';
+    public const OPTION_CALCULATION_TYPE = 'installment_calculation_type';
+    public const OPTION_MONTH_ALLOWED = 'interest_month';
 
-    const FIELD_INTEREST_RATE = 'interest_rate';
-    const FIELD_INTEREST_RATE_DEFAULT = 'interest_rate_default';
-    const FIELD_BANK_ACCOUNT_HOLDER = 'bank_account_holder';
-    const FIELD_BANK_ACCOUNT_BIC = 'bank_account_bic';
-    const FIELD_BANK_ACCOUNT_IBAN = 'bank_account_iban';
+    public const FIELD_INTEREST_RATE = 'interest_rate';
+    public const FIELD_INTEREST_RATE_DEFAULT = 'interest_rate_default';
+    public const FIELD_BANK_ACCOUNT_HOLDER = 'bank_account_holder';
+    public const FIELD_BANK_ACCOUNT_BIC = 'bank_account_bic';
+    public const FIELD_BANK_ACCOUNT_IBAN = 'bank_account_iban';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -50,7 +49,7 @@ class InstallmentSubForm extends SubFormAbstract
                 }
                 $data = $form->getData();
 
-                if (RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT == $data->getDebitPayType()) {
+                if ($data->getDebitPayType() == RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT) {
                     return [$this->getPropertyPath(), RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT];
                 }
 

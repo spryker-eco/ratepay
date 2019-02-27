@@ -197,7 +197,7 @@ class OrderPaymentRequestMapper extends BaseMapper
     {
         $shippingExpenses = 0;
         foreach ($this->orderTransfer->getExpenses() as $expenseTransfer) {
-            if($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
+            if ($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
                 $shippingExpenses += $expenseTransfer->getUnitGrossPrice();
             }
         }

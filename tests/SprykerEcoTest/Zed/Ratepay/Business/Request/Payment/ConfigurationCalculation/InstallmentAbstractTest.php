@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
@@ -26,7 +27,7 @@ abstract class InstallmentAbstractTest extends AbstractFacadeTest
     /**
      * @const Payment method code.
      */
-    const PAYMENT_METHOD = RatepayConfig::INSTALLMENT;
+    public const PAYMENT_METHOD = RatepayConfig::INSTALLMENT;
 
     /**
      * @param \Generated\Shared\Transfer\PaymentTransfer $payment

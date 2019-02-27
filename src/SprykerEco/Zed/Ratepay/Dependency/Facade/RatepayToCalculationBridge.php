@@ -10,12 +10,12 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 class RatepayToCalculationBridge implements RatepayToCalculationInterface
 {
     /**
-     * @var \Spryker\Zed\Calculation\Business\CalculationFacade
+     * @var \Spryker\Zed\Calculation\Business\CalculationFacadeInterface
      */
     protected $calculationFacade;
 
     /**
-     * @param \Spryker\Zed\Calculation\Business\CalculationFacade $calculationFacade
+     * @param \Spryker\Zed\Calculation\Business\CalculationFacadeInterface $calculationFacade
      */
     public function __construct($calculationFacade)
     {

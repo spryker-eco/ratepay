@@ -15,10 +15,14 @@ use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutSaveOrderPluginInterf
 /**
  * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\Ratepay\RatepayConfig getConfig()
+ * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  */
 class RatepaySaveOrderPlugin extends AbstractPlugin implements CheckoutSaveOrderPluginInterface
 {
     /**
+     * @api
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
      *

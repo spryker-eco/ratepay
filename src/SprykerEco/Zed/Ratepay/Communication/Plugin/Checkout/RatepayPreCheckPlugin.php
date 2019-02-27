@@ -7,13 +7,9 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication\Plugin\Checkout;
 
-use ArrayObject;
 use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Generated\Shared\Transfer\RatepayResponseTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -22,10 +18,14 @@ use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPreCheckPluginInterfa
 /**
  * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\Ratepay\RatepayConfig getConfig()
+ * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  */
 class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPluginInterface
 {
     /**
+     * @api
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponse
      *
@@ -37,6 +37,8 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
     }
 
     /**
+     * @api
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
      *

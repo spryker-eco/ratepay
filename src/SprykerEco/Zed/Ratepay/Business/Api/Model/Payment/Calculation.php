@@ -14,7 +14,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Calculation extends Base
 {
-    const OPERATION = Constants::REQUEST_MODEL_CALCULATION_REQUEST;
+    public const OPERATION = Constants::REQUEST_MODEL_CALCULATION_REQUEST;
 
     /**
      * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface
