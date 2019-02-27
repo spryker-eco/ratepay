@@ -17,9 +17,12 @@ use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
+use Codeception\TestCase\Test;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
 use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
+use Unit\SprykerEco\Zed\Ratepay\Business\RatepayConfigurationBuilder;
+use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 /**
  * @group Unit
@@ -52,6 +55,29 @@ abstract class AbstractMapperTest extends AbstractWithConfigTest
 
         $this->requestTransfer = new RatepayRequestTransfer();
         $this->mapperFactory = new MapperFactory($this->requestTransfer);
+    }
+
+    /**
+     * @throws \Codeception\Exception\ModuleException
+     * @return void
+     */
+    protected function _before(): void
+    {
+        parent::_before();
+
+        $config = $this->getConfigOptions();
+        foreach ($config as $key => $value) {
+            $this->getModule('\\' . ConfigHelper::class)
+                ->setConfig($key, $value);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getConfigOptions(): array
+    {
+        return (new RatepayConfigurationBuilder())->getRatepayConfigurationOptions();
     }
 
     /**

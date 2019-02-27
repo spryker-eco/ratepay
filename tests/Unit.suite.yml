@@ -1,0 +1,7 @@
+class_name: UnitTester
+modules:
+    enabled:
+    - Asserts
+    - \SprykerTest\Shared\Testify\Helper\Environment
+    - \Ratepay\Module\Unit
+    - \SprykerTest\Shared\Testify\Helper\ConfigHelper

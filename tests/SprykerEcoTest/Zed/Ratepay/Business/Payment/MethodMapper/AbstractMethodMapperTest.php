@@ -79,6 +79,8 @@ abstract class AbstractMethodMapperTest extends BasePaymentTest
             ->setBillingAddress($this->getAddressTransfer('billing'))
             ->setShippingAddress($this->getAddressTransfer('shipping'))
             ->setCustomer($this->getCustomerTransfer())
+            ->setUnitGrossPrice(1400)
+            ->setUnitGrossPriceWithProductOptionAndDiscountAmounts(1200)
             ->setPayment($this->getPaymentTransfer())
             ->addItem($this->getItemTransfer(1))
             ->addItem($this->getItemTransfer(2));
@@ -337,10 +339,9 @@ abstract class AbstractMethodMapperTest extends BasePaymentTest
             ->setGroupKey($itemPrefix . '33333333333')
             ->setQuantity(3)
             ->setUnitGrossPrice(1000)
-            ->setTaxRate('19')
-            ->setUnitTotalDiscountAmountWithProductOption(100)
+            ->setUnitPriceToPayAggregation(1000)
             ->setUnitGrossPriceWithProductOptionAndDiscountAmounts(900)
-            ->setUnitGrossPrice(1000);
+            ->setTaxRate('19');
 
         return $itemTransfer;
     }

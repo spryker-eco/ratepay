@@ -43,8 +43,10 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
+use Unit\SprykerEco\Zed\Ratepay\Business\Api\Response\Response;
+use SprykerTest\Shared\Testify\Helper\ConfigHelper;
+use Unit\SprykerEco\Zed\Ratepay\Business\RatepayConfigurationBuilder;
 use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
-use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
 
 /**
  * @group Unit
@@ -79,6 +81,29 @@ class BasePaymentTest extends AbstractWithConfigTest
             ->getShoppingBasket()
             ->setShippingTitle('Shipping costs');
         $this->mapperFactory = new MapperFactory($this->requestTransfer);
+    }
+
+    /**
+     * @return void
+     */
+    protected function _before(): void
+    {
+        parent::_before();
+
+        $config = $this->getConfigOptions();
+        foreach ($config as $key => $value) {
+            $this->getModule('\\' . ConfigHelper::class)
+                ->setConfig($key, $value);
+        }
+    }
+
+
+    /**
+     * @return array
+     */
+    protected function getConfigOptions(): array
+    {
+        return (new RatepayConfigurationBuilder())->getRatepayConfigurationOptions();
     }
 
     /**
@@ -218,6 +243,8 @@ class BasePaymentTest extends AbstractWithConfigTest
             ->setQuantity(3)
             ->setTaxRate(19)
             ->setUnitGrossPrice(1000)
+            ->setUnitPriceToPayAggregation(1000)
+            ->setUnitGrossPriceWithProductOptionAndDiscountAmounts(1000)
             ->setGroupKey('133333333333');
         return $item;
     }

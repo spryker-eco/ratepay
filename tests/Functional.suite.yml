@@ -1,0 +1,6 @@
+class_name: FunctionalTester
+modules:
+    enabled:
+    - Filesystem
+    - \Ratepay\Module\Functional
+    - \SprykerTest\Shared\Testify\Helper\ConfigHelper

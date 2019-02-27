@@ -40,7 +40,8 @@ class BasketItemMapperTest extends AbstractMapperTest
             ->setQuantity('q4')
             ->setTaxRate('q5')
             ->setUnitGrossPrice(1200)
-            ->setUnitTotalDiscountAmountWithProductOption(1400)
+            ->setUnitPriceToPayAggregation(1200)
+            ->setUnitGrossPriceWithProductOptionAndDiscountAmounts(1200)
             ->setProductOptions(new ArrayObject());
 
         $this->mapperFactory
