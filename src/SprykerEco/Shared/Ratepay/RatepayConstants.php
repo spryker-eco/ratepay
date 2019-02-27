@@ -27,12 +27,6 @@ interface RatepayConstants
     const INSTALLMENT = 'INSTALLMENT';
     const PREPAYMENT = 'PREPAYMENT';
 
-    const PROFILE_ID = 'RATEPAY_PROFILE_ID';
-    const SECURITY_CODE = 'RATEPAY_SECURITY_CODE';
-    const SNIPPET_ID = 'RATEPAY_SNIPPET_ID';
-    const SHOP_ID = 'RATEPAY_SHOP_ID';
-    const SYSTEM_ID = 'RATEPAY_SYSTEM_ID';
-
     /**
      * API modes urls.
      */

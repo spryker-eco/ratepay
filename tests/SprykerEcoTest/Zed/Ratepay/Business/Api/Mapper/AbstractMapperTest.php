@@ -17,11 +17,10 @@ use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Codeception\TestCase\Test;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperFactory;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
 use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
-use Unit\SprykerEco\Zed\Ratepay\Business\RatepayConfigurationBuilder;
+use SprykerEcoTest\Zed\Ratepay\Business\RatepayConfigurationBuilder;
 use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 /**

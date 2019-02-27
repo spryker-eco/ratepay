@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Functional\SprykerEco\Zed\Ratepay\Business;
+namespace SprykerEcoTest\Zed\Ratepay\Business;
 
 use SprykerEco\Shared\Ratepay\RatepayConstants;
 

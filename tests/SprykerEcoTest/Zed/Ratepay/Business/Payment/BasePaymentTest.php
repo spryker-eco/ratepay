@@ -43,9 +43,9 @@ use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Installment;
 use SprykerEco\Zed\Ratepay\Business\Request\Payment\Method\Invoice;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyBridge;
 use SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface;
-use Unit\SprykerEco\Zed\Ratepay\Business\Api\Response\Response;
+use SprykerEcoTest\Zed\Ratepay\Business\Api\Response\Response;
 use SprykerTest\Shared\Testify\Helper\ConfigHelper;
-use Unit\SprykerEco\Zed\Ratepay\Business\RatepayConfigurationBuilder;
+use SprykerEcoTest\Zed\Ratepay\Business\RatepayConfigurationBuilder;
 use SprykerEcoTest\Zed\Ratepay\Business\AbstractWithConfigTest;
 
 /**
