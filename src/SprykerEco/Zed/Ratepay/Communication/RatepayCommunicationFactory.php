@@ -21,6 +21,8 @@ use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Order\PartialOrderCalculator;
 use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor;
 use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
+use ArrayObject;
+use Generated\Shared\Transfer\ItemTransfer;
 
 /**
  * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
@@ -93,6 +95,14 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
             $quoteTransfer,
             $this->getPaymentMethodExtractor()
         );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\RatepayPaymentInitTransfer
+     */
+    public function createPaymentInitTransfer()
+    {
+        return new RatepayPaymentInitTransfer();
     }
 
     /**
