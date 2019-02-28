@@ -12,6 +12,7 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 /**
  * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  * @method \SprykerEco\Zed\Ratepay\Communication\RatepayCommunicationFactory getFactory()
+ * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  */
 class ProfileController extends AbstractController
 {

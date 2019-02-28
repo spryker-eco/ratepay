@@ -10,9 +10,9 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 
-class Address extends AbstractBuilder implements BuilderInterface
+class Address extends AbstractBuilder implements AddressInterface
 {
-    const ROOT_TAG = 'address';
+    public const ROOT_TAG = 'address';
 
     /**
      * @var string

@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Method;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 /**
@@ -19,16 +19,11 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 class Installment extends AbstractMethod
 {
     /**
-     * @const Payment method code.
-     */
-    const METHOD = RatepayConstants::METHOD_INSTALLMENT;
-
-    /**
      * @return string
      */
     public function getMethodName()
     {
-        return static::METHOD;
+        return RatepayConfig::INSTALLMENT;
     }
 
     /**
@@ -91,12 +86,12 @@ class Installment extends AbstractMethod
         parent::mapPaymentData($ratepayPaymentRequestTransfer);
 
         $this->mapperFactory
-            ->getInstallmentPaymentMapper($ratepayPaymentRequestTransfer)
+            ->createInstallmentPaymentMapper($ratepayPaymentRequestTransfer)
             ->map();
         $this->mapperFactory
-            ->getInstallmentDetailMapper($ratepayPaymentRequestTransfer)
+            ->createInstallmentDetailMapper($ratepayPaymentRequestTransfer)
             ->map();
-        if ($ratepayPaymentRequestTransfer->getDebitPayType() == RatepayConstants::DEBIT_PAY_TYPE_DIRECT_DEBIT) {
+        if ($ratepayPaymentRequestTransfer->getDebitPayType() == RatepayConfig::DEBIT_PAY_TYPE_DIRECT_DEBIT) {
             $this->mapBankAccountData($ratepayPaymentRequestTransfer);
         }
     }
@@ -109,7 +104,7 @@ class Installment extends AbstractMethod
      */
     protected function mapConfigurationData($quoteTransfer, $paymentData)
     {
-        $this->mapperFactory->getQuoteHeadMapper($quoteTransfer, $paymentData)->map();
+        $this->mapperFactory->createQuoteHeadMapper($quoteTransfer, $paymentData)->map();
     }
 
     /**
@@ -120,10 +115,10 @@ class Installment extends AbstractMethod
      */
     protected function mapCalculationData($quoteTransfer, $paymentData)
     {
-        $this->mapperFactory->getQuoteHeadMapper($quoteTransfer, $paymentData)->map();
+        $this->mapperFactory->createQuoteHeadMapper($quoteTransfer, $paymentData)->map();
 
         $this->mapperFactory
-            ->getInstallmentCalculationMapper($quoteTransfer, $paymentData)
+            ->createInstallmentCalculationMapper($quoteTransfer, $paymentData)
             ->map();
     }
 

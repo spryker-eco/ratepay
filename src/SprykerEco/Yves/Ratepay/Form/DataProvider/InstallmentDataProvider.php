@@ -13,12 +13,12 @@ use Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerEco\Client\Ratepay\RatepayClientInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Yves\Ratepay\Form\InstallmentSubForm;
 
 class InstallmentDataProvider extends DataProviderAbstract
 {
-    const INSTALLMENT_CONFIGURATION = 'installment_configuration';
+    public const INSTALLMENT_CONFIGURATION = 'installment_configuration';
 
     /**
      * @var \SprykerEco\Client\Ratepay\RatepayClientInterface $ratepayClient
@@ -70,8 +70,8 @@ class InstallmentDataProvider extends DataProviderAbstract
         $configurationResponseTransfer = $this->getInstallmentConfiguration($quoteTransfer);
         $this->setInstallmentDefaultAmount($quoteTransfer, $configurationResponseTransfer);
         $options = [
-            InstallmentSubForm::OPTION_DEBIT_PAY_TYPE => array_combine(RatepayConstants::DEBIT_PAY_TYPES, RatepayConstants::DEBIT_PAY_TYPES),
-            InstallmentSubForm::OPTION_CALCULATION_TYPE => array_combine(RatepayConstants::INSTALLMENT_CALCULATION_TYPES, RatepayConstants::INSTALLMENT_CALCULATION_TYPES),
+            InstallmentSubForm::OPTION_DEBIT_PAY_TYPE => array_combine(RatepayConfig::DEBIT_PAY_TYPES, RatepayConfig::DEBIT_PAY_TYPES),
+            InstallmentSubForm::OPTION_CALCULATION_TYPE => array_combine(RatepayConfig::INSTALLMENT_CALCULATION_TYPES, RatepayConfig::INSTALLMENT_CALCULATION_TYPES),
             InstallmentSubForm::OPTION_MONTH_ALLOWED => $configurationResponseTransfer->getMonthAllowed(),
         ];
 
@@ -87,7 +87,7 @@ class InstallmentDataProvider extends DataProviderAbstract
     {
         $configurationResponseTransfer = $this->sessionClient->get(self::INSTALLMENT_CONFIGURATION);
         if (!$configurationResponseTransfer) {
-            $quoteTransfer->getPayment()->setPaymentMethod(RatepayConstants::INSTALLMENT);
+            $quoteTransfer->getPayment()->setPaymentMethod(RatepayConfig::INSTALLMENT);
             $configurationResponseTransfer = $this->ratepayClient->installmentConfiguration($quoteTransfer);
             $this->sessionClient->set(self::INSTALLMENT_CONFIGURATION, $configurationResponseTransfer);
         }

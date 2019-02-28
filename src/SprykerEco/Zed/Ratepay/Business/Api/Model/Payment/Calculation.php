@@ -7,25 +7,25 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Payment;
 
-use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
-use SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Calculation extends Base
 {
-    const OPERATION = Constants::REQUEST_MODEL_CALCULATION_REQUEST;
+    public const OPERATION = Constants::REQUEST_MODEL_CALCULATION_REQUEST;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface
      */
     protected $installmentCalculation;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head $head
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation $installmentCalculation
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface $head
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface $installmentCalculation
      */
-    public function __construct(Head $head, InstallmentCalculation $installmentCalculation)
+    public function __construct(HeadInterface $head, InstallmentCalculationInterface $installmentCalculation)
     {
         parent::__construct($head);
         $this->installmentCalculation = $installmentCalculation;
@@ -37,7 +37,7 @@ class Calculation extends Base
     protected function buildData()
     {
         $result = parent::buildData();
-        $result['content'] = [
+        $result[self::CONTENT] = [
             $this->getInstallmentCalculation()->getRootTag() => $this->getInstallmentCalculation(),
         ];
 
@@ -45,22 +45,10 @@ class Calculation extends Base
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculationInterface
      */
     public function getInstallmentCalculation()
     {
         return $this->installmentCalculation;
-    }
-
-    /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\InstallmentCalculation $installmentCalculation
-     *
-     * @return $this
-     */
-    public function setInstallmentCalculation($installmentCalculation)
-    {
-        $this->installmentCalculation = $installmentCalculation;
-
-        return $this;
     }
 }

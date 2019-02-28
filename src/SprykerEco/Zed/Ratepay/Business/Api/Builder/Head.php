@@ -9,9 +9,9 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 
-class Head extends AbstractBuilder implements BuilderInterface
+class Head extends AbstractBuilder implements HeadInterface
 {
-    const ROOT_TAG = 'head';
+    public const ROOT_TAG = 'head';
 
     /**
      * @return array

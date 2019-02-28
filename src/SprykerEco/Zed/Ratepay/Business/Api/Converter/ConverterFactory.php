@@ -14,7 +14,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ConfigurationResponse;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ResponseInterface;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface;
 
-class ConverterFactory
+class ConverterFactory implements ConverterFactoryInterface
 {
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface
@@ -32,9 +32,9 @@ class ConverterFactory
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ResponseInterface $response
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface
      */
-    public function getTransferObjectConverter(
+    public function createTransferObjectConverter(
         ResponseInterface $response
     ) {
         return new TransferObjectConverter(
@@ -47,16 +47,16 @@ class ConverterFactory
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\CalculationResponse $response
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Calculation $request
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\InstallmentCalculationResponseConverter
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface
      */
-    public function getInstallmentCalculationResponseConverter(
+    public function createInstallmentCalculationResponseConverter(
         CalculationResponse $response,
         Calculation $request
     ) {
         return new InstallmentCalculationResponseConverter(
             $response,
             $this->moneyFacade,
-            $this->getTransferObjectConverter($response),
+            $this->createTransferObjectConverter($response),
             $request
         );
     }
@@ -65,16 +65,16 @@ class ConverterFactory
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ConfigurationResponse $response
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Configuration $request
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\InstallmentConfigurationResponseConverter
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface
      */
-    public function getInstallmentConfigurationResponseConverter(
+    public function createInstallmentConfigurationResponseConverter(
         ConfigurationResponse $response,
         Configuration $request
     ) {
         return new InstallmentConfigurationResponseConverter(
             $response,
             $this->moneyFacade,
-            $this->getTransferObjectConverter($response),
+            $this->createTransferObjectConverter($response),
             $request
         );
     }
@@ -82,15 +82,15 @@ class ConverterFactory
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ResponseInterface $response
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ProfileResponseConverter
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Converter\ConverterInterface
      */
-    public function getProfileResponseConverter(
+    public function createProfileResponseConverter(
         ResponseInterface $response
     ) {
         return new ProfileResponseConverter(
             $response,
             $this->moneyFacade,
-            $this->getTransferObjectConverter($response)
+            $this->createTransferObjectConverter($response)
         );
     }
 }

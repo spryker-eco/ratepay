@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Order\MethodMapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 class Invoice extends AbstractMapper
 {
@@ -18,7 +18,7 @@ class Invoice extends AbstractMapper
      */
     public function getMethodName()
     {
-        return RatepayConstants::INVOICE;
+        return RatepayConfig::INVOICE;
     }
 
     /**

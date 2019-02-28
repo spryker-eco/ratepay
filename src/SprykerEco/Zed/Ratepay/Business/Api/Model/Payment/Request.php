@@ -8,45 +8,49 @@
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Payment;
 
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer;
-use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Base;
 
 class Request extends Base
 {
-    const OPERATION = Constants::REQUEST_MODEL_PAYMENT_REQUEST;
+    public const OPERATION = Constants::REQUEST_MODEL_PAYMENT_REQUEST;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface
      */
     protected $customer;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface
      */
     protected $basket;
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface
      */
     protected $payment;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head $head
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Customer $customer
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasket $basket
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Payment $payment
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface $head
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\CustomerInterface $customer
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\ShoppingBasketInterface $basket
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\PaymentInterface $payment
      */
     public function __construct(
-        Head $head,
-        Customer $customer,
-        ShoppingBasket $basket,
-        Payment $payment
+        HeadInterface $head,
+        CustomerInterface $customer,
+        ShoppingBasketInterface $basket,
+        PaymentInterface $payment
     ) {
 
         parent::__construct($head);
+
         $this->customer = $customer;
         $this->basket = $basket;
         $this->payment = $payment;
@@ -58,7 +62,7 @@ class Request extends Base
     protected function buildData()
     {
         $result = parent::buildData();
-        $result['content'] = [
+        $result[self::CONTENT] = [
             $this->getCustomer()->getRootTag() => $this->getCustomer(),
             $this->getShoppingBasket()->getRootTag() => $this->getShoppingBasket(),
             $this->getPayment()->getRootTag() => $this->getPayment(),

@@ -7,16 +7,13 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication;
 
-use ArrayObject;
-use Generated\Shared\Transfer\CalculatedDiscountTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use Generated\Shared\Transfer\RatepayPaymentRequestTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentInitMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentInitMapper;
@@ -28,6 +25,7 @@ use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
 /**
  * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
  * @method \SprykerEco\Zed\Ratepay\RatepayConfig getConfig()
+ * @method \SprykerEco\Zed\Ratepay\Business\RatepayFacadeInterface getFacade()
  */
 class RatepayCommunicationFactory extends AbstractCommunicationFactory
 {
@@ -53,19 +51,15 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     }
 
     /**
-     * @return \Spryker\Zed\Sales\Persistence\SalesQueryContainer
+     * @return \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface
      */
     public function getSalesQueryContainer()
     {
-        $salesQueryContainerHolder = $this->getProvidedDependency(
-            RatepayDependencyProvider::SALES_QUERY_CONTAINER
-        );
-
-        return $salesQueryContainerHolder->getSalesQueryContainer();
+        return $this->getProvidedDependency(RatepayDependencyProvider::SALES_QUERY_CONTAINER);
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor
+     * @return \SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractorInterface
      */
     public function getPaymentMethodExtractor()
     {
@@ -81,14 +75,14 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
      */
     protected function createPaymentMethodExtractor()
     {
-        return new PaymentMethodExtractor(RatepayConstants::PAYMENT_METHODS_MAP);
+        return new PaymentMethodExtractor(RatepayConfig::PAYMENT_METHODS_MAP);
     }
 
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentInitMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
     public function createPaymentInitMapperByQuote(
         RatepayPaymentInitTransfer $ratepayPaymentInitTransfer,
@@ -102,18 +96,10 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
     }
 
     /**
-     * @return \Generated\Shared\Transfer\RatepayPaymentInitTransfer
-     */
-    public function createPaymentInitTransfer()
-    {
-        return new RatepayPaymentInitTransfer();
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentInitMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
     public function createPaymentInitMapperByOrder(
         RatepayPaymentInitTransfer $ratepayPaymentInitTransfer,
@@ -133,7 +119,7 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
      * @param \Generated\Shared\Transfer\OrderTransfer $partialOrderTransfer
      * @param \Generated\Shared\Transfer\RatepayPaymentElvTransfer|\Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer|\Generated\Shared\Transfer\RatepayPaymentInvoiceTransfer|\Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer $paymentData
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
     public function createPaymentRequestMapperByQuote(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer,
@@ -159,7 +145,7 @@ class RatepayCommunicationFactory extends AbstractCommunicationFactory
      * @param \Generated\Shared\Transfer\OrderTransfer $partialOrderTransfer
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $orderEntity
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderPaymentRequestMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
     public function createPaymentRequestMapperByOrder(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer,

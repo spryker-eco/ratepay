@@ -1,6 +1,6 @@
 {
   "name": "spryker-eco/ratepay",
-  "description": "Ratepay bundle",
+  "description": "Ratepay module",
   "license": "proprietary",
   "require": {
     "spryker/checkout": "^3.0.0 || ^4.0.0",
@@ -19,7 +19,7 @@
     "spryker/sales-aggregator": "^4.0.0",
     "spryker/session": "^3.0.0 || ^4.0.0",
     "spryker/step-engine": "^2.0.0 || ^3.0.0",
-    "spryker/symfony": "^3.0.0",
+    "spryker/symfony": "^3.1.0",
     "spryker/zed-request": "^3.0.0"
   },
   "require-dev": {
@@ -37,13 +37,12 @@
   },
   "autoload": {
     "psr-0": {
-      "SprykerEco": "src/"
+      "SprykerEco\\": "src/SprykerEco/"
     }
   },
   "autoload-dev": {
     "psr-0": {
-      "Functional": "tests/",
-      "Unit": "tests/"
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
     }
   },
   "minimum-stability": "dev",
@@ -54,6 +53,8 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "process-timeout": 600
   }
 }

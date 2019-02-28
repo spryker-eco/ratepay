@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Handler\Transaction;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
 use SprykerEco\Zed\Ratepay\Business\Request\RequestMethodInterface;
 
-interface PaymentInitTransactionInterface
+interface PaymentInitTransactionInterface extends MethodMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer

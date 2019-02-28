@@ -18,12 +18,12 @@ use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToSalesQueryContainerBridge;
 
 class RatepayDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const FACADE_SALES = 'FACADE_SALES';
-    const FACADE_CALCULATION = 'FACADE_CALCULATION';
-    const FACADE_GLOSSARY = 'GLOSSARY_FACADE';
-    const FACADE_PRODUCT = 'FACADE_PRODUCT';
-    const FACADE_MONEY = 'FACADE_MONEY';
-    const SALES_QUERY_CONTAINER = 'SALES_QUERY_CONTAINER';
+    public const FACADE_SALES = 'FACADE_SALES';
+    public const FACADE_CALCULATION = 'FACADE_CALCULATION';
+    public const FACADE_GLOSSARY = 'GLOSSARY_FACADE';
+    public const FACADE_PRODUCT = 'FACADE_PRODUCT';
+    public const FACADE_MONEY = 'FACADE_MONEY';
+    public const SALES_QUERY_CONTAINER = 'SALES_QUERY_CONTAINER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container

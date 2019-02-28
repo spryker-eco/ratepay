@@ -10,12 +10,12 @@ namespace SprykerEco\Zed\Ratepay\Dependency\Facade;
 class RatepayToSalesQueryContainerBridge implements RatepayToSalesQueryContainerInterface
 {
     /**
-     * @var \Spryker\Zed\Sales\Persistence\SalesQueryContainer
+     * @var \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface
      */
     protected $salesQueryContainer;
 
     /**
-     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainer $salesQueryContainer
+     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface $salesQueryContainer
      */
     public function __construct($salesQueryContainer)
     {

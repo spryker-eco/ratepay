@@ -28,18 +28,18 @@ class InstallmentConfigurationResponseConverter extends BaseConverter
     /**
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ResponseInterface $response
      * @param \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToMoneyInterface $moneyFacade
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter $responseTransfer
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Converter\TransferObjectConverter $responseTransferConverter
      * @param \SprykerEco\Zed\Ratepay\Business\Api\Model\Payment\Configuration $request
      */
     public function __construct(
         ResponseInterface $response,
         RatepayToMoneyInterface $moneyFacade,
-        TransferObjectConverter $responseTransfer,
+        TransferObjectConverter $responseTransferConverter,
         Configuration $request
     ) {
         parent::__construct($response, $moneyFacade);
 
-        $this->responseTransfer = $responseTransfer;
+        $this->responseTransfer = $responseTransferConverter;
         $this->request = $request;
     }
 

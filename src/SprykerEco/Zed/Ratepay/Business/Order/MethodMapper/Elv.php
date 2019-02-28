@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Order\MethodMapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 class Elv extends AbstractMapper
 {
@@ -18,7 +18,7 @@ class Elv extends AbstractMapper
      */
     public function getMethodName()
     {
-        return RatepayConstants::ELV;
+        return RatepayConfig::ELV;
     }
 
     /**

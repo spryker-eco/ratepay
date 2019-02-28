@@ -22,7 +22,7 @@ use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
 /**
  * @method \SprykerEco\Zed\Ratepay\RatepayConfig getConfig()
  */
-class MapperFactory extends AbstractBusinessFactory
+class MapperFactory extends AbstractBusinessFactory implements MapperFactoryInterface
 {
     /**
      * @var \Generated\Shared\Transfer\RatepayRequestTransfer
@@ -46,9 +46,9 @@ class MapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\HeadMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getHeadMapper()
+    public function createHeadMapper()
     {
         return new HeadMapper(
             $this->getConfig(),
@@ -59,9 +59,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\PaymentInitHeadMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getPaymentInitHeadMapper(
+    public function createPaymentInitHeadMapper(
         RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
     ) {
         return new PaymentInitHeadMapper(
@@ -72,27 +72,12 @@ class MapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
-     *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\PaymentRequestHeadMapper
-     */
-    public function getPaymentRequestHeadMapper(
-        RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
-    ) {
-        return new PaymentRequestHeadMapper(
-            $ratepayPaymentRequestTransfer,
-            $this->getConfig(),
-            $this->requestTransfer
-        );
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $paymentData
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuoteHeadMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getQuoteHeadMapper(
+    public function createQuoteHeadMapper(
         QuoteTransfer $quoteTransfer,
         TransferInterface $paymentData
     ) {
@@ -108,9 +93,9 @@ class MapperFactory extends AbstractBusinessFactory
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      * @param \Orm\Zed\Ratepay\Persistence\SpyPaymentRatepay $paymentData
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\OrderHeadMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getOrderHeadMapper(
+    public function createOrderHeadMapper(
         OrderTransfer $orderTransfer,
         SpyPaymentRatepay $paymentData
     ) {
@@ -126,9 +111,9 @@ class MapperFactory extends AbstractBusinessFactory
      * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
      * @param string $type
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\AddressMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getAddressMapper(
+    public function createAddressMapper(
         AddressTransfer $addressTransfer,
         $type
     ) {
@@ -142,9 +127,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\BankAccountMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getBankAccountMapper(
+    public function createBankAccountMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new BankAccountMapper(
@@ -156,9 +141,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\BasketItemMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getBasketItemMapper(
+    public function createBasketItemMapper(
         ItemTransfer $itemTransfer
     ) {
         return new BasketItemMapper(
@@ -171,9 +156,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\BasketMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getBasketMapper(
+    public function createBasketMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new BasketMapper(
@@ -190,9 +175,9 @@ class MapperFactory extends AbstractBusinessFactory
      * @param bool $needToSendShipping
      * @param float|int $discountTaxRate
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\PartialBasketMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getPartialBasketMapper(
+    public function createPartialBasketMapper(
         OrderTransfer $orderTransfer,
         OrderTransfer $partialOrderTransfer,
         $ratepayPaymentTransfer,
@@ -213,9 +198,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\CustomerMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getCustomerMapper(
+    public function createCustomerMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new CustomerMapper(
@@ -227,9 +212,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\PaymentMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getPaymentMapper(
+    public function createPaymentMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new PaymentMapper(
@@ -243,9 +228,9 @@ class MapperFactory extends AbstractBusinessFactory
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\RatepayPaymentElvTransfer|\Generated\Shared\Transfer\RatepayPaymentInstallmentTransfer $ratepayPaymentTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\InstallmentCalculationMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getInstallmentCalculationMapper(
+    public function createInstallmentCalculationMapper(
         QuoteTransfer $quoteTransfer,
         $ratepayPaymentTransfer
     ) {
@@ -260,9 +245,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\InstallmentDetailMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getInstallmentDetailMapper(
+    public function createInstallmentDetailMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new InstallmentDetailMapper(
@@ -275,9 +260,9 @@ class MapperFactory extends AbstractBusinessFactory
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
      *
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\InstallmentPaymentMapper
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Mapper\MapperInterface
      */
-    public function getInstallmentPaymentMapper(
+    public function createInstallmentPaymentMapper(
         RatepayPaymentRequestTransfer $ratepayPaymentRequestTransfer
     ) {
         return new InstallmentPaymentMapper(

@@ -12,7 +12,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 class InitPaymentTransaction extends BaseTransaction implements PaymentInitTransactionInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PAYMENT_INIT;
+    public const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PAYMENT_INIT;
 
     /**
      * @param \Generated\Shared\Transfer\RatepayPaymentInitTransfer $ratepayPaymentInitTransfer
@@ -31,7 +31,7 @@ class InitPaymentTransaction extends BaseTransaction implements PaymentInitTrans
         $this->logInfo($request, $response, $paymentMethodName);
 
         $initResponseTransfer = $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
         if ($initResponseTransfer->getSuccessful()) {
             $ratepayPaymentInitTransfer

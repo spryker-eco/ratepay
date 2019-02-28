@@ -9,21 +9,16 @@ namespace SprykerEco\Zed\Ratepay\Business\Request\Payment\Method;
 
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInvoiceTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 class Invoice extends AbstractMethod
 {
-    /**
-     * @const Payment method code.
-     */
-    const METHOD = RatepayConstants::INVOICE;
-
     /**
      * @return string
      */
     public function getMethodName()
     {
-        return static::METHOD;
+        return RatepayConfig::INVOICE;
     }
 
     /**

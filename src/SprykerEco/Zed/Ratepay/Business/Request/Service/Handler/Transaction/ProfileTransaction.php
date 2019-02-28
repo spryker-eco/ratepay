@@ -7,29 +7,27 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Request\Service\Handler\Transaction;
 
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 use SprykerEco\Zed\Ratepay\Business\Api\Model\Response\ProfileResponse;
-use SprykerEco\Zed\Ratepay\Business\Request\Service\Method\Service;
 use SprykerEco\Zed\Ratepay\Business\Request\TransactionHandlerAbstract;
-use SprykerEco\Zed\Ratepay\Business\Request\TransactionHandlerInterface;
 
-class ProfileTransaction extends TransactionHandlerAbstract implements TransactionHandlerInterface
+class ProfileTransaction extends TransactionHandlerAbstract implements ProfileTransactionInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PROFILE;
+    public const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PROFILE;
 
     /**
      * @return \Generated\Shared\Transfer\RatepayResponseTransfer
      */
     public function request()
     {
-        $request = $this
-            ->getMethodMapper(Service::METHOD)
+        $request = $this->getMethodMapper(RatepayConfig::METHOD_SERVICE)
             ->profile();
 
         $response = $this->sendRequest((string)$request);
 
         $profileResponseTransfer = $this->converterFactory
-            ->getProfileResponseConverter($response)
+            ->createProfileResponseConverter($response)
             ->convert();
 
         return $profileResponseTransfer;

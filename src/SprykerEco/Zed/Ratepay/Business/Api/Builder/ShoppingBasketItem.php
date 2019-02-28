@@ -9,11 +9,11 @@ namespace SprykerEco\Zed\Ratepay\Business\Api\Builder;
 
 use Generated\Shared\Transfer\RatepayRequestTransfer;
 
-class ShoppingBasketItem extends AbstractBuilder implements BuilderInterface
+class ShoppingBasketItem extends AbstractBuilder implements ShoppingBasketItemInterface
 {
-    const ROOT_TAG = 'item';
+    public const ROOT_TAG = 'item';
 
-    const ITEM_DISCOUNT_COEFFICIENT = -1;
+    public const ITEM_DISCOUNT_COEFFICIENT = -1;
 
     /**
      * @var int

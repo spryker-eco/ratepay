@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\Ratepay\Business\Order;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Spryker\Zed\Sales\Persistence\SalesQueryContainer;
+use Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface;
 use SprykerEco\Zed\Ratepay\Business\Exception\OrderTotalHydrationException;
 use SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface;
 
@@ -22,17 +22,17 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
     protected $ratepayToCalculationBridge;
 
     /**
-     * @var \Spryker\Zed\Sales\Persistence\SalesQueryContainer
+     * @var \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface
      */
     protected $salesQueryContainer;
 
     /**
      * @param \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToCalculationInterface $ratepayToCalculationBridge
-     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainer $salesQueryContainer
+     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface $salesQueryContainer
      */
     public function __construct(
         RatepayToCalculationInterface $ratepayToCalculationBridge,
-        SalesQueryContainer $salesQueryContainer
+        SalesQueryContainerInterface $salesQueryContainer
     ) {
 
         $this->ratepayToCalculationBridge = $ratepayToCalculationBridge;
@@ -52,7 +52,7 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
             ->querySalesOrderItem()
             ->findOneByIdSalesOrderItem($idSalesOrderItem);
 
-        if (empty($salesOrderItemEntity)) {
+        if ($salesOrderItemEntity === null) {
             throw new OrderTotalHydrationException(
                 sprintf('Order item with id "%d" not found!', $idSalesOrderItem)
             );
@@ -81,7 +81,7 @@ class PartialOrderCalculator implements PartialOrderCalculatorInterface
                 $salesOrderItemEntity->getFkSalesOrder()
             );
 
-        if (empty($salesOrderEntity)) {
+        if ($salesOrderEntity === null) {
             throw new OrderTotalHydrationException(
                 sprintf('Order with id "%d" not found!', $salesOrderItemEntity->getFkSalesOrder())
             );

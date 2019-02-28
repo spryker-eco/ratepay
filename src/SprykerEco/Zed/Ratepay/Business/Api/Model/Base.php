@@ -7,24 +7,25 @@
 
 namespace SprykerEco\Zed\Ratepay\Business\Api\Model;
 
-use SprykerEco\Shared\Ratepay\RatepayConstants;
-use SprykerEco\Zed\Ratepay\Business\Api\Builder\Head;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
+use SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface;
 
 abstract class Base extends AbstractRequest
 {
-    const ROOT_TAG = 'request';
+    public const ROOT_TAG = 'request';
+    public const CONTENT = 'content';
 
-    const OPERATION = '';
+    public const OPERATION = '';
 
     /**
-     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head
+     * @var \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface
      */
     protected $head;
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head $head
+     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface $head
      */
-    public function __construct(Head $head)
+    public function __construct(HeadInterface $head)
     {
         $this->head = $head;
     }
@@ -36,8 +37,8 @@ abstract class Base extends AbstractRequest
     {
         $this->getHead()->setOperation(static::OPERATION);
         return [
-            '@version' => RatepayConstants::RATEPAY_REQUEST_VERSION,
-            '@xmlns' => RatepayConstants::RATEPAY_REQUEST_XMLNS_URN,
+            '@version' => RatepayConfig::RATEPAY_REQUEST_VERSION,
+            '@xmlns' => RatepayConfig::RATEPAY_REQUEST_XMLNS_URN,
             $this->getHead()->getRootTag() => $this->getHead(),
         ];
     }
@@ -51,18 +52,7 @@ abstract class Base extends AbstractRequest
     }
 
     /**
-     * @param \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head $head
-     *
-     * @return $this
-     */
-    public function setHead(Head $head)
-    {
-        $this->head = $head;
-        return $this;
-    }
-
-    /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\Head
+     * @return \SprykerEco\Zed\Ratepay\Business\Api\Builder\HeadInterface
      */
     public function getHead()
     {

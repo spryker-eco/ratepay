@@ -14,7 +14,7 @@ use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Invoice as InvoiceMapper;
 use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Prepayment as PrepaymentMapper;
 use SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Transaction\Transaction;
 
-class MethodMapperFactory extends AbstractBusinessFactory
+class MethodMapperFactory extends AbstractBusinessFactory implements MethodMapperFactoryInterface
 {
     /**
      * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Transaction\TransactionInterface
@@ -31,7 +31,7 @@ class MethodMapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Elv
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterface
      */
     protected function createElvMethodMapper()
     {
@@ -39,7 +39,7 @@ class MethodMapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Invoice
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterface
      */
     protected function createInvoiceMethodMapper()
     {
@@ -47,7 +47,7 @@ class MethodMapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Prepayment
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterface
      */
     protected function createPrepaymentMethodMapper()
     {
@@ -55,7 +55,7 @@ class MethodMapperFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\Installment
+     * @return \SprykerEco\Zed\Ratepay\Business\Order\MethodMapper\PaymentMethodMapperInterface
      */
     protected function createInstallmentMethodMapper()
     {

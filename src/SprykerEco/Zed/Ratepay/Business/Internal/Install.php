@@ -14,13 +14,18 @@ use Symfony\Component\Yaml\Yaml;
 
 class Install implements InstallInterface
 {
+    public const CREATED = 'created';
+    public const TRANSLATIONS = 'translations';
+    public const TRANSLATION = 'translation';
+    public const UPDATED = 'updated';
+    public const TEXT = 'text';
     /**
      * @var \SprykerEco\Zed\Ratepay\Dependency\Facade\RatepayToGlossaryInterface
      */
     protected $glossary;
 
     /**
-     * @var \Spryker\Zed\Price\PriceConfig
+     * @var \SprykerEco\Zed\Ratepay\RatepayConfig
      */
     protected $config;
 
@@ -52,9 +57,7 @@ class Install implements InstallInterface
      */
     protected function parseYamlFile($filePath)
     {
-        $yamlParser = new Yaml();
-
-        return $yamlParser->parse(file_get_contents($filePath));
+        return Yaml::parse(file_get_contents($filePath));
     }
 
     /**
@@ -66,14 +69,14 @@ class Install implements InstallInterface
     {
         $results = [];
         foreach ($translations as $keyName => $data) {
-            $results[$keyName]['created'] = false;
+            $results[$keyName][self::CREATED] = false;
             if (!$this->glossary->hasKey($keyName)) {
                 $this->glossary->createKey($keyName);
-                $results[$keyName]['created'] = true;
+                $results[$keyName][self::CREATED] = true;
             }
 
-            foreach ($data['translations'] as $localeName => $text) {
-                $results[$keyName]['translation'][$localeName] = $this->addTranslation($localeName, $keyName, $text);
+            foreach ($data[self::TRANSLATIONS] as $localeName => $text) {
+                $results[$keyName][self::TRANSLATION][$localeName] = $this->addTranslation($localeName, $keyName, $text);
             }
         }
 
@@ -93,19 +96,19 @@ class Install implements InstallInterface
         $locale->setLocaleName($localeName);
         $translation = [];
 
-        $translation['text'] = $text;
-        $translation['created'] = false;
-        $translation['updated'] = false;
+        $translation[self::TEXT] = $text;
+        $translation[self::CREATED] = false;
+        $translation[self::UPDATED] = false;
 
         if (!$this->glossary->hasTranslation($keyName, $locale)) {
             $this->glossary->createAndTouchTranslation($keyName, $locale, $text, true);
-            $translation['created'] = true;
+            $translation[self::CREATED] = true;
 
             return $translation;
         }
 
         $this->glossary->updateAndTouchTranslation($keyName, $locale, $text, true);
-        $translation['updated'] = true;
+        $translation[self::UPDATED] = true;
 
         return $translation;
     }

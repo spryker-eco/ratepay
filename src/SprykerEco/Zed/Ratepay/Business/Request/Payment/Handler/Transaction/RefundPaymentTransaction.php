@@ -12,7 +12,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 class RefundPaymentTransaction extends BaseTransaction implements OrderTransactionInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PAYMENT_REFUND;
+    public const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_PAYMENT_REFUND;
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
@@ -39,7 +39,7 @@ class RefundPaymentTransaction extends BaseTransaction implements OrderTransacti
         }
 
         return $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
     }
 }

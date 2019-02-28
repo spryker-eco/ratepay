@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\Ratepay;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerEco\Shared\Ratepay\RatepayConfig as SharedRatepayConfig;
 use SprykerEco\Shared\Ratepay\RatepayConstants;
 
 class RatepayConfig extends AbstractBundleConfig
@@ -17,7 +18,7 @@ class RatepayConfig extends AbstractBundleConfig
      */
     public function getTransactionGatewayUrl()
     {
-        return $this->get(RatepayConstants::API_URL);
+        return $this->get(RatepayConstants::RATEPAY_API_URL);
     }
 
     /**
@@ -65,6 +66,6 @@ class RatepayConfig extends AbstractBundleConfig
      */
     public function getTranslationFilePath()
     {
-        return __DIR__ . DIRECTORY_SEPARATOR . RatepayConstants::GLOSSARY_FILE_PATH;
+        return __DIR__ . DIRECTORY_SEPARATOR . SharedRatepayConfig::GLOSSARY_FILE_PATH;
     }
 }

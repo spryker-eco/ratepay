@@ -9,15 +9,14 @@ namespace SprykerEco\Yves\Ratepay\Form;
 
 use Generated\Shared\Transfer\RatepayPaymentPrepaymentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PrepaymentSubForm extends SubFormAbstract
 {
-    const PAYMENT_METHOD = 'prepayment';
+    public const PAYMENT_METHOD = 'prepayment';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -49,7 +48,7 @@ class PrepaymentSubForm extends SubFormAbstract
      */
     public function getPropertyPath()
     {
-        return RatepayConstants::PAYMENT_METHOD_PREPAYMENT;
+        return RatepayConfig::PAYMENT_METHOD_PREPAYMENT;
     }
 
     /**
@@ -57,7 +56,7 @@ class PrepaymentSubForm extends SubFormAbstract
      */
     public function getName()
     {
-        return RatepayConstants::PAYMENT_METHOD_PREPAYMENT;
+        return RatepayConfig::PAYMENT_METHOD_PREPAYMENT;
     }
 
     /**
@@ -65,7 +64,7 @@ class PrepaymentSubForm extends SubFormAbstract
      */
     public function getTemplatePath()
     {
-        return RatepayConstants::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
+        return RatepayConfig::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
     }
 
     /**

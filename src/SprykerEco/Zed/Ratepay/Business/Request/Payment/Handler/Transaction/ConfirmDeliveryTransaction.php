@@ -12,7 +12,7 @@ use SprykerEco\Zed\Ratepay\Business\Api\Constants as ApiConstants;
 
 class ConfirmDeliveryTransaction extends BaseTransaction implements OrderTransactionInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_DELIVER_CONFIRM;
+    public const TRANSACTION_TYPE = ApiConstants::REQUEST_MODEL_DELIVER_CONFIRM;
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
@@ -39,7 +39,7 @@ class ConfirmDeliveryTransaction extends BaseTransaction implements OrderTransac
         }
 
         return $this->converterFactory
-            ->getTransferObjectConverter($response)
+            ->createTransferObjectConverter($response)
             ->convert();
     }
 }

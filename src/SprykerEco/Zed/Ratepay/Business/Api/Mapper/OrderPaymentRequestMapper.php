@@ -34,7 +34,7 @@ class OrderPaymentRequestMapper extends BaseMapper
     protected $partialOrderTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
+     * @var \Orm\Zed\Sales\Persistence\SpySalesOrder
      */
     protected $orderEntity;
 
@@ -197,7 +197,7 @@ class OrderPaymentRequestMapper extends BaseMapper
     {
         $shippingExpenses = 0;
         foreach ($this->orderTransfer->getExpenses() as $expenseTransfer) {
-            if($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
+            if ($expenseTransfer->getType() === ShipmentConstants::SHIPMENT_EXPENSE_TYPE) {
                 $shippingExpenses += $expenseTransfer->getUnitGrossPrice();
             }
         }

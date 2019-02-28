@@ -16,6 +16,8 @@ use Spryker\Client\Kernel\AbstractClient;
 class RatepayClient extends AbstractClient implements RatepayClientInterface
 {
     /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -31,6 +33,8 @@ class RatepayClient extends AbstractClient implements RatepayClientInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

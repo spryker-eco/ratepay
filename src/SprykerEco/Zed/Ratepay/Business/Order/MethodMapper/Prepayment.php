@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\Ratepay\Business\Order\MethodMapper;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerEco\Shared\Ratepay\RatepayConstants;
+use SprykerEco\Shared\Ratepay\RatepayConfig;
 
 class Prepayment extends AbstractMapper
 {
@@ -17,7 +17,7 @@ class Prepayment extends AbstractMapper
      */
     public function getMethodName()
     {
-        return RatepayConstants::PREPAYMENT;
+        return RatepayConfig::PREPAYMENT;
     }
 
     /**
