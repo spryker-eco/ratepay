@@ -1,7 +1,7 @@
 {
   "name": "spryker-eco/ratepay",
   "description": "Ratepay module",
-  "license": "proprietary",
+  "license": "MIT",
   "require": {
     "spryker/checkout": "^3.0.0 || ^4.0.0",
     "spryker/config": "^3.0.0",
@@ -34,12 +34,13 @@
     "spryker/cart": "If you want to use Cart plugins you need to install spryker/cart."
   },
   "autoload": {
-    "psr-0": {
-      "SprykerEco\\": "src/SprykerEco/"
+    "psr-4": {
+      "SprykerEco\\": "src/SprykerEco/",
+      "SprykerEcoTest\\Zed\\Ratepay\\Business\\": "tests/SprykerEcoTest/Zed/Ratepay/Business/"
     }
   },
   "autoload-dev": {
-    "psr-0": {
+    "psr-4": {
       "SprykerEcoTest\\": "tests/SprykerEcoTest/"
     }
   },
