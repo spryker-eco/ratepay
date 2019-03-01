@@ -66,7 +66,7 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
                 ->setResultCode($ratepayResponseTransfer->getStatusCode());
         }
 
-        $partialOrderTransfer = $this->getPartialOrderTransferByBasketItems($quoteTransfer->getItems());
+        $partialOrderTransfer = $this->getPartialOrderTransferByBasketItems($quoteTransfer);
 
         $ratepayPaymentRequestTransfer = new RatepayPaymentRequestTransfer();
         $quotePaymentInitMapper = $this->getFactory()->createPaymentRequestMapperByQuote(
@@ -80,17 +80,12 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
 
         $ratepayResponseTransfer = $this->getFacade()->requestPayment($ratepayPaymentRequestTransfer);
 
-        if ($paymentData) {
-            $paymentData->setDescriptor($ratepayResponseTransfer->getDescriptor());
-        }
-
         $this->getFacade()->updatePaymentMethodByPaymentResponse(
             $ratepayResponseTransfer,
             $ratepayPaymentRequestTransfer->getOrderId()
         );
-        $this->checkForErrors($ratepayResponseTransfer, $checkoutResponseTransfer);
 
-        return $checkoutResponseTransfer;
+        $this->checkForErrors($ratepayResponseTransfer, $checkoutResponseTransfer);
     }
 
     /**
@@ -114,15 +109,17 @@ class RatepayPreCheckPlugin extends AbstractPlugin implements CheckoutPreCheckPl
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $basketItems
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    protected function getPartialOrderTransferByBasketItems($basketItems)
+    protected function getPartialOrderTransferByBasketItems($quoteTransfer)
     {
         $partialOrderTransfer = $this->getFactory()->createOrderTransfer();
-        $items = $this->getFactory()->createOrderTransferItemsByBasketItems($basketItems);
+        $items = $this->getFactory()->createOrderTransferItemsByBasketItems($quoteTransfer->getItems());
         $partialOrderTransfer->setItems($items);
+        $partialOrderTransfer->setPriceMode($quoteTransfer->getPriceMode());
+        $partialOrderTransfer->setTotals($quoteTransfer->getTotals());
 
         return $this
             ->getFactory()
