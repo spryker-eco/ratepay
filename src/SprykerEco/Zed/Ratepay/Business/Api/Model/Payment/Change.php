@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerEco\Zed\Ratepay\Business\Api\Model\Payment;
+
+use SprykerEco\Zed\Ratepay\Business\Api\Constants;
+
+class Change extends Request
+{
+    public const OPERATION = Constants::REQUEST_MODEL_PAYMENT_CHANGE;
+}

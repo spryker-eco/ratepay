@@ -1,0 +1,60 @@
+{
+  "name": "spryker-eco/ratepay",
+  "description": "Ratepay module",
+  "license": "MIT",
+  "require": {
+    "spryker/checkout": "^3.0.0 || ^4.0.0",
+    "spryker/config": "^3.0.0",
+    "spryker/calculation": "^4.0.0",
+    "spryker/glossary": "^3.0.0",
+    "spryker/guzzle": "^2.1.0",
+    "spryker/kernel": "^3.0.0",
+    "spryker/log": "^3.0.0",
+    "spryker/messenger": "^3.0.0",
+    "spryker/money": "^2.0.0",
+    "spryker/monolog": "^2.0.0",
+    "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "spryker/payment": "^3.0.0 || ^4.0.0",
+    "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
+    "spryker/session": "^3.0.0 || ^4.0.0",
+    "spryker/step-engine": "^2.0.0 || ^3.0.0",
+    "spryker/symfony": "^3.1.0",
+    "spryker/zed-request": "^3.0.0"
+  },
+  "require-dev": {
+    "spryker/code-sniffer": "*",
+    "spryker/country": "*",
+    "spryker/customer": "*",
+    "spryker/propel": "*",
+    "spryker/propel-orm": "*",
+    "spryker/silex": "*",
+    "spryker/testify": "*"
+  },
+  "suggest": {
+    "spryker/installer": "If you want to use Installer plugins you need to install spryker/installer.",
+    "spryker/cart": "If you want to use Cart plugins you need to install spryker/cart."
+  },
+  "autoload": {
+    "psr-4": {
+      "SprykerEco\\": "src/SprykerEco/",
+      "SprykerEcoTest\\Zed\\Ratepay\\Business\\": "tests/SprykerEcoTest/Zed/Ratepay/Business/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "process-timeout": 600
+  }
+}
