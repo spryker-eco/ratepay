@@ -1,4 +1,4 @@
-{% extends model('template') %}
+{% extends template('ratepay-layout', 'Ratepay') %}
 
 {% define data = {
     form: form
@@ -16,8 +16,8 @@
     {% endmacro %}
 
     <div class="form__fields grid grid--bottom">
-        {{ _self.subFormField(data, 'date_of_birth') }}
-        {{ _self.subFormField(data, 'phone') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayPrepayment', 'date_of_birth') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayPrepayment', 'phone') }}
     </div>
 {% endblock %}
 

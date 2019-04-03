@@ -1,0 +1,13 @@
+{% extends model('template') %}
+
+ {% macro subFormField(context, paymentName, subFormName ) %}
+     <div class="form__field col col--sm-12">
+         <label for="{{ context.form[paymentName][subFormName].vars.id }}" class="label label--required">
+             {{ 'payment.ratepay.' ~ subFormName | trans }}
+         </label>
+         {{ form_widget(context.form[paymentName][subFormName], { 'attr': {'placeholder': 'payment.ratepay.' ~ subFormName | trans } }) }}
+         {{ form_errors(context.form[paymentName][subFormName]) }}
+     </div>
+ {% endmacro %}
+
+{% import _self as ratepayTemplate %}
