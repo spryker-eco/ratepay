@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -25,7 +25,7 @@ class RatepaySummaryWidget extends AbstractWidget
         RatepayConfig::INVOICE => 'getRatepayInvoice',
         RatepayConfig::ELV => 'getRatepayElv',
         RatepayConfig::INSTALLMENT => 'getRatepayInstallment',
-        RatepayConfig::PREPAYMENT => 'getRatepayPrepayment'
+        RatepayConfig::PREPAYMENT => 'getRatepayPrepayment',
     ];
 
     /**
@@ -55,9 +55,9 @@ class RatepaySummaryWidget extends AbstractWidget
     }
 
     /**
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return AbstractTransfer|null
+     * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null
      */
     protected function getRatepayPaymentTransfer(QuoteTransfer $quoteTransfer): ?AbstractTransfer
     {
@@ -77,7 +77,7 @@ class RatepaySummaryWidget extends AbstractWidget
     }
 
     /**
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
