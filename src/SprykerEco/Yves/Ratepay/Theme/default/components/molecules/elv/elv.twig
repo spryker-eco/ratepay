@@ -1,0 +1,25 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'elv',
+    tag: 'elv'
+} %}
+
+{% define data = {
+    ratepayPaymentTransfer: required
+} %}
+
+{% block body %}
+    <div class="box">
+        <table class="table table--expand">
+            <tr>
+                <td>{{ 'payment.ratepay.bank_account' | trans }}:</td>
+                <td>
+                    <div>{{ 'payment.ratepay.bank_account.holder' | trans }} - {{ ratepayPaymentTransfer.bankAccountHolder }}</div>
+                    <div>{{ 'payment.ratepay.bank_account.iban' | trans }} - {{ ratepayPaymentTransfer.bankAccountIban }}</div>
+                    <div>{{ 'payment.ratepay.bank_account.bic' | trans }} - {{ ratepayPaymentTransfer.bankAccountBic }}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

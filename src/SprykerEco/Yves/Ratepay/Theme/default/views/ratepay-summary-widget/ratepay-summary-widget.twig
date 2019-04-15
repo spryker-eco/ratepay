@@ -3,14 +3,14 @@
 {% define data = {
     ratepayPaymentTransfer: _widget.ratepayPaymentTransfer,
     quoteTransfer: _widget.quoteTransfer,
-    view: _widget.view
+    molecule: _widget.molecule,
+    module: _widget.module
 } %}
 
 {% block body %}
     {% if data.ratepayPaymentTransfer is not null %}
-        {% include '@Ratepay/partial/summary/' ~ data.view ~ '.twig' with {
-            ratepayPaymentTransfer: data.ratepayPaymentTransfer,
-            quoteTransfer: data.quoteTransfer
+        {% include molecule (data.molecule, data.module) with {
+            ratepayPaymentTransfer: data.ratepayPaymentTransfer
         } %}
 
         <script>

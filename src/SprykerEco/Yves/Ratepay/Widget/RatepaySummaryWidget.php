@@ -19,10 +19,12 @@ class RatepaySummaryWidget extends AbstractWidget
 {
     protected const PARAMETER_RATEPAY_PAYMENT_TRANSFER = 'ratepayPaymentTransfer';
     protected const PARAMETER_QUOTE_TRANSFER = 'quoteTransfer';
-    protected const PARAMETER_VIEW_NAME = 'view';
+    protected const PARAMETER_MOLECULE = 'molecule';
+    protected const PARAMETER_MODULE = 'module';
 
     protected const NAME = 'RatepaySummaryWidget';
-    protected const TEMPLATE = '@Ratepay/partial/ratepay-summary-widget.twig';
+    protected const TEMPLATE = '@Ratepay/views/ratepay-summary-widget/ratepay-summary-widget.twig';
+    protected const MODULE = 'Ratepay';
 
     protected const PAYMENT_TRANSFER_MAP = [
         RatepayConfig::INVOICE => 'getRatepayInvoice',
@@ -37,8 +39,9 @@ class RatepaySummaryWidget extends AbstractWidget
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addParameter(static::PARAMETER_RATEPAY_PAYMENT_TRANSFER, $this->getRatepayPaymentTransfer($quoteTransfer));
-        $this->addParameter(static::PARAMETER_VIEW_NAME, $this->getViewName($quoteTransfer));
+        $this->addParameter(static::PARAMETER_MOLECULE, $this->getMoleculeName($quoteTransfer));
         $this->addParameter(static::PARAMETER_QUOTE_TRANSFER, $quoteTransfer);
+        $this->addParameter(static::PARAMETER_MODULE, static::MODULE);
     }
 
     /**
@@ -84,7 +87,7 @@ class RatepaySummaryWidget extends AbstractWidget
      *
      * @return string
      */
-    protected function getViewName(QuoteTransfer $quoteTransfer): string
+    protected function getMoleculeName(QuoteTransfer $quoteTransfer): string
     {
         return strtolower($quoteTransfer->getPayment()->getPaymentMethod());
     }
