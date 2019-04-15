@@ -21,6 +21,9 @@ class RatepaySummaryWidget extends AbstractWidget
     protected const PARAMETER_QUOTE_TRANSFER = 'quoteTransfer';
     protected const PARAMETER_VIEW_NAME = 'view';
 
+    protected const NAME = 'RatepaySummaryWidget';
+    protected const TEMPLATE = '@Ratepay/partial/ratepay-summary-widget.twig';
+
     protected const PAYMENT_TRANSFER_MAP = [
         RatepayConfig::INVOICE => 'getRatepayInvoice',
         RatepayConfig::ELV => 'getRatepayElv',
@@ -43,7 +46,7 @@ class RatepaySummaryWidget extends AbstractWidget
      */
     public static function getName(): string
     {
-        return 'RatepaySummaryWidget';
+        return static::NAME;
     }
 
     /**
@@ -51,7 +54,7 @@ class RatepaySummaryWidget extends AbstractWidget
      */
     public static function getTemplate(): string
     {
-        return '@Ratepay/partial/ratepay-summary-widget.twig';
+        return static::TEMPLATE;
     }
 
     /**
