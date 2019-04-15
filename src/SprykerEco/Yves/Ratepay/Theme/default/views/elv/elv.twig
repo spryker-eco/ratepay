@@ -1,0 +1,15 @@
+{% extends template('ratepay-layout', 'Ratepay') %}
+
+{% define data = {
+    form: form
+} %}
+
+{% block body %}
+    <div class="form__fields grid grid--bottom">
+        {{ ratepayTemplate.subFormField(data, 'ratepayElv', 'date_of_birth') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayElv', 'phone') }}
+        <h6 class="spacing">{{ 'form.ratepayElv.bank_account' | trans }}</h6>
+        {{ ratepayTemplate.subFormField(data, 'ratepayElv', 'bank_account_iban') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayElv', 'bank_account_bic') }}
+    </div>
+{% endblock %}

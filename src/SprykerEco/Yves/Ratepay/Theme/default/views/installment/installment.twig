@@ -1,0 +1,21 @@
+{% extends template('ratepay-layout', 'Ratepay') %}
+
+{% define data = {
+    form: form
+} %}
+
+{% block body %}
+    <div class="form__fields grid grid--bottom">
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'date_of_birth') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'phone') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'debit_pay_type') }}
+        <h6 class="spacing">{{ 'payment.ratepay.bank_account' | trans }}</h6>
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'bank_account_iban') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'bank_account_bic') }}
+        <h6 class="spacing">{{ 'payment.ratepay.installment_calculator' | trans }}</h6>
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'installment_calculation_type') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'interest_month') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'interest_rate') }}
+        {{ ratepayTemplate.subFormField(data, 'ratepayInstallment', 'interest_rate_default') }}
+    </div>
+{% endblock %}
