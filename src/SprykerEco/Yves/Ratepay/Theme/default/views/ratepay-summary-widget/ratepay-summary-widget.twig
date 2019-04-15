@@ -9,9 +9,9 @@
 
 {% block body %}
     {% if data.ratepayPaymentTransfer is not null %}
-        {% include molecule (data.molecule, data.module) with {
+        {% include molecule(data.molecule, data.module) with {
             ratepayPaymentTransfer: data.ratepayPaymentTransfer
-        } %}
+        } only %}
 
         <script>
             var di = {t:'{{ data.ratepayPaymentTransfer.deviceFingerprint }}',v:'{{ data.ratepayPaymentTransfer.deviceIdentSId }}',l:'Checkout'}; </script>
