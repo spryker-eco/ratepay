@@ -1,0 +1,34 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'installment',
+    tag: 'installment'
+} %}
+
+{% define data = {
+    ratepayPaymentTransfer: required
+} %}
+
+{% block body %}
+    <div class="box">
+        <table class="table table--expand">
+            <tr>
+                <td>{{ 'summary.ratepay.installment.plan_details' | trans }}:</td>
+                <td>
+                    <div>{{ 'summary.ratepay.installment.type' | trans }} - {{ data.ratepayPaymentTransfer.installmentCalculationType }}</div>
+                    <div>{{ 'summary.ratepay.installment.rates_number' | trans }} - {{ data.ratepayPaymentTransfer.installmentNumberRates|number_format }}</div>
+                    <hr/>
+                    <div>{{ 'summary.ratepay.installment.amount_per_month' | trans }} - {{ data.ratepayPaymentTransfer.installmentRate|money }}</div>
+                    <div>{{ 'summary.ratepay.installment.last_month_amount' | trans }} - {{ data.ratepayPaymentTransfer.installmentLastRate|money }}</div>
+                    <div>{{ 'summary.ratepay.installment.annual_percentage_rate' | trans }} - {{ data.ratepayPaymentTransfer.installmentAnnualPercentageRate|number_format(2, ',') }} &#37;</div>
+                    <hr/>
+                    <div>{{ 'summary.ratepay.installment.service_charge' | trans }} - {{ data.ratepayPaymentTransfer.installmentServiceCharge|money }}</div>
+                    <div>{{ 'summary.ratepay.installment.interest_amount' | trans }}- {{ data.ratepayPaymentTransfer.installmentInterestAmount|money }}</div>
+                    <hr/>
+                    <div>{{ 'summary.ratepay.installment.order_grand_total' | trans }} - {{ data.quoteTransfer.getTotals.getGrandTotal|money }}</div>
+                    <div>{{ 'summary.ratepay.installment.plan_grand_total' | trans }}  - {{ data.ratepayPaymentTransfer.installmentGrandTotalAmount|money }}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

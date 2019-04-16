@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Zed\Ratepay\Communication;
 
+use ArrayObject;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RatepayPaymentInitTransfer;
@@ -21,8 +23,6 @@ use SprykerEco\Zed\Ratepay\Business\Api\Mapper\QuotePaymentRequestMapper;
 use SprykerEco\Zed\Ratepay\Business\Order\PartialOrderCalculator;
 use SprykerEco\Zed\Ratepay\Business\Service\PaymentMethodExtractor;
 use SprykerEco\Zed\Ratepay\RatepayDependencyProvider;
-use ArrayObject;
-use Generated\Shared\Transfer\ItemTransfer;
 
 /**
  * @method \SprykerEco\Zed\Ratepay\Persistence\RatepayQueryContainerInterface getQueryContainer()
