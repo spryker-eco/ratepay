@@ -25,7 +25,7 @@ class InvoiceTest extends BaseMethodMapperTest
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->paymentMethod = 'INVOICE';
 
