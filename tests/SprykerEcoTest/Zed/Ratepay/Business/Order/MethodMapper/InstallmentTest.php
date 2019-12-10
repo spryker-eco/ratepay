@@ -25,7 +25,7 @@ class InstallmentTest extends BaseMethodMapperTest
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->paymentMethod = 'INSTALLMENT';
 

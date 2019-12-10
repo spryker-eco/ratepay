@@ -72,7 +72,7 @@ abstract class AbstractBusinessTest extends AbstractWithConfigTest
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

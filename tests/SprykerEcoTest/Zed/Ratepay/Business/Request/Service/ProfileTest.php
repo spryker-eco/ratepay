@@ -31,7 +31,7 @@ class ProfileTest extends AbstractFacadeTest
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         AbstractWithConfigTest::setUp();
 
